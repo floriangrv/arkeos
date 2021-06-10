@@ -1,0 +1,21 @@
+.leftmenu-items {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  &:hover {
+    color: green;
+    border-radius: 35px;
+    background-color: rgb(220, 253, 220);
+  }
+}
+.leftmenu-items > h2{
+  font-weight: 400;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.leftmenu-items > .MuiSvgIcon-root {
+  margin: 17px;
+}
+
