@@ -50,10 +50,10 @@ INSERT INTO "response" ("content", "author_id", "question_id") VALUES
     ('Il faut faire comme ça !', 1, 1),
     ('je rêve ou je répond à ma propre question o_O', 1, 1);
 
-INSERT INTO "article" ("title", "content", "type", "author_id", "category_id", "theme_id") VALUES
-    ('Mon titre', 'mon contenu', 'Fiche élevage', 1, 1, 1),
-    ('Mon titre 2', 'mon contenu 2', 'Article', 1, 1, 1),
-    ('Titre article', 'contenu pas bien grand', 'Article', 4, 1, 1);
+INSERT INTO "article" ("title", "content", "breeding_sheet", "author_id", "category_id", "theme_id") VALUES
+    ('Mon titre', 'mon contenu', true, 1, 1, 1),
+    ('Mon titre 2', 'mon contenu 2', false, 1, 1, 1),
+    ('Titre article', 'contenu pas bien grand', false, 4, 1, 1);
 
 INSERT INTO "photo" ("location", "url_picture", "article_id", "author_id") VALUES
     ('article', './img/article/img1.png', 1, 1),

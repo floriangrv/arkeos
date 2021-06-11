@@ -87,7 +87,7 @@ CREATE TABLE "article" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "content" text NOT NULL,
-    "type" text NOT NULL,
+    "breeding_sheet" boolean NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,
     "deleted_at" TIMESTAMPTZ,
