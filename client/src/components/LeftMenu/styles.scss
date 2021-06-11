@@ -1,0 +1,12 @@
+.active {
+  color:#ffffff;
+  text-decoration: underline;
+}
+
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
