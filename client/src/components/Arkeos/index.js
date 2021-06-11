@@ -3,11 +3,13 @@ import React from 'react';
 
 // == Import
 import './styles.scss';
+import Article_card from '../Article_card';
 
 // == Composant
 const Arkeos = () => (
+
   <div className="arkeos">
-    <h1>Composant : Arkeos</h1>
+    <Article_card />
   </div>
 );
 
