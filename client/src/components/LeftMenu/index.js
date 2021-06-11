@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router , Switch, Route, NavLink } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
+import { slide as Menu } from "react-burger-menu";
 
 import LeftMenuItems from '../LeftMenuItems'
-import Message from '../Message';
 import MessageIcon from '@material-ui/icons/Message';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
@@ -20,9 +20,11 @@ import './styles.scss'
 
 const LeftMenu = () => {
   return (
+
     
       <div className="leftmenu">
-      <nav>
+      <Menu >
+        
         <NavLink exact to="/">
         <LeftMenuItems name="Accueil" Icon={HomeIcon}/>
         </NavLink>
@@ -58,17 +60,16 @@ const LeftMenu = () => {
         <NavLink to="/legislation">
         <LeftMenuItems name="Législation" Icon={GavelIcon}/>
         </NavLink>
-      </nav>
+        </Menu>
+
+        
 
       <Switch>
         <Route path="/message">
-          <Message />
+        {/* Message composant example  */}
         </Route>
       </Switch>
-      
-      
       </div>
-    
   )
 }
 

@@ -1,8 +1,12 @@
 .active {
-  color: green;
+  color:#ffffff;
   text-decoration: underline;
 }
 
-.leftmenu {
-  border-right: 1px solid grey;
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
 }
