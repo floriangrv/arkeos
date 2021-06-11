@@ -23,7 +23,7 @@ const LeftMenu = () => {
     
       <div className="leftmenu">
       <nav>
-        <NavLink to="/">
+        <NavLink exact to="/">
         <LeftMenuItems name="Accueil" Icon={HomeIcon}/>
         </NavLink>
 
