@@ -11,15 +11,13 @@ import {
 import LeftMenu from '../LeftMenu';
 import './styles.scss';
 import Article_card from '../Article_card';
-
+import MemberCard from '../MemberCard';
 // == Composant
 const Arkeos = () => (
 
   <Router>
   <div className="arkeos">
   <LeftMenu />
-  <Article_card />
-    
   </div>
   </Router>
 );
