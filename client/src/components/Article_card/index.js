@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css'
 import cameleon from'../../assets/images/cameleon.png'
+import Like_button from '../../components/Like_button'
 
 const Article_card = () => (
 
@@ -18,7 +19,7 @@ const Article_card = () => (
 
     </div>
     <div className= 'votes'>
-      <span className= 'number'>3 000</span>
+      <Like_button />
     </div>
     
   </div>

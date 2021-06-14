@@ -10,7 +10,7 @@ import {
 // == Import
 import LeftMenu from '../LeftMenu';
 import './styles.scss';
-import Article_card from '../Article_card';
+
 
 // == Composant
 const Arkeos = () => (
@@ -18,7 +18,7 @@ const Arkeos = () => (
   <Router>
   <div className="arkeos">
   <LeftMenu />
-  <Article_card />
+  
     
   </div>
   </Router>
