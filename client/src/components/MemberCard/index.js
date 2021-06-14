@@ -1,30 +1,22 @@
 import React from 'react';
 
-import imageURL from'../../assets/images/cameleon.png'
-const pseudo = "coucou"
-
-import './styles.scss'
-const MemberCard = () => {
+import './styles.scss';
+const MemberCard = (props) => {
   return (
-    <div className="Card__Member">
-    <div className="Card__Member-content">
-        <div className="Card__Member-picture">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh4dtSvzE6ftbI1WVlhLSAaQMbxcLq0lgxzg&usqp=CAU" alt=""></img>
-        </div>
-        <div className="Card__Member-body">
-            <h2>James Ford</h2>
-            <h3>Ville</h3>
-            <hr></hr>
-        </div>
-        
-        <div className="Card__Member-footer">
-            <p>Lorem ipsum do adipisicing elit. tenetur, laboriosam hic, quia eos aliquid atque corrupti, cum laudantium quis sapiente. Voluptas, eligendi in totam doloremque eaque autem aspernatur incidunt.fdfdfdfdfdfd</p>
-        </div>
+    <div className="card">
+    <div className="card-image-container">
+    <img className="card-img-top" src="https://static-cse.canva.com/blob/189288/article_canva_le_guide_pour_creer_de_superbes_photos_de_profil_9-1.jpg" alt="image" />
     </div>
-</div>
+      
+      <div className="card-body">
+        <h3>{props.username}</h3>
+        <h4>{props.city}</h4>
+        <p className="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi odio voluptatibus aliquam natus ea, iusto dolore impedit, placeat ab nesciunt voluptates aperiam odit quaerat perspiciatis culpa laborum commodi velit harum.</p>
+        <p className="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. soluta!</p>
+        
+      </div>
+    </div>
   );
 };
-
-
 
 export default MemberCard;

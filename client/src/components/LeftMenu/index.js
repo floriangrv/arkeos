@@ -18,6 +18,8 @@ import GavelIcon from '@material-ui/icons/Gavel';
 import './styles.scss'
 import Article_card from '../Article_card';
 import MemberCard from '../MemberCard';
+import Members from '../Members/index.js';
+
 
 
 const LeftMenu = () => {
@@ -72,13 +74,10 @@ const LeftMenu = () => {
          <Article_card />
         </Route>
         <Route path="/members">
-      
-        <MemberCard />
-        <MemberCard />
-        <MemberCard />
-        <MemberCard />
         
-
+        <Members />
+        
+        
         </Route>
       </Switch>
       </div>

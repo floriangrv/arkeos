@@ -7,20 +7,21 @@ import {
   Link
 } from "react-router-dom";
 
+
 // == Import
 import LeftMenu from '../LeftMenu';
 import './styles.scss';
-import Article_card from '../Article_card';
-import MemberCard from '../MemberCard';
-// == Composant
-const Arkeos = () => (
 
+// == Composant
+const Arkeos = () => {
+  
+  return (
   <Router>
-  <div className="arkeos">
-  <LeftMenu />
-  </div>
+    <LeftMenu />
   </Router>
-);
+  )
+  
+  };
 
 // == Export
 export default Arkeos;
