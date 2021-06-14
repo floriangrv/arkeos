@@ -9,7 +9,8 @@ const MemberCard = (props) => {
     </div>
       
       <div className="card-body">
-        <h3>{props.username}</h3>
+       <h3><a href={"/members/" + props.username} >{props.username}</a></h3>
+        
         <h4>{props.city}</h4>
         <p className="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi odio voluptatibus aliquam natus ea, iusto dolore impedit, placeat ab nesciunt voluptates aperiam odit quaerat perspiciatis culpa laborum commodi velit harum.</p>
         <p className="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. soluta!</p>

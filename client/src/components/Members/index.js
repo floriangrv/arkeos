@@ -11,7 +11,7 @@ const Members = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const getDataFromApi = async () => {
-    const url = `https://jsonplaceholder.typicode.com/users?username=`
+    const url = ` https://jsonplaceholder.typicode.com/users`
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -20,14 +20,14 @@ const Members = () => {
   };
 
   useEffect(() => {
-    getDataFromApi();
+    getDataFromApi(searchValue);
   }, [searchValue]);
 
 
     return (
       <div className="members">
       <div className="members-searchbar">
-      <SearchbarMember searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchbarMember searchValue={searchValue} setSearchValue={setSearchValue}/>
       <SearchbarMemberLocation />
       </div>
       

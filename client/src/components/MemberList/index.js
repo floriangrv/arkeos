@@ -2,6 +2,7 @@
 import React from 'react';
 import MemberCard from '../MemberCard';
 
+import "./styles.scss"
 
 const MemberList = (props) => {
   console.log(props)
