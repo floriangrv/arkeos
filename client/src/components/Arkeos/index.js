@@ -8,6 +8,7 @@ import LeftMenu from '../LeftMenu';
 
 import Articles from '../Articles';
 import Article_page from '../Article_page';
+import Members from '../Members'
 import './styles.scss';
 
 // == Composant
@@ -24,6 +25,9 @@ const Arkeos = () => {
        
         <Route exact path="/">
         <Articles />
+        </Route>
+        <Route path="/members">
+        <Members />
         </Route>
 
         <Route exact path="/La-respiration-cutanée">
