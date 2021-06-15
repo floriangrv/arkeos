@@ -1,4 +1,5 @@
-import { checkPropTypes } from 'prop-types';
+
+import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import React from 'react';
 import './styles.scss';
 

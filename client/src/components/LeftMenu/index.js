@@ -27,7 +27,7 @@ const LeftMenu = () => {
 
     
       <div className="leftmenu">
-      <Menu >
+      <Menu noOverlay>
         
         <NavLink exact to="/">
         <LeftMenuItems name="Accueil" Icon={HomeIcon}/>

@@ -2,10 +2,16 @@
   display: flex;
   text-align: center;
   justify-content: center;
-  margin:10px
+  margin-bottom: 10px;
 }
 
 .members-searchbar form {
   margin-right: 20px;
   
+}
+
+.members-searchbar input {
+  background: #e6ebef;
+  border: none;
+  height: 30px;
 }

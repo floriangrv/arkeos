@@ -4,11 +4,16 @@
   align-items: center;
   margin-top: 20px;
   overflow-y: hidden;
+  *:focus {
+    outline: none;
+}
+
   &:hover {
     color: #23302D;
     border-radius: 35px;
     background-color: #F9F7ED;
   }
+ 
 }
 .leftmenu-items > h2{
   font-weight: 400;
@@ -28,7 +33,13 @@ bm-item {
   margin-bottom: 10px;
   color: #A5C6BA;
   transition: color 0.2s;
+  outline-offset: none;
 }
+
+bm-item active {
+
+}
+
 
 .bm-item:hover {
   color: white;

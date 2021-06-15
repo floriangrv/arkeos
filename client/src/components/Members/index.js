@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 import MemberList from '../MemberList';
 import SearchbarMember from '../SearchBarMember';
 import SearchbarMemberLocation from '../SearchbarMemberLocation';
@@ -27,7 +28,7 @@ const Members = () => {
     return (
       <div className="members">
       <div className="members-searchbar">
-      <SearchbarMember searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <SearchbarMember searchValue={searchValue} setSearchValue={setSearchValue} />
       <SearchbarMemberLocation />
       </div>
       
