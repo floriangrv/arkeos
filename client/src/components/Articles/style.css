@@ -1,0 +1,10 @@
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+  margin: auto;
+  background-color: black;
+}
