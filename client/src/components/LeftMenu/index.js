@@ -14,6 +14,8 @@ import DescriptionIcon from '@material-ui/icons/Description';
 
 import GavelIcon from '@material-ui/icons/Gavel';
 
+import Article_card from '../Article_card';
+import Article from '../Article';
 
 import './styles.scss'
 import Article_card from '../Article_card';
@@ -29,39 +31,39 @@ const LeftMenu = () => {
       <div className="leftmenu">
       <Menu noOverlay>
         
-        <NavLink exact to="/">
+        <NavLink exact to="/" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Accueil" Icon={HomeIcon}/>
         </NavLink>
 
-        <NavLink to="/message">
+        <NavLink to="/message" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Messagerie" Icon={MessageIcon}/>
         </NavLink>
 
-        <NavLink to="/marketplace">
+        <NavLink to="/marketplace" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Marketplace" Icon={ShoppingCartIcon}/>
         </NavLink>
         
-        <NavLink to="/members">
+        <NavLink to="/members" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Membres" Icon={PeopleIcon}/>
         </NavLink>
 
-        <NavLink to="/questions">
+        <NavLink to="/questions" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Questions" Icon={QuestionAnswerIcon}/>
         </NavLink>
 
-        <NavLink to="/profile">
+        <NavLink to="/profile" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Profil" Icon={PersonIcon}/>
         </NavLink>
 
-        <NavLink to="/calendar">
+        <NavLink to="/calendar" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Agenda" Icon={InsertInvitationIcon}/>
         </NavLink>
 
-        <NavLink to="/breed">
+        <NavLink to="/breed" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Fiches d'élevage" Icon={DescriptionIcon}/>
         </NavLink>
 
-        <NavLink to="/legislation">
+        <NavLink to="/legislation" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Législation" Icon={GavelIcon}/>
         </NavLink>
         </Menu>
@@ -79,6 +81,15 @@ const LeftMenu = () => {
         
         
         </Route>
+       
+        <Route exact path="/">
+        <Article_card />
+        </Route>
+
+        <Route exact path="/La-respiration-cutanée">
+        <Article />
+        </Route>
+       
       </Switch>
       </div>
   )

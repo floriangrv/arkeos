@@ -17,7 +17,9 @@ const Arkeos = () => {
   
   return (
   <Router>
-    <LeftMenu />
+  <div className="arkeos">
+  <LeftMenu />
+  </div>
   </Router>
   )
   

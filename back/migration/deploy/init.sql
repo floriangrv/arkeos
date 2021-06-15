@@ -68,9 +68,9 @@ CREATE TABLE "question" (
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,
     "deleted_at" TIMESTAMPTZ,
-    "author_id" integer NOT NULL REFERENCES "user" ("id"),
-    "theme_id" integer NOT NULL REFERENCES "theme" ("id"),
-    "category_id" integer NOT NULL REFERENCES "category" ("id")
+    "author_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE,
+    "theme_id" integer NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE,
+    "category_id" integer NOT NULL REFERENCES "category" ("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "response" (
@@ -79,8 +79,8 @@ CREATE TABLE "response" (
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,
     "deleted_at" TIMESTAMPTZ,
-    "author_id" integer NOT NULL REFERENCES "user" ("id"),
-    "question_id" integer NOT NULL REFERENCES "question" ("id")
+    "author_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE,
+    "question_id" integer NOT NULL REFERENCES "question" ("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "article" (
@@ -101,11 +101,11 @@ CREATE TABLE "photo" (
     "location" text NOT NULL,
     "url_picture" text NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "article_id" integer REFERENCES "article" ("id"),
-    "marketplace_id" integer REFERENCES "marketplace" ("id"),
-    "response_id" integer REFERENCES "response" ("id"),
-    "question_id" integer REFERENCES "question" ("id"),
-    "author_id" integer NOT NULL REFERENCES "user" ("id")
+    "article_id" integer REFERENCES "article" ("id") ON DELETE CASCADE,
+    "marketplace_id" integer REFERENCES "marketplace" ("id") ON DELETE CASCADE,
+    "response_id" integer REFERENCES "response" ("id") ON DELETE CASCADE,
+    "question_id" integer REFERENCES "question" ("id") ON DELETE CASCADE,
+    "author_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "comment" (
@@ -113,16 +113,16 @@ CREATE TABLE "comment" (
     "content" text NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,
-    "author_id" integer NOT NULL REFERENCES "user" ("id"),
-    "article_id" integer NOT NULL REFERENCES "article" ("id")
+    "author_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE,
+    "article_id" integer NOT NULL REFERENCES "article" ("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "message" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "content" text NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "receiver_id" integer NOT NULL REFERENCES "user" ("id"),
-    "sender_id" integer NOT NULL REFERENCES "user" ("id")
+    "receiver_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE,
+    "sender_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE
 );
 
 -- Tables de liaison --
