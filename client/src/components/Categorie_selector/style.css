@@ -1,0 +1,26 @@
+.Label {
+  font-family: 'Roboto';
+  background-color: #A5C6BA;
+  border-radius: 10px;
+  color: #F9F7ED;
+  margin: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.Select {
+  font-family: 'Roboto';
+  background-color: #A5C6BA;
+  border-radius: 10px;
+  color: #F9F7ED;
+  margin: 5px;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+}
+
+.Select:focus {
+  outline: none;
+}
+
+

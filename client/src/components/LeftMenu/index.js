@@ -15,6 +15,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import GavelIcon from '@material-ui/icons/Gavel';
 
 import Article_card from '../Article_card';
+import Categorie_selector from '../Categorie_selector'
 import Article from '../Article';
 
 import './styles.scss'
@@ -73,6 +74,7 @@ const LeftMenu = () => {
        
         <Route exact path="/">
         <Article_card />
+        <Categorie_selector />
         </Route>
 
         <Route exact path="/La-respiration-cutanée">
