@@ -17,6 +17,28 @@ class ArticleViewModel extends CoreModel {
         super(obj);
     }
 
+    static async showArticle(id) {
+        try {
+            const article = await client.query(`SELECT * FROM "article_without_breeder" WHERE "id"=$1`, [id]);
+
+            const photoArticle = await client.query(`SELECT "photo"."url_picture"
+            FROM "photo"
+            JOIN "article" ON "article"."id" = "photo"."article_id"
+            WHERE "article_id" = $1`, [id]);
+
+            const comment = await client.query(`SELECT "comment"."content", "comment"."created_at", 
+                "user"."username" AS "author", "user"."profile_picture" AS "avatar"
+                FROM "comment"
+                JOIN "user" ON "user"."id" = "comment"."author_id"
+                WHERE "article_id" = $1`, [id]);
+
+            const result = [article.rows[0], comment.rows, photoArticle.rows];
+            return result;
+        } catch (error) {
+            console.trace(error);
+        }
+    }
+
 };
 
 module.exports = ArticleViewModel;

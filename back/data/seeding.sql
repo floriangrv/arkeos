@@ -19,7 +19,10 @@ INSERT INTO "user" ("username", "email", "password") VALUES
     ('Kév', 'kev@gmail.com', 'kevpass'),
     ('Flo', 'flo@gmail.com', 'flopass'),
     ('Jean', 'jean@gmail.fr', 'jeanpass'),
-    ('Nico', 'nico@gmail.fr', 'nicopass');
+    ('Nico', 'nico@gmail.fr', 'nicopass'),
+    ('Toto', 'toto@gmail.com', 'totopass'),
+    ('Pomme', 'pomme@gmail.com', 'pommepass'),
+    ('Con', 'con@gmail.fr', 'conpass');
 
 
 INSERT INTO "species" ("number", "genre", "species", "user_id") VALUES
@@ -51,15 +54,38 @@ INSERT INTO "response" ("content", "author_id", "question_id") VALUES
     ('je rêve ou je répond à ma propre question o_O', 1, 1);
 
 INSERT INTO "article" ("title", "content", "breeding_sheet", "author_id", "category_id", "theme_id") VALUES
-    ('Mon titre', 'mon contenu', true, 1, 1, 1),
-    ('Mon titre 2', 'mon contenu 2', false, 1, 1, 1),
-    ('Titre article', 'contenu pas bien grand', false, 4, 1, 1);
+    ('article 1', 'mon contenu', true, 1, 1, 2),
+    ('article 2', 'mon contenu 2', false, 1, 2, 1),
+    ('article 3', 'contenu pas bien grand', false, 4, 1, 1),
+    ('article 4', 'mon contenu', true, 1, 2, 1),
+    ('article 5', 'mon contenu 2', false, 1, 1, 1),
+    ('article 6', 'contenu pas bien grand', false, 4, 2, 1),
+    ('article 7', 'mon contenu', true, 1, 1, 1),
+    ('article 8', 'mon contenu 2', false, 1, 1, 1),
+    ('article 9', 'contenu pas bien grand', false, 4, 2, 3),
+    ('article 10', 'mon contenu', true, 1, 2, 1),
+    ('article 11', 'mon contenu 2', false, 1, 1, 1),
+    ('article 12', 'contenu pas bien grand', false, 4, 2, 1),
+    ('article 13', 'mon contenu', true, 1, 2, 1),
+    ('article 14', 'blabla 2', false, 1, 1, 1),
+    ('article 15', 'contenu pas bien grand', false, 4, 2, 1),
+    ('article 16', 'mon contenu', true, 1, 1, 1),
+    ('article 17', 'mon contenu 2', false, 1, 1, 1),
+    ('article 18', 'contenu pas bien grand', false, 4, 2, 3),
+    ('article 19', 'truc blabla', true, 1, 2, 1),
+    ('article 20', 'mon contenu 2', false, 1, 1, 1),
+    ('article 21', 'contenu pas bien grand', false, 4, 2, 1),
+    ('article 22', 'truc blabla', false, 3, 2, 1),
+    ('article 23', 'mon contenu 2', false, 2, 1, 1);
 
 INSERT INTO "photo" ("location", "url_picture", "article_id", "author_id") VALUES
     ('article', './img/article/img1.png', 1, 1),
     ('article', './img/article/img2.png', 1, 1),
     ('article', './img/article/img3.png', 2, 2),
-    ('article', './img/article/img4.png', 3, 3);
+    ('article', './img/article/img4.png', 2, 2),
+    ('article', './img/article/img5.png', 3, 3),
+    ('article', './img/article/img6.png', 2, 2),
+    ('article', './img/article/img7.png', 3, 3);
 
 INSERT INTO "message" ("content", "receiver_id", "sender_id") VALUES
     ('Salut mec !', 1, 2),
@@ -68,9 +94,18 @@ INSERT INTO "message" ("content", "receiver_id", "sender_id") VALUES
     ('Hello word', 1, 4);
 
 INSERT INTO "comment" ("content", "author_id", "article_id") VALUES
-    ('Pas mal ton article !', 3, 1),
-    ('Moi je le trouve pas ouf du tout :/', 2, 1),
-    ('J aime beaucoup le titre de ton article, c est original :p', 1, 3);
+    ('Pas mal ton article !', 3, 3),
+    ('Pas mal ton article !', 2, 2),
+    ('Pas mal ton article !', 1, 1),
+    ('Pas mal ton article !', 2, 2),
+    ('Moi je le trouve pas ouf du tout :/', 3, 3),
+    ('Moi je le trouve pas ouf du tout :/', 2, 2),
+    ('Moi je le trouve pas ouf du tout :/', 1, 1),
+    ('Moi je le trouve pas ouf du tout :/', 1, 1),
+    ('J aime beaucoup le titre de ton article, c est original :p', 1, 1),
+    ('J aime beaucoup le titre de ton article, c est original :p', 2, 2),
+    ('J aime beaucoup le titre de ton article, c est original :p', 3, 3),
+    ('J aime beaucoup le titre de ton article, c est original :p', 3, 3);
 
 -- Tables de liaison --
 

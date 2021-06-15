@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP VIEW "article_without_breeder";
+DROP VIEW "article_without_breeder", "marketplace_view";
 
 COMMIT;
