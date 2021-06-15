@@ -13,8 +13,6 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import DescriptionIcon from '@material-ui/icons/Description';
 
 import GavelIcon from '@material-ui/icons/Gavel';
-
-import Article_card from '../Article_card';
 import Article from '../Article';
 
 import './styles.scss'
