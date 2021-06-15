@@ -1,0 +1,35 @@
+import React from 'react';
+import './style.css'
+
+
+const Categorie_selector = () => (
+
+  <div >
+<label className= "Label" for="category">Catégorie</label>
+<select className= "Select" name="category" id="category">
+ 
+    <option value="goldfish">Toutes les catégories</option>
+    <option value="Serpents">Serpents</option>
+    <option value="Lézards">Lézards</option>
+    <option value="Tortues">Tortues</option>
+    <option value="Crocodiliens">Crocodiliens</option>
+    <option value="Amphibiens">Amphibiens</option>
+    
+</select>
+
+<label className= "Label" for="theme">Thème</label>
+<select className= "Select" name="theme" id="theme">
+ 
+    <option value="goldfish">Tous les thème</option>
+    <option value="Terrarium">Terrarium</option>
+    <option value="Alimentation">Alimentation</option>
+    <option value="Génétique">Génétique</option>
+    <option value="Anatomie">Anatomie </option>
+    <option value="Biotope et histoire naturelle">Biotope et histoire naturelle</option>
+    <option value="Législation">Législation </option>
+    
+</select>
+</div>
+)
+
+export default Categorie_selector

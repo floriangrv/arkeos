@@ -1,7 +1,7 @@
 import React from 'react';
 import cameleon from '../../assets/images/cameleon.png';
 import profil from '../../assets/images/profil.png';
-import Like_button from '../../components/Like_button';
+import Like_button from '../Like_button';
 import './style.css';
 
 

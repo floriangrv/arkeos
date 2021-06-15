@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router , Switch, Route, NavLink } from 'react-router-dom'
+
 import HomeIcon from '@material-ui/icons/Home';
 import { slide as Menu } from "react-burger-menu";
 
@@ -11,11 +11,9 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import PersonIcon from '@material-ui/icons/Person';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import DescriptionIcon from '@material-ui/icons/Description';
-
+import { NavLink } from 'react-router-dom'
 import GavelIcon from '@material-ui/icons/Gavel';
 
-import Article_card from '../Article_card';
-import Article from '../Article';
 
 import './styles.scss'
 
@@ -66,20 +64,7 @@ const LeftMenu = () => {
 
         
 
-      <Switch>
-        <Route path="/message">
-        {/* Message composant example  */}
-        </Route>
-       
-        <Route exact path="/">
-        <Article_card />
-        </Route>
-
-        <Route exact path="/La-respiration-cutanée">
-        <Article />
-        </Route>
-       
-      </Switch>
+      
       </div>
   )
 }
