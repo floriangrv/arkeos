@@ -17,7 +17,6 @@ const Arkeos = () => {
   <Router>
   <div className="arkeos">
   <LeftMenu />
-<<<<<<< HEAD
   <Switch>
         <Route path="/message">
         {/* Message composant example  */}
@@ -33,8 +32,6 @@ const Arkeos = () => {
        
       </Switch>
     
-=======
->>>>>>> 55886b5c6405da8bb1de8f8ef15808f8863f9314
   </div>
   </Router>
   )

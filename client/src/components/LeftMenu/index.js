@@ -13,22 +13,9 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import DescriptionIcon from '@material-ui/icons/Description';
 import { NavLink } from 'react-router-dom'
 import GavelIcon from '@material-ui/icons/Gavel';
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-import Article_card from '../Article_card';
-import Categorie_selector from '../Categorie_selector'
-=======
->>>>>>> 55886b5c6405da8bb1de8f8ef15808f8863f9314
-import Article from '../Article';
-=======
->>>>>>> Categories_button
 
 import './styles.scss'
-import Article_card from '../Article_card';
-import MemberCard from '../MemberCard';
-import Members from '../Members/index.js';
-
 
 
 const LeftMenu = () => {
@@ -36,7 +23,7 @@ const LeftMenu = () => {
 
     
       <div className="leftmenu">
-      <Menu noOverlay>
+      <Menu >
         
         <NavLink exact to="/" style= {{ outline: 'none' }}>
         <LeftMenuItems name="Accueil" Icon={HomeIcon}/>
@@ -77,32 +64,7 @@ const LeftMenu = () => {
 
         
 
-<<<<<<< HEAD
-      <Switch>
-        
-        <Route exact path="/">
-         <Article_card />
-        </Route>
-        <Route path="/members">
-        
-        <Members />
-        
-        
-        </Route>
-       
-        <Route exact path="/">
-        <Article_card />
-        <Categorie_selector />
-        </Route>
-
-        <Route exact path="/La-respiration-cutanée">
-        <Article />
-        </Route>
-       
-      </Switch>
-=======
       
->>>>>>> Categories_button
       </div>
   )
 }
