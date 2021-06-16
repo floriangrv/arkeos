@@ -28,8 +28,8 @@ exports.getConnected = async (request, response, next) => {
                 return next();
             }
 
-            const token = generateAccessToken({ email: request.body.email });
-
+            const token = generateAccessToken({ email: hash.email, password: hash.password });
+            
             response.status(200).json(token);
         });
 

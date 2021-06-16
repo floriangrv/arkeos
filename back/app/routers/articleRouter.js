@@ -9,6 +9,13 @@ router.get('/', articleController.getAllArticles);
 // affiche un article
 router.get('/:id', articleController.showArticle);
 
+
+// middleware pour controller le token
+const {authenticateToken} = require('../middlewares/members');
+
+
+router.use(authenticateToken);
+
 // ajoute un article
 router.post('/', articleController.addArticle);
 
