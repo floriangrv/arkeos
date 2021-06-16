@@ -3,12 +3,13 @@ const jwt = require('jsonwebtoken');
 
 // generate the token
 
-exports.generateAccessToken = (username) => {
-    return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+exports.generateAccessToken = (user) => {
+
+    return jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 };
 
 exports.authenticateToken = (request, response, next) => {
-    console.log("dans le mimi");
+
     const authHeader = request.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
 
@@ -16,7 +17,7 @@ exports.authenticateToken = (request, response, next) => {
 
     if (token == null) return response.redirect('/articles');
 
-    console.log("bonjour bonjour !");
+    console.log("après le if");
 
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         console.log(err)
