@@ -11,13 +11,24 @@ const SignInPage = () => {
 
     axios({
       method: "post",
-      url: `https://localhost:3000/`,
+      url: `https://jsonplaceholder.typicode.com/users`,
       withCredentials: true,
       data: {
         email,
         password,
       },
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.data.errors) {
+          console.log(res.data.errors);
+        } else {
+          window.location = "/";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   // reste a faire toute la logique front
   return (

@@ -1,9 +1,6 @@
-
-import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
-import React from 'react';
-import './styles.scss';
-
-
+import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
+import React from "react";
+import "./styles.scss";
 
 function SearchbarMember(props) {
   return (
@@ -13,7 +10,7 @@ function SearchbarMember(props) {
           type="text"
           className="prompt"
           value={props.value}
-          onChange={(event) => props.setSearchValue(event.target.value)} 
+          onChange={(event) => props.setSearchMembers(event.target.value)}
           placeholder="pseudo"
         />
       </div>

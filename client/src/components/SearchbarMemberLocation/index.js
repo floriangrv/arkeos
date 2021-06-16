@@ -1,8 +1,6 @@
-import { checkPropTypes } from 'prop-types';
-import React from 'react';
-import './styles.scss';
-
-
+import { checkPropTypes } from "prop-types";
+import React from "react";
+import "./styles.scss";
 
 function SearchbarMemberLocation(props) {
   return (
@@ -12,7 +10,7 @@ function SearchbarMemberLocation(props) {
           type="text"
           className="prompt"
           value={props.value}
-          onChange={(event) => props.setSearchValue(event.target.value)}
+          onChange={(event) => props.setSearchCity(event.target.value)}
           placeholder="ville"
         />
       </div>
