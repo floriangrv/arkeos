@@ -27,6 +27,7 @@ class CoreModel {
     }
 
     static async findAsc(options) {
+        console.log("dans le asc");
         let result;
         if (options.search === undefined){
 
@@ -72,6 +73,7 @@ class CoreModel {
 
 
     static async findDesc(options) {
+        console.log("dans le desc");
         console.log(options.orderByFields, options.order);
 
         let result;
@@ -126,20 +128,6 @@ class CoreModel {
         return new this(result.rows[0]);
     };
 
-    async insert() {
-
-        const preparedQuery = {
-
-            text: `
-                SELECT * FROM add_${this.constructor.tableName}($1)
-            `,
-            values: [this.dataValues]
-        };
-
-        const result = await client.query(preparedQuery);
-        this.dataValues = {...this.dataValues, ...result.rows[0]};
-    };
-
     async update() {
 
         const preparedQuery = {
@@ -155,18 +143,17 @@ class CoreModel {
 
     };
 
-    async delete() {
-
-        const preparedQuery = {
-
-            text: `DELETE FROM "${this.constructor.tableName}" WHERE id = $1`/*`
-                SELECT * FROM delete_${this.constructor.tableName}($1)
-            `*/,
-            values: [this.dataValues.id]
-        };
-
-        await client.query(preparedQuery);
-
+    static async delete(id) {
+        try {
+            const result = await client.query(`DELETE FROM "${this.tableName}" WHERE id=$1 RETURNING *`, [id]);
+            if (result.rows[0]) {
+                return "L'article a bien été supprimer !";
+            } else {
+                return "Erreur, cet article n'existe pas !"
+            }
+        } catch (error) {
+            console.trace(error);
+        }
     }
 
 }

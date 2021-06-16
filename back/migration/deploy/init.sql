@@ -25,7 +25,7 @@ CREATE TABLE "user" (
     "city" text,
     "country" text,
     "presentation" text,
-    "profile_picture" text,
+    "profile_picture" text DEFAULT '../../app/img/avatar.png',
     "created_at" TIMESTAMPTZ
 );
 
@@ -92,8 +92,8 @@ CREATE TABLE "article" (
     "updated_at" TIMESTAMPTZ,
     "deleted_at" TIMESTAMPTZ,
     "author_id" integer NOT NULL REFERENCES "user" ("id"),
-    "category_id" integer NOT NULL REFERENCES "category" ("id"),
-    "theme_id" integer NOT NULL REFERENCES "theme" ("id")
+    "category_id" integer REFERENCES "category" ("id"),
+    "theme_id" integer REFERENCES "theme" ("id")
 );
 
 CREATE TABLE "photo" (

@@ -19,15 +19,36 @@ SELECT
 
 FROM "article"
 
-
-JOIN "user" ON "user"."id" = "article"."author_id"
-JOIN "theme" ON "theme"."id" = "article"."theme_id"
-JOIN "category" ON "category"."id" = "article"."category_id"
-JOIN "article_rating" ON "article_rating"."article_id" = "article"."id"
+FULL JOIN "user" ON "user"."id" = "article"."author_id"
+FULL JOIN "theme" ON "theme"."id" = "article"."theme_id"
+FULL JOIN "category" ON "category"."id" = "article"."category_id"
+FULL JOIN "article_rating" ON "article_rating"."article_id" = "article"."id"
 
 WHERE "article"."breeding_sheet"='false'
-GROUP BY "article"."id", "user"."id", "theme"."id", "category"."id" ;
+GROUP BY "article"."id", "user"."id", "theme"."id", "category"."id";
 
 
+-- vue pour la marketplace
+
+CREATE VIEW "public"."marketplace_view" AS
+SELECT
+    "marketplace"."id",
+    "marketplace"."scientific_name",
+    "marketplace"."locality",
+    "marketplace"."phase",
+    "marketplace"."born_captivity",
+    "marketplace"."price",
+    "marketplace"."native_country",
+    "marketplace"."birth_date",
+    "marketplace"."content",
+    "marketplace"."created_at",
+    "marketplace"."updated_at",
+    "user"."username" AS "author",
+    "category"."name" AS "category_name"
+
+FROM "marketplace"
+
+JOIN "user" ON "user"."id" = "marketplace"."author_id"
+JOIN "category" ON "category"."id" = "marketplace"."category_id";
 
 COMMIT;
