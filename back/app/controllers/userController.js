@@ -1,7 +1,7 @@
-const MarketplaceModel = require('../models/marketplaceModel');
-const MarketplaceViewModel = require('../models/marketplaceViewModel');
+const UserModel = require('../models/userModel');
+const UserViewModel = require('../models/userViewModel');
 
-exports.getAllMarket = async (request, response, next) => {
+exports.showAllMembers = async (request, response, next) => {
     try {
         const data = request.body;
 
@@ -9,42 +9,23 @@ exports.getAllMarket = async (request, response, next) => {
 
         let options = {};
 
-        //todoo reste a coder le traitement de plusieurs categories
-        if (data.category !== undefined && data.category !== 'false'){
-            options.category = data.category;
-        }
-
-        //todoo reste a coder le traitement de plusieurs themes
-        if (data.theme !== undefined && data.theme !== 'false'){
-            options.theme = data.theme;
-        }
-        if (data.date !== undefined && data.date !== 'false'){
-            options.orderByFields = '"created_at"';
-            options.order = data.date;
-        }
+        options.orderByFields = '"created_at"';
 
         if (data.search !== undefined){
             options.search = data.search;
         }
 
-        // nombre d'article à afficher pour le moment
-        options.nbArticles = 20;
+        // nombre de membres à afficher pour le moment
+        options.nbMembers = 20;
 
-        console.log("c'est les options", options);
-
-        let articles;
-
-        if (options.order === "DESC"){
-            articles = await MarketplaceViewModel.findDesc(options);
-        } else {
-            articles = await MarketplaceViewModel.findAsc(options);
-        }
+        //todoo reste à prendre en charge la recherche par ville
+        const members = await UserViewModel.showAllMembers(options);
        
-        if(!articles){
+        if(!members){
             return next();
         }
 
-        response.json(articles);
+        response.json(members);
     } catch (error) {
         console.trace(error);
         response.status(500).json({ error: `Server error, please contact an administrator` });
@@ -52,7 +33,7 @@ exports.getAllMarket = async (request, response, next) => {
 
 };
 
-exports.showMarket = async (request, response, next) => {
+exports.showMember = async (request, response, next) => {
     try {
         const id = parseInt(request.params.id, 10);
 
@@ -60,14 +41,13 @@ exports.showMarket = async (request, response, next) => {
             return next();
         }
 
-        const article = await MarketplaceViewModel.findByPk(id);
-        console.log(article);
+        const member = await UserViewModel.showProfil(id);
 
-        if(!article){
+        if(!member){
             return next();
         }
-        //console.log(article);
-        response.json(article);
+
+        response.json(member);
     } catch (error) {
         console.trace(error);
         response.status(500).json({ error: `Server error, please contact an administrator` });

@@ -7,6 +7,7 @@ const cors = require('cors');
 // required les différents routers
 const articleRouter = require('./app/routers/articleRouter.js');
 const marketRouter = require('./app/routers/marketRouter.js');
+const userRouter = require('./app/routers/userRouter.js')
 
 const port = process.env.PORT || 3000;
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/articles', articleRouter);
 app.use('/marketplace', marketRouter);
+app.use('/members', userRouter);
 
 app.listen(port, _ => {
    console.log(`http://localhost:${port}`);

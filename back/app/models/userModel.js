@@ -16,7 +16,6 @@ class UserModel extends CoreModel {
     constructor(obj){
         super(obj);
     }
-
 }
 
 module.exports = UserModel;
