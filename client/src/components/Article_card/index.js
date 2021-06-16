@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import cameleon from'../../assets/images/cameleon.png'
+import frog from'../../assets/images/frog.jpg'
 import Like_button from '../../components/Like_button'
 
 
@@ -9,7 +9,7 @@ const Article_card = (props) => (
   <div className='Card'>
     <div className='Card_image'>
       <img className='Article_picture'
-        src= {cameleon}
+        src= {frog}
         alt="Image de l'article">
       </img>
     </div>

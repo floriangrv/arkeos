@@ -1,3 +1,9 @@
+.memberCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .card-body {
   text-align: center;
@@ -10,6 +16,7 @@
     -0.5em -0.5em 1em #ffffff;
   border-radius: 20px;
   margin: 20px;
+ 
 }
 
 
