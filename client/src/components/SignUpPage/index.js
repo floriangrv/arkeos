@@ -17,9 +17,9 @@ const SignUpPage = () => {
       passwordConfirmError.textContent =
         "Les mot de passe ne sont pas identiques";
     } else {
-      await fetch({
-        method: "get",
-        url: `http://localhost:3000/articles`,
+      axios({
+        method: "post",
+        url: `https://webhook.site/2c36e866-ad86-44b6-a2de-d1073d016f80`,
         data: {
           pseudo,
           email,
@@ -34,6 +34,15 @@ const SignUpPage = () => {
   };
   return (
     <form id="signup-form" onSubmit={handleRegister}>
+      <label htmlFor="pseudo"></label>
+      <input
+        placeholder="Pseudo"
+        type="text"
+        name="pseudo"
+        id="pseudo"
+        onChange={(e) => setPseudo(e.target.value)}
+        value={pseudo}
+      />
       <label htmlFor="email"></label>
       <input
         placeholder="Email"
