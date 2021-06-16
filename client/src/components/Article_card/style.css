@@ -12,6 +12,7 @@
   height: 340px;
 border-radius: 10px;
 margin: 20px;
+box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
 }
 
 .Card:hover {
@@ -47,7 +48,7 @@ margin: 20px;
 
 .Card_body{
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;

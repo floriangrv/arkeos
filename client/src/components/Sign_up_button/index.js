@@ -5,7 +5,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: "10em",
+    width: "11em",
     height: "3em",
     margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",

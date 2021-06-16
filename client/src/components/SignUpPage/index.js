@@ -35,6 +35,15 @@ const SignUpPage = () => {
   };
   return (
     <form id="signup-form" onSubmit={handleRegister}>
+      <label htmlFor="pseudo"></label>
+      <input
+        placeholder="Pseudo"
+        type="text"
+        name="pseudo"
+        id="pseudo"
+        onChange={(e) => setPseudo(e.target.value)}
+        value={pseudo}
+      />
       <label htmlFor="email"></label>
       <input
         placeholder="Email"

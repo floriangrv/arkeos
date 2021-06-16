@@ -7,6 +7,7 @@ import { BrowserRouter as Router , Switch, Route, } from 'react-router-dom'
 import LeftMenu from '../LeftMenu';
 
 import Articles from '../Articles';
+import Categorie_selector from '../Categorie_selector';
 import Article_page from '../Article_page';
 import Members from '../Members'
 import Header from '../Header'
@@ -28,7 +29,9 @@ const Arkeos = () => {
         </Route>
        
         <Route exact path="/">
+        <Categorie_selector/>
         <Articles />
+        
         </Route>
         <Route path="/members">
         <Members />
