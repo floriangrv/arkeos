@@ -4,6 +4,11 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 
+// middleware pour controller le token
+const {authenticateToken} = require('../middlewares/members');
+
+
+router.use(authenticateToken);
 // affiche les membres classé par nouveauté par défaut quand on est visiteur
 router.get('/', userController.showAllMembers);
 
@@ -14,10 +19,8 @@ router.get('/:id', userController.showMember);
 
 
 
-/*
-// ajoute un article
-router.post('/', userController.addArticle);
 
+/*
 // supprime un article
 router.delete('/:id', userController.deleteArticle);
 
