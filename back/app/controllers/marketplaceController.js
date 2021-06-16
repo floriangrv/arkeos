@@ -131,7 +131,7 @@ exports.updateMarket = async (request, response, next) => {
         newValue.price = newValue.price.replace(/,/g, '.');
 
         const article = await MarketplaceModel.updateMarket(newValue);
-        
+
         if(!article){
             return next();
         }

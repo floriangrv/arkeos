@@ -26,7 +26,7 @@ CREATE TABLE "user" (
     "country" text,
     "presentation" text,
     "profile_picture" text DEFAULT '../../app/img/avatar.png',
-    "created_at" TIMESTAMPTZ
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE "marketplace" (

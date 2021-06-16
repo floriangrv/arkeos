@@ -120,7 +120,7 @@ class CoreModel {
     };
 
     static async findByPk(id) {
-        const result = await client.query(`SELECT * FROM ${this.tableName} WHERE id = $1`, [id]);// AND deleted_at IS NULL
+        const result = await client.query(`SELECT * FROM ${this.tableName} WHERE id = $1`, [id]);
 
         if (!result.rows[0]) {
             return null;

@@ -51,4 +51,51 @@ FROM "marketplace"
 JOIN "user" ON "user"."id" = "marketplace"."author_id"
 JOIN "category" ON "category"."id" = "marketplace"."category_id";
 
+
+-- vue pour les membres (user)
+
+CREATE VIEW "public"."user_view" AS
+SELECT
+    DISTINCT
+    "user"."id",
+    "user"."username",
+    "user"."city",
+    "user"."country",
+    "user"."presentation",
+    "user"."profile_picture",
+    "user"."created_at",
+    "marketplace"."id" AS "id_market",
+    "marketplace"."scientific_name" AS "animal",
+    "marketplace"."price" AS "price",
+    "species"."number",
+    "species"."genre",
+    "species"."species",
+    "badge"."name" AS "badge",
+    "badge"."picture" AS "url_badge"
+
+FROM "user"
+
+FULL JOIN "marketplace" ON "user"."id" = "marketplace"."author_id"
+FULL JOIN "species" ON "user"."id" = "species"."user_id"
+FULL JOIN "user_has_badge" ON "user"."id" = "user_has_badge"."user_id"
+FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
+
+GROUP BY "user"."id", "marketplace"."id", "species"."id", "badge"."id";
+
+-- vue pour afficher tout les badges
+
+CREATE VIEW "public"."user_badge_view" AS
+SELECT
+    DISTINCT
+    "user"."id",
+    "badge"."name" AS "badge",
+    "badge"."picture" AS "url_badge"
+
+FROM "user"
+
+FULL JOIN "user_has_badge" ON "user"."id" = "user_has_badge"."user_id"
+FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
+
+GROUP BY "user"."id", "badge"."id";
+
 COMMIT;
