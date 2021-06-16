@@ -11,6 +11,8 @@ import Article_page from '../Article_page';
 import Members from '../Members'
 import Header from '../Header'
 import './styles.scss';
+import SignInPage from '../SignInPage';
+import SignUpPage from '../SignUpPage'
 
 // == Composant
 const Arkeos = () => {
@@ -35,6 +37,14 @@ const Arkeos = () => {
         <Route exact path="/La-respiration-cutanée">
         <Article_page />
         </Route>
+
+        <Route exact path ="/signin">
+          <SignInPage />
+        </Route>
+        <Route exact path ="/signup">
+          <SignUpPage />
+        </Route>
+        
        
       </Switch>
     
