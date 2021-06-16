@@ -9,6 +9,7 @@ import LeftMenu from '../LeftMenu';
 import Articles from '../Articles';
 import Article_page from '../Article_page';
 import Members from '../Members'
+import Header from '../Header'
 import './styles.scss';
 
 // == Composant
@@ -18,6 +19,7 @@ const Arkeos = () => {
   <Router>
   <div className="arkeos">
   <LeftMenu />
+  <Header />
   <Switch>
         <Route path="/message">
         {/* Message composant example  */}
