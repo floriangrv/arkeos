@@ -18,7 +18,7 @@ const SignUpPage = () => {
         "Les mot de passe ne sont pas identiques";
     } else {
       await fetch({
-        method: "post",
+        method: "get",
         url: `http://localhost:3000/articles`,
         data: {
           pseudo,
