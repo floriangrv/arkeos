@@ -5,7 +5,7 @@ import './style.css'
 const Categorie_selector = () => (
 
   <div className= "Selector_container">
-<label className= "Label" for="category">Catégorie</label>
+<label className= "Label" for="htmlFor">Catégorie</label>
 <select className= "Select" name="category" id="category">
  
     <option value="all">Toutes les catégories</option>
@@ -17,7 +17,7 @@ const Categorie_selector = () => (
     
 </select>
 
-<label className= "Label" for="theme">Thème</label>
+<label className= "Label" for="htmlFor">Thème</label>
 <select className= "Select" name="theme" id="theme">
  
     <option value="all">Tous les thèmes</option>

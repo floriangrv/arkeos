@@ -14,6 +14,7 @@ import Header from '../Header'
 import './styles.scss';
 import SignInPage from '../SignInPage';
 import SignUpPage from '../SignUpPage'
+import Sell_item from '../Sell_item';
 
 // == Composant
 const Arkeos = () => {
@@ -33,6 +34,11 @@ const Arkeos = () => {
         <Articles />
         
         </Route>
+
+        <Route path="/marketplace">
+        <Sell_item />
+        </Route>
+
         <Route path="/members">
         <Members />
         </Route>

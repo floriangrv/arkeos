@@ -1,5 +1,5 @@
 import React from 'react';
-import cameleon from '../../assets/images/cameleon.png';
+import frog from '../../assets/images/frog.jpg';
 import profil from '../../assets/images/profil.png';
 import Like_button from '../Like_button';
 import './style.css';
@@ -12,7 +12,7 @@ const Article = () => {
       <div className='One_article_card'>
         <div className='Image_container'>
           <img className='One_article_picture'
-            src={cameleon}
+            src={frog}
             alt="Image de l'article">
           </img>
         </div>
