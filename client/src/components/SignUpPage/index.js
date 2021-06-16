@@ -17,9 +17,10 @@ const SignUpPage = () => {
       passwordConfirmError.textContent =
         "Les mot de passe ne sont pas identiques";
     } else {
-      await fetch({
+      axios({
         method: "get",
-        url: `http://localhost:3000/articles`,
+        url: `https://localhost:3000/`,
+        withCredentials: true,
         data: {
           pseudo,
           email,
