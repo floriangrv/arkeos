@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Article_card from '../Article_card'
-import './style.css'
+import React, { useEffect, useState } from "react";
+import Article_card from "../Article_card";
+import "./style.css";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -10,7 +10,7 @@ const Articles = () => {
   }, []);
 
   const getDataFromApi = async () => {
-    const url = `https://jsonplaceholder.typicode.com/posts?_page=1&_limit=6`
+    const url = `http://localhost:3000/articles`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -18,18 +18,13 @@ const Articles = () => {
     setArticles(responseJson);
   };
 
-return (
-  
-<div className= "articles">
-  {articles.map((article)=> (
-    <Article_card article= {article} />
-  ))}
-</div>
-  
+  return (
+    <div className="articles">
+      {articles.map((article) => (
+        <Article_card key={article.dataValues.id} article={article} />
+      ))}
+    </div>
+  );
+};
 
-
-)
-}
-
-export default Articles
-
+export default Articles;

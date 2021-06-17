@@ -11,8 +11,7 @@ const SignInPage = () => {
 
     axios({
       method: "post",
-      url: `https://jsonplaceholder.typicode.com/users`,
-      withCredentials: true,
+      url: `http://localhost:3000/login`,
       data: {
         email,
         password,
