@@ -23,17 +23,17 @@ class UserModel extends CoreModel {
         `INSERT INTO "${this.tableName}" 
             ("username", "email", "password") 
             VALUES
-            ($1, $2, $3) RETURNING "username"`, 
-            [data.pseudo, data.email, data.password]);
-    
-            if (result.rows[0]){
-                return "L'utilisateur a bien été crée !";
-            } else {
-                return "Erreur, l'utilisateur n'a pas pu être crée :/";
-            }
-        } catch (error) {
-            console.trace(error);
-        }
+            ($1, $2, $3) RETURNING "username"`,
+        [data.username, data.email, data.password]
+      );
+
+      if (result.rows[0]) {
+        return "L'utilisateur a bien été crée !";
+      } else {
+        return "Erreur, l'utilisateur n'a pas pu être crée :/";
+      }
+    } catch (error) {
+      console.trace(error);
     }
   }
 

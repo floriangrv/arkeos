@@ -27,9 +27,9 @@ const SignInPage = () => {
         console.log(res);
         if (res.data.errors) {
           console.log(res.data.errors);
-        } //else {
-        //   window.location = "/";
-        // }
+        } else {
+          window.location = "/";
+        }
       })
       .catch((err) => {
         console.log(err);
