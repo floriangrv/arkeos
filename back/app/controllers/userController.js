@@ -11,14 +11,16 @@ exports.addMember = async (request, response, next) => {
         //todoo ajouter de la sécurité
 
         const data = request.body;
-        // Il me faut l'username, l' email, le password
+        // Il me faut l'pseudo, l' email, le password
 
         /*
-        data.username
+        data.pseudo
         data.email
         data.password 
         */
 
+        console.log(data);
+        
         bcrypt.hash(data.password, saltRounds, async function(err, hash) {
             data.password = hash;
             const member = await UserModel.addUser(data);

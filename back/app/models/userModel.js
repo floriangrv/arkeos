@@ -24,8 +24,8 @@ class UserModel extends CoreModel {
             ("username", "email", "password") 
             VALUES
             ($1, $2, $3) RETURNING "username"`, 
-            [data.username, data.email, data.password]);
-
+            [data.pseudo, data.email, data.password]);
+    
             if (result.rows[0]){
                 return "L'utilisateur a bien été crée !";
             } else {

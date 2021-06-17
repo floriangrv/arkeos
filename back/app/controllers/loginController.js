@@ -25,12 +25,14 @@ exports.getConnected = async (request, response, next) => {
         bcrypt.compare(data.password, hash.password, async function(err, result) {
 
             if(!result){
-                return next();
+                data.errors = "Le mot de passe ou l'email ne sont pas bon";
+                response.status(403).json(data.errors);
+            } else {
+                const token = generateAccessToken({ email: hash.email, password: hash.password });
+                
+                response.status(200).json(token);
             }
 
-            const token = generateAccessToken({ email: hash.email, password: hash.password });
-            
-            response.status(200).json(token);
         });
 
     } catch (error) {
