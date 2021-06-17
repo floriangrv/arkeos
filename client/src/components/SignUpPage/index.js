@@ -6,7 +6,7 @@ import "./styles.scss";
 
 const SignUpPage = () => {
   const [formSubmit, setFormSubmit] = useState(false);
-  const [pseudo, setPseudo] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [controlPassword, setControlPassword] = useState("");
@@ -20,15 +20,23 @@ const SignUpPage = () => {
       passwordConfirmError.textContent =
         "Les mot de passe ne sont pas identiques";
     } else {
-      axios({
-        method: "POST",
-        url: `http://localhost:3000/signin`,
-        data: {
-          pseudo,
-          email,
-          password,
-        },
-      })
+      let data = new FormData(event.target);
+      console.log(data);
+      axios
+        .post(
+          "http://localhost:3000/signin",
+          {
+            email,
+            username,
+            password,
+          },
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           console.log(res);
           if (res.data.errors) {
@@ -57,10 +65,10 @@ const SignUpPage = () => {
           <input
             placeholder="Pseudo"
             type="text"
-            name="pseudo"
+            name="username"
             id="pseudo"
-            onChange={(e) => setPseudo(e.target.value)}
-            value={pseudo}
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
           <label htmlFor="email"></label>
           <input

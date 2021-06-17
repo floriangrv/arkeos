@@ -9,21 +9,27 @@ const SignInPage = () => {
   const HandleLogiin = (event) => {
     event.preventDefault();
 
-    axios({
-      method: "post",
-      url: `http://localhost:3000/login`,
-      data: {
-        email,
-        password,
-      },
-    })
+    axios
+      .post(
+        "http://localhost:3000/login",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         if (res.data.errors) {
           console.log(res.data.errors);
-        } else {
-          window.location = "/";
-        }
+        } //else {
+        //   window.location = "/";
+        // }
       })
       .catch((err) => {
         console.log(err);
