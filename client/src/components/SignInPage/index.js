@@ -25,10 +25,14 @@ const SignInPage = () => {
       )
       .then((res) => {
         console.log(res);
+        
         if (res.data.errors) {
           console.log(res.data.errors);
         } else {
           window.location = "/";
+          localStorage.setItem('token', res.data);
+        let token = localStorage.getItem('token');
+        console.log(token)
         }
       })
       .catch((err) => {
