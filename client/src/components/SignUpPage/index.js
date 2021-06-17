@@ -21,9 +21,8 @@ const SignUpPage = () => {
         "Les mot de passe ne sont pas identiques";
     } else {
       axios({
-        method: "post",
-        url: `https://jsonplaceholder.typicode.com/users`,
-        withCredentials: true,
+        method: "POST",
+        url: `http://localhost:3000/signin`,
         data: {
           pseudo,
           email,
