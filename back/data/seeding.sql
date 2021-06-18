@@ -15,14 +15,15 @@ INSERT INTO "category" ("name") VALUES
     ('Serpents'),
     ('Tortues');
 
-INSERT INTO "user" ("username", "email", "password") VALUES
-    ('Kév', 'kev@gmail.com', 'kevpass'),
-    ('Flo', 'flo@gmail.com', 'flopass'),
-    ('Jean', 'jean@gmail.fr', 'jeanpass'),
-    ('Nico', 'nico@gmail.fr', 'nicopass'),
-    ('Toto', 'toto@gmail.com', 'totopass'),
-    ('Pomme', 'pomme@gmail.com', 'pommepass'),
-    ('Con', 'con@gmail.fr', 'conpass');
+INSERT INTO "user" ("username", "email", "password", "city", "presentation") VALUES
+    ('Kév', 'kev@gmail.com', 'kevpass', 'dieppe', 'J''adore les pogonas !'),
+    ('Flo', 'flo@gmail.com', 'flopass', 'nancy', 'J''aime les reptiles <3'),
+    ('Jean', 'jean@gmail.fr', 'jeanpass', 'paris', ''),
+    ('Nico', 'nico@gmail.fr', 'nicopass', 'lille', 'Professionnel et éleveur de tortues ninja de génération en génération'),
+    ('Paul', 'paul@gmail.com', 'paulpass', 'paris', 'Débutant dans la térariophilie'),
+    ('Philipe', 'philipe@gmail.com', 'pommepass', 'lille', ''),
+    ('Mohamed', 'momo@gmail.fr', 'momopass', 'rouen', 'Dompteur de cobra et formateur'),
+    ('Lila', 'lila@gmail.com', 'lilapass', 'paris', 'Éleveuse d''anaconda dans le 16ème');
 
 
 INSERT INTO "species" ("number", "genre", "species", "user_id") VALUES
