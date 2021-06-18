@@ -1,0 +1,40 @@
+.Sell_item_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.Sell_item_label {
+  color: #F9F7ED;
+  font-family: 'Roboto';
+  margin: 0.5em 0 0 0;
+  font-weight: bold;
+}
+
+.SpecialLabel {
+  margin: 0.5em 0 0.5em -0.3em;
+ 
+}
+
+#NC, #NC2 {
+  width: 20px;
+  
+  
+  
+}
+
+.Radio {
+  text-align: center;
+  vertical-align: middle;
+  margin: 0.5rem 0 0 0;
+  
+}
+
+.Radio_label {
+  color: #F9F7ED;
+}
+
+#img {
+  display: none
+}

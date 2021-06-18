@@ -14,12 +14,14 @@ import Header from '../Header'
 import './styles.scss';
 import SignInPage from '../SignInPage';
 import SignUpPage from '../SignUpPage'
-import Sell_item from '../Sell_item';
+import Marketplace from '../Marketplace';
+import Sell_item_page from '../Sell_item_page';
 import Images_gallery from '../Images_gallery';
 
 // == Composant
 const Arkeos = () => {
-  
+  let token = localStorage.getItem('token');
+console.log(token)
   return (
   <Router>
   <div className="arkeos">
@@ -37,12 +39,13 @@ const Arkeos = () => {
         </Route>
 
         <Route exact path="/marketplace">
-        <Sell_item />
-        <Sell_item />
+      <Marketplace />
+        
+        
         </Route>
 
         <Route exact path="/marketplace/item">
-        
+        <Sell_item_page />
         </Route>
 
         <Route path="/members">
