@@ -7,7 +7,7 @@ function SearchbarMember(props) {
     <form className="search-bar">
       <div className="search-input">
         <input
-          name="search"
+          name="username"
           type="search"
           className="prompt"
           value={props.value}

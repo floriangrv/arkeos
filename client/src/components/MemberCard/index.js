@@ -2,9 +2,10 @@ import React from "react";
 
 import "./styles.scss";
 const MemberCard = (props) => {
+  console.log(props.id);
   return (
     <div className="card">
-      <a href={"/members/" + props.username}>
+      <a href={"/membres/" + props.id}>
         <div className="card-image-container">
           <img
             className="card-img-top"
@@ -14,9 +15,7 @@ const MemberCard = (props) => {
         </div>
 
         <div className="card-body">
-          <h3>
-            <a href={"/members/" + props.username}>{props.username}</a>
-          </h3>
+          <h3>{props.username}</h3>
 
           <h4>{props.city}</h4>
           <p className="card-text">{props.presentation}</p>

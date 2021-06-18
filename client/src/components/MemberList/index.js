@@ -10,6 +10,7 @@ const MemberList = (props) => {
       {props.member.map((member, index) => (
         <MemberCard
           key={member.dataValues.id}
+          id={member.dataValues.id}
           username={member.dataValues.username}
           city={member.dataValues.city}
           presentation={member.dataValues.presentation}

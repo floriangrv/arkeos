@@ -13,26 +13,49 @@ const Members = () => {
   const [searchCity, setSearchCity] = useState("");
   let token = localStorage.getItem("token");
   console.log({ token });
+  console.log(searchMembers);
+  console.log(searchCity);
 
   const getDataFromApi = async () => {
-    axios
-      .get("http://localhost:3000/membres", {
-        headers: {
-          authorization: token,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setMember(response.data).catch((error) => {
-          console.log(error);
+    if (!searchMembers && !searchCity) {
+      axios
+        .get(`http://localhost:3000/membres/`, {
+          headers: {
+            authorization: token,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setMember(response.data).catch((error) => {
+            console.log(error);
+          });
         });
-      });
+    } else {
+      axios
+        .get(
+          `http://localhost:3000/membres/search?username=${searchMembers}&city=${searchCity}`,
+          {
+            headers: {
+              authorization: token,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          setMember(response.data).catch((error) => {
+            console.log(error);
+          });
+        });
+    }
   };
+
   useEffect(() => {
-    getDataFromApi(searchMembers);
-  }, [searchMembers]);
+    getDataFromApi(searchMembers, searchCity);
+  }, [searchMembers, searchCity]);
 
   return (
     <div className="members">
