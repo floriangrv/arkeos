@@ -55,7 +55,7 @@ const SignUpPage = () => {
           <SignInPage />
           <div className="signup-message">
             <h3 id="signup-sucess">
-              Enregistrement réussi, veuillez-vous connecter
+              Enregistrement réussi, veuillez-vous connecter {username} !
             </h3>
           </div>
         </>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 import MemberList from "../MemberList";
@@ -10,16 +11,25 @@ const Members = () => {
   const [member, setMember] = useState([]);
   const [searchMembers, setSearchMembers] = useState("");
   const [searchCity, setSearchCity] = useState("");
+  let token = localStorage.getItem("token");
+  console.log({ token });
 
   const getDataFromApi = async () => {
-    const url = ` https://jsonplaceholder.typicode.com/users`;
-
-    const response = await fetch(url);
-    const responseJson = await response.json();
-    console.log(responseJson);
-    setMember(responseJson);
+    axios
+      .get("http://localhost:3000/membres", {
+        headers: {
+          authorization: token,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setMember(response.data).catch((error) => {
+          console.log(error);
+        });
+      });
   };
-
   useEffect(() => {
     getDataFromApi(searchMembers);
   }, [searchMembers]);
