@@ -1,21 +1,20 @@
+import React from "react";
+import MemberCard from "../MemberCard";
 
-import React from 'react';
-import MemberCard from '../MemberCard';
-
-import "./styles.scss"
+import "./styles.scss";
 
 const MemberList = (props) => {
-  console.log(props)
+  console.log(props.member);
   return (
     <div className="memberCard">
       {props.member.map((member, index) => (
-      <MemberCard username={member.username} city={member.address.city} />
-     ))}
+        <MemberCard
+          key={member.dataValues.id}
+          username={member.dataValues.username}
+          city={member.dataValues.city}
+        />
+      ))}
     </div>
-     
-      
-    
-  
   );
 };
 
