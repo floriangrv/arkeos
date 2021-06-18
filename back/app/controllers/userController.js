@@ -48,15 +48,47 @@ exports.showAllMembers = async (request, response, next) => {
 
     options.orderByFields = '"created_at"';
 
-    if (data.search !== undefined) {
-      options.search = data.search;
-    }
-
     // nombre de membres à afficher pour le moment
     options.nbMembers = 20;
 
     //todoo reste à prendre en charge la recherche par ville
     const members = await UserViewModel.showAllMembers(options);
+
+    if (!members) {
+      return next();
+    }
+
+    response.json(members);
+  } catch (error) {
+    console.trace(error);
+    response
+      .status(500)
+      .json({ error: `Server error, please contact an administrator` });
+  }
+};
+
+exports.searchMembers = async (request, response, next) => {
+  try {
+    const data = request.query;
+
+    console.log("dans le search:", data.city, data.username);
+
+    let options = {};
+
+    if (data.username) {
+      options.username = data.username;
+    }
+    if (data.city) {
+      options.city = data.city;
+    }
+    options.orderByFields = '"created_at"';
+    console.log(options.city);
+
+    // nombre de membres à afficher pour le moment
+    options.nbMembers = 20;
+
+    //todoo reste à prendre en charge la recherche par ville
+    const members = await UserViewModel.searchMembers(options);
 
     if (!members) {
       return next();

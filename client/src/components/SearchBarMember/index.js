@@ -7,7 +7,8 @@ function SearchbarMember(props) {
     <form className="search-bar">
       <div className="search-input">
         <input
-          type="text"
+          name="search"
+          type="search"
           className="prompt"
           value={props.value}
           onChange={(event) => props.setSearchMembers(event.target.value)}
