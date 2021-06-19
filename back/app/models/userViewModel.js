@@ -10,14 +10,14 @@ class UserViewModel extends CoreModel {
     "presentation",
     "profile_picture",
     "created_at",
-    "id_market",
-    "animal",
-    "price",
-    "number",
-    "genre",
-    "species",
+    "all_id_market",
+    "all_animal_in_market",
+    "all_price",
+    "all_species_number",
+    "all_genre",
+    "all_species",
     "name",
-    "url_badge",
+    "all_url_badge",
   ];
   constructor(obj) {
     super(obj);
@@ -25,9 +25,8 @@ class UserViewModel extends CoreModel {
   static async showAllMembers(options) {
     const result = await client.query(
       `
-        SELECT "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
+        SELECT *
         FROM ${this.tableName}
-        GROUP BY "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
         ORDER BY $1 ASC LIMIT $2`,
       [options.orderByFields, options.nbMembers]
     );
