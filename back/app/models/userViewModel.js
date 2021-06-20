@@ -1,6 +1,7 @@
 const CoreModel = require("./coreModel");
 const client = require("../client");
 class UserViewModel extends CoreModel {
+
   static tableName = "user_view";
   static fields = [
     "id",
@@ -22,6 +23,7 @@ class UserViewModel extends CoreModel {
   constructor(obj) {
     super(obj);
   }
+
   static async showAllMembers(options) {
     const result = await client.query(
       `
@@ -36,15 +38,15 @@ class UserViewModel extends CoreModel {
     }
     return instanceList;
   }
+
   static async searchMembers(options) {
     let result;
     if (options.username && options.city) {
       result = await client.query(
         `
-            SELECT "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
+            SELECT *
             FROM ${this.tableName}
             WHERE "username" LIKE '%' || $1 || '%' OR "city" LIKE '%' || $2 || '%'
-            GROUP BY "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
             ORDER BY $3 ASC LIMIT $4`,
         [
           options.username,
@@ -56,20 +58,18 @@ class UserViewModel extends CoreModel {
     } else if (options.username) {
       result = await client.query(
         `
-            SELECT "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
+            SELECT *
             FROM ${this.tableName}
             WHERE "username" LIKE '%' || $1 || '%'
-            GROUP BY "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
             ORDER BY $2 ASC LIMIT $3`,
         [options.username, options.orderByFields, options.nbMembers]
       );
     } else if (options.city) {
       result = await client.query(
         `
-            SELECT "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
+            SELECT *
             FROM ${this.tableName}
             WHERE "city" LIKE '%' || $1 || '%'
-            GROUP BY "id", "username", "city", "country", "presentation", "profile_picture", "genre", "species"
             ORDER BY $2 ASC LIMIT $3`,
         [options.city, options.orderByFields, options.nbMembers]
       );
@@ -82,20 +82,18 @@ class UserViewModel extends CoreModel {
     }
     return instanceList;
   }
+
   static async showProfil(id) {
-    const member = await client.query(
+    const result = await client.query(
       `SELECT * FROM ${this.tableName} WHERE id = $1`,
       [id]
     );
-    const listOfBadges = await client.query(
-      `SELECT * FROM "user_badge_view" WHERE id = $1`,
-      [id]
-    );
-    const result = [member.rows[0], listOfBadges.rows];
+  
     if (!result) {
       return null;
     }
-    return new this(result);
+    
+    return new this(result.rows[0]);
   }
 }
 module.exports = UserViewModel;

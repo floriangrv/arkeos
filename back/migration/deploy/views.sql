@@ -74,20 +74,4 @@ FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
 
 GROUP BY "user"."id";
 
--- vue pour afficher tout les badges
-
-CREATE VIEW "public"."user_badge_view" AS
-SELECT
-    DISTINCT
-    "user"."id",
-    "badge"."name" AS "badge",
-    "badge"."picture" AS "url_badge"
-
-FROM "user"
-
-FULL JOIN "user_has_badge" ON "user"."id" = "user_has_badge"."user_id"
-FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
-
-GROUP BY "user"."id", "badge"."id";
-
 COMMIT;

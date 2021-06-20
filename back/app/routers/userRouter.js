@@ -8,7 +8,7 @@ const userController = require('../controllers/userController');
 const {authenticateToken} = require('../middlewares/members');
 
 
-//router.use(authenticateToken);
+router.use(authenticateToken);
 // affiche les membres classé par nouveauté par défaut quand on est visiteur
 router.get('/', userController.showAllMembers);
 
