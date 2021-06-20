@@ -82,7 +82,6 @@ exports.searchMembers = async (request, response, next) => {
       options.city = data.city;
     }
     options.orderByFields = '"created_at"';
-    console.log(options.city);
 
     // nombre de membres à afficher pour le moment
     options.nbMembers = 20;
