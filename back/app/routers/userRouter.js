@@ -18,18 +18,12 @@ router.get('/search', userController.searchMembers);
 // affiche un membre
 router.get('/:id', userController.showMember);
 
+// supprime un membre
+router.delete('/:id', userController.deleteUser);
 
+// modifie un membre
+router.put('/:id', userController.updateUser);
 
-
-
-
-/*
-// supprime un article
-router.delete('/:id', userController.deleteArticle);
-
-// modifie un article
-router.put('/:id', userController.updateArticle);
-*/
 
 
 module.exports = router;

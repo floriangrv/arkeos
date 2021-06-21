@@ -85,7 +85,7 @@ exports.addArticle = async (request, response, next) => {
         //todoo ajouter de la sécurité
 
         const data = request.body;
-        // Il me faut l'auteur, le titre de l'article, le contenu, le(s) thème(s) et ou catégorie(s)
+        // Il me faut l'auteur, le titre de l'article, le contenu, le thème et ou catégorie
 
         /*
         data.title 

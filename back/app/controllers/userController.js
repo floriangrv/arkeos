@@ -40,18 +40,18 @@ exports.addMember = async (request, response, next) => {
 
 exports.showAllMembers = async (request, response, next) => {
   try {
+    //todoo prévoir le tri par plus ancien
     const data = request.body;
-
     console.log(data);
 
     let options = {};
 
     options.orderByFields = '"created_at"';
 
-    // nombre de membres à afficher pour le moment
+    // nombre de membres max à afficher pour le moment
     options.nbMembers = 20;
 
-    //todoo reste à prendre en charge la recherche par ville
+
     const members = await UserViewModel.showAllMembers(options);
 
     if (!members) {
@@ -71,7 +71,7 @@ exports.searchMembers = async (request, response, next) => {
   try {
     const data = request.query;
 
-    console.log("dans le search:", data.city, data.username);
+    // Il nous faut la data.username, ou la data.city
 
     let options = {};
 
@@ -81,12 +81,12 @@ exports.searchMembers = async (request, response, next) => {
     if (data.city) {
       options.city = data.city;
     }
+    //todoo reste le tri par plus anciens à inclure
     options.orderByFields = '"created_at"';
 
     // nombre de membres à afficher pour le moment
     options.nbMembers = 20;
 
-    //todoo reste à prendre en charge la recherche par ville
     const members = await UserViewModel.searchMembers(options);
 
     if (!members) {
@@ -125,6 +125,58 @@ exports.showMember = async (request, response, next) => {
   }
 };
 
-//todoo je dois ajouter le fait de pouvoir modifier son profil
+exports.updateUser = async (request, response, next) => {
+  try {
+      //todoo ajouter de la sécurité
 
-//todoo je dois ajouter la possibilité de supprimer un compte
+      const id_user = parseInt(request.params.id, 10);
+
+      // si c'est l'auteur qui demande la modification alors ok, sinon non
+
+      const newValue = request.body;
+      /*
+        newValue.email 
+        newValue.city 
+        newValue.country 
+        newValue.presentation
+        newValue.profile_picture
+                +
+        id_user qui correspond à l'id du profil à modifier
+      */
+
+      newValue.id = id_user;
+
+      const user = await userModel.updateUser(newValue);
+      
+      if(!user){
+          return next();
+      }
+      
+      response.status(200).json({user});
+
+  } catch (error) {
+      console.trace(error);
+      response.status(500).json({ error: `Server error, please contact an administrator` });
+  }
+};
+
+exports.deleteUser = async (request, response, next) => {
+  try {
+      //todoo ajouter de la sécurité
+      const id_user = parseInt(request.params.id, 10);
+
+      // si c'est l'user qui demande la suppression alors ok, sinon non
+
+      const user = await UserModel.delete(id_user);
+      
+      if(!user){
+          return next();
+      }
+      
+      response.status(200).json({user});
+
+  } catch (error) {
+      console.trace(error);
+      response.status(500).json({ error: `Server error, please contact an administrator` });
+  }
+};

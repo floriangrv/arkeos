@@ -93,8 +93,8 @@ exports.addMarket = async (request, response, next) => {
 
         data.created_at
         data.updated_at
-        data.author
-        data.category_name
+        data.author_id
+        data.category_id
         */
 
        // je remplace les virgule par des points, afin de ne pas avoir d'erreur dans la base
