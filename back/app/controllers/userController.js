@@ -110,7 +110,7 @@ exports.showMember = async (request, response, next) => {
       return next();
     }
 
-    const member = await UserViewModel.showProfil(id);
+    const member = await UserViewModel.findByPk(id);
 
     if (!member) {
       return next();

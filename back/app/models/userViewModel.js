@@ -83,17 +83,5 @@ class UserViewModel extends CoreModel {
     return instanceList;
   }
 
-  static async showProfil(id) {
-    const result = await client.query(
-      `SELECT * FROM ${this.tableName} WHERE id = $1`,
-      [id]
-    );
-  
-    if (!result) {
-      return null;
-    }
-    
-    return new this(result.rows[0]);
-  }
 }
 module.exports = UserViewModel;

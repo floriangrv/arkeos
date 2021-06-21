@@ -4,6 +4,7 @@ const client = require("../client");
 class UserModel extends CoreModel {
   static tableName = "user";
   static fields = [
+    "id",
     "username",
     "email",
     "password",
@@ -40,7 +41,7 @@ class UserModel extends CoreModel {
   static async showData(data) {
     try {
       const result = await client.query(
-        `SELECT "password", "email" FROM "${this.tableName}" 
+        `SELECT "id", "password", "email" FROM "${this.tableName}" 
             WHERE "email" = $1`,
         [data.email]
       );

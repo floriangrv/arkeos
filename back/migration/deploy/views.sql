@@ -74,4 +74,16 @@ FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
 
 GROUP BY "user"."id";
 
+
+-- view pour le chat
+
+CREATE VIEW "public"."chat_view" AS
+SELECT  "message".*,
+        "user"."username" AS "author"
+
+FROM "message"
+
+FULL JOIN "user" ON "user"."id" = "message"."sender_id";
+
+
 COMMIT;
