@@ -14,7 +14,9 @@ const Articles = () => {
 
     const response = await fetch(url);
     const responseJson = await response.json();
-    console.log(responseJson);
+    
+    
+
     setArticles(responseJson);
   };
 
