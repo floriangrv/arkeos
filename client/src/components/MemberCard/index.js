@@ -9,7 +9,7 @@ const MemberCard = (props) => {
         <div className="card-image-container">
           <img
             className="card-img-top"
-            src="https://static-cse.canva.com/blob/189288/article_canva_le_guide_pour_creer_de_superbes_photos_de_profil_9-1.jpg"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
             alt="image"
           />
         </div>
