@@ -1,7 +1,7 @@
 -- Deploy arkeos:init to pg
 
 BEGIN;
-
+     
 DROP TABLE "user_has_badge", 
     "wishlist", 
     "response_rating", 
@@ -18,5 +18,7 @@ DROP TABLE "user_has_badge",
     "user",
     "category",
     "theme";
+
+   
 
 COMMIT;
