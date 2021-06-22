@@ -11,7 +11,7 @@ INSERT INTO "theme" ("name", "color") VALUES
 
 INSERT INTO "category" ("name") VALUES
     ('Lézards'),
-    ('Grenouilles'),
+    ('Amphibiens'),
     ('Serpents'),
     ('Tortues');
 
@@ -38,20 +38,6 @@ INSERT INTO "user" ("username", "email", "password", "city", "presentation") VAL
     ('LauRaptor', 'laura@gmail.com', 'laurapass', 'lille', ''),
     ('RepVador', 'vador@gmail.fr', 'vadorpass', 'rouen', 'Venez découvrir le coté obscure de la force reptilienne !'),
     ('Lila', 'lila@gmail.com', 'lilapass', 'paris', 'Éleveuse d''anaconda dans le 16ème');
-
-
-INSERT INTO "species" ("number", "genre", "species", "user_id") VALUES
-    ('0.2.1', 'Testudo', 'hermanni', 1),
-    ('1.2.3', 'Brachylophus', 'fasciatus', 2),
-    ('4.2.1', 'Phyllurus', 'platurus', 5),
-    ('1.1.0', 'Rana', 'brama', 6),
-    ('0.2.1', 'Sanguirana', 'sanguinea', 4),
-    ('1.3.3', 'Hypsiboas', 'faber', 4),
-    ('0.2.1', 'Cyclura', 'lewisi', 4),
-    ('1.0.3', 'Hebius', 'monticola', 2),
-    ('0.2.1', 'Drymarchon', 'corais', 8),
-    ('1.4.0', 'Loxocemus', 'bicolor', 10),
-    ('2.0.5', 'Podarcis', 'muralis', 14);
 
 INSERT INTO "marketplace" ("scientific_name", "born_captivity", "price", "native_country", "birth_date", "content", "author_id", "category_id") VALUES
     ('Afroedura amatolica', true, 245.50, 'France', '1998-06-03',
@@ -643,38 +629,57 @@ INSERT INTO "message" ("content", "receiver_id", "sender_id") VALUES
     ('Tu es là ?', 2, 4);
 
 INSERT INTO "comment" ("content", "author_id", "article_id") VALUES
-    ('Pas mal ton article !', 3, 3),
-    ('Pas mal ton article !', 2, 2),
-    ('Pas mal ton article !', 1, 1),
-    ('Pas mal ton article !', 2, 2),
-    ('Moi je le trouve pas ouf du tout :/', 3, 3),
-    ('Moi je le trouve pas ouf du tout :/', 2, 2),
-    ('Moi je le trouve pas ouf du tout :/', 1, 1),
-    ('Moi je le trouve pas ouf du tout :/', 1, 1),
-    ('Super ton article !', 5, 2),
-    ('J aime beaucoup le titre de ton article, c est original :p', 1, 1),
-    ('J aime beaucoup le titre de ton article, c est original :p', 2, 2),
-    ('J aime beaucoup le titre de ton article, c est original :p', 3, 3),
-    ('J aime beaucoup le titre de ton article, c est original :p', 3, 3);
+    ('Pas mal ton article !', 10, 1),
+    ('Moi je le trouve pas ouf du tout :/', 15, 1),
+    ('Ton article est original :p', 4, 1),
+    ('Super ton article !', 5, 1),
+    ('Pas mal ton article !', 9, 2),
+    ('Moi je le trouve pas ouf du tout, enfin j''ai vu mieux en tout cas  :/', 14, 2),
+    ('Ton article est original :p', 1, 2),
+    ('Super bien ton article !', 5, 2),
+    ('Pas mal ton article !', 8, 3),
+    ('Moi je le trouve pas ouf du tout :/', 13, 3),
+    ('Ton article est original :p', 4, 3),
+    ('Pas mal ton article !', 7, 4),
+    ('Moi je le trouve pas ouf du tout :/', 12, 4),
+    ('Ton article est original :p', 1, 4),
+    ('Pas mal ton article !', 6, 5),
+    ('Ton article est original :p', 2, 5),
+    ('Super ton article !', 15, 5),
+    ('Pas mal ton article !', 5, 6),
+    ('Super ton article !', 13, 6),
+    ('Ton article est original :p', 3, 6),
+    ('Pas mal ton article !', 3, 7),
+    ('J aime beaucoup le titre de ton article, c est original :p', 2, 7),
+    ('Ton article est original :p', 1, 7),
+    ('J aime beaucoup le titre de ton article, c est original :p', 2, 8),
+    ('Ton article est original :p', 8, 8),
+    ('J aime beaucoup le titre de ton article, c est original :p', 5, 9),
+    ('Ton article est original :p', 10, 9),
+    ('Moi je le trouve terrible, il y a quelques soucis d''incohérences !', 12, 10),
+    ('Ton article est original :p', 4, 10),
+    ('Moi je le trouve terrible, il y a quelques soucis d''incohérences !', 2, 11),
+    ('Moi je le trouve terrible, il y a quelques soucis d''incohérences !', 8, 12),
+    ('Moi je le trouve terrible, il y a quelques soucis d''incohérences !', 1, 13);
 
 -- Tables de liaison --
 
 INSERT INTO "article_rating" ("article_id", "user_id", "rating") VALUES
-    (3, 1, -1),
+    (3, 1, 1),
     (1, 2, 1),
-    (1, 3, -1),
+    (1, 3, 1),
     (1, 4, 1),
     (1, 1, 1),
-    (3, 2, -1),
-    (3, 3, -1),
-    (2, 4, -1),
+    (3, 2, 1),
+    (3, 3, 1),
+    (2, 4, 1),
     (4, 8, 1),
     (4, 9, 1),
     (4, 10, 1),
     (4, 11, 1),
-    (6, 2, -1),
+    (6, 2, 1),
     (9, 3, 1),
-    (8, 4, -1),
+    (8, 4, 1),
     (7, 1, 1);
 
 INSERT INTO "response_rating" ("response_id", "user_id", "rating") VALUES

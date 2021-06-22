@@ -124,7 +124,9 @@ exports.updateMarket = async (request, response, next) => {
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la modification alors ok, sinon non
 
-        if(author_id !== request.user){
+        const currentArticle = await MarketplaceViewModel.findByPk(id_article);
+
+        if(currentArticle.dataValues.author_id !== request.user){
             return next();
         }
         
@@ -150,7 +152,9 @@ exports.deleteMarket = async (request, response, next) => {
 
         const id_article = parseInt(request.params.id, 10);
 
-        if(author_id !== request.user){
+        const currentArticle = await MarketplaceViewModel.findByPk(id_article);
+
+        if(currentArticle.dataValues.author_id !== request.user){
             return next();
         }
 

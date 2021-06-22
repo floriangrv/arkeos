@@ -15,7 +15,7 @@ exports.authenticateToken = (request, response, next) => {
 
   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
 
-    if (err) return res.sendStatus(403);
+    if (err) return response.json("Error: not connected");
 
     console.log("c'est l'id du token:", user.id);
     request.user = user.id;

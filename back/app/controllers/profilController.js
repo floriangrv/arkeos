@@ -4,19 +4,12 @@ const UserViewModel = require("../models/userViewModel");
 exports.showProfil = async (request, response, next) => {
   try {
 
-    console.log(request.user);
-
     profil_id = request.user;
-
-    console.log("dans le shoprofil");
-    console.log(profil_id);
 
     const member = await UserViewModel.findByPk(profil_id);
 
-    console.log(member);
-
-    if (!member) {
-      return next();
+    if (member) {
+      member.dataValues.password = "C'est secret, faut demander au back :p";
     }
 
     response.json(member);
@@ -34,6 +27,7 @@ exports.updateUser = async (request, response, next) => {
         //todoo ajouter de la sécurité
   
         const newValue = request.body;
+
         /*
           newValue.email 
           newValue.city 
@@ -43,13 +37,22 @@ exports.updateUser = async (request, response, next) => {
                   +
           request.user qui correspond à l'id du profil à modifier
         */
-  
-        console.log(newValue);
+
+        const member = await UserViewModel.findByPk(request.user);
+
+        for (const data in member.dataValues){
+          console.log(data);
+          if (member.dataValues[data]) {
+            if (!newValue[data]) {
+              newValue[data] = member.dataValues[data];
+            }
+          }
+        }
+        
         newValue.id = request.user;
-  
+
         const user = await UserModel.updateUser(newValue);
   
-        console.log(user);
         response.status(200).json({user});
   
     } catch (error) {
@@ -62,7 +65,6 @@ exports.updateUser = async (request, response, next) => {
     try {
         //todoo ajouter de la sécurité
         const id_user = request.user;
-  
   
         const user = await UserModel.delete(id_user);
         

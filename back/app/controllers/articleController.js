@@ -1,5 +1,6 @@
 const ArticleModel = require('../models/articleModel');
 const ArticleViewModel = require('../models/articleViewModel');
+const RatingArticleModel = require('../models/ratingArticleModel');
 
 exports.getAllArticles = async (request, response, next) => {
     try {
@@ -67,12 +68,12 @@ exports.showArticle = async (request, response, next) => {
         const id = parseInt(request.params.id, 10);
 
         const article = await ArticleViewModel.showArticle(id);
-        console.log(article);
+        
 
         if(!article){
             return next();
         }
-        //console.log(article);
+
         response.json(article);
     } catch (error) {
         console.trace(error);
@@ -123,8 +124,10 @@ exports.deleteArticle = async (request, response, next) => {
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la suppression alors ok, sinon non
 
-        if(author_id !== request.user){
-            return next();
+        const articleCurrent = await ArticleModel.findByPk(id_article);
+        
+        if (articleCurrent.dataValues.author_id !== request.user){
+        return next();
         }
 
         const article = await ArticleModel.delete(id_article);
@@ -146,17 +149,82 @@ exports.updateArticle = async (request, response, next) => {
 
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la modification alors ok, sinon non
-
-        if(author_id !== request.user){
-            return next();
-        }
         
+        
+        const articleCurrent = await ArticleModel.findByPk(id_article);
+        
+        if (articleCurrent.dataValues.author_id !== request.user){
+        return next();
+        }
+
         const newValue = request.body;
+
+        for (const data in articleCurrent.dataValues){
+            if (articleCurrent.dataValues[data]) {
+              if (!newValue[data]) {
+                newValue[data] = articleCurrent.dataValues[data];
+              }
+            }
+          }
+        
         newValue.id = id_article;
         const article = await ArticleModel.updateArticle(newValue);
         
         
         response.status(200).json({article});
+
+    } catch (error) {
+        console.trace(error);
+        response.status(500).json({ error: `Server error, please contact an administrator` });
+    }
+};
+
+exports.addRating = async (request, response, next) => {
+    try {
+        //todoo ajouter de la sécurité
+
+        const data = {};
+        data.id_article = parseInt(request.params.id, 10);
+        data.id_user = request.user;
+
+        const rate = await RatingArticleModel.findRating(data);
+        console.log(rate);
+
+        if(rate){
+            return 'Vous avez déjà voté !';
+        }
+
+        const rating = await RatingArticleModel.addRaiting(data);
+        
+        console.log(rating);
+
+        response.status(200).json({rating});
+
+    } catch (error) {
+        console.trace(error);
+        response.status(500).json({ error: `Server error, please contact an administrator` });
+    }
+};
+
+exports.deleteRating = async (request, response, next) => {
+    try {
+        //todoo ajouter de la sécurité
+
+        const data = {};
+        data.id_article = parseInt(request.params.id, 10);
+        data.id_user = request.user;
+
+        const rate = await RatingArticleModel.findRating(data);
+        console.log(rate);
+        
+        if(!rate){
+            return "Vous n'avez jamais voté O_o !";
+        }
+
+        const rating = await RatingArticleModel.deleteRating(data);
+        
+        
+        response.status(200).json({rating});
 
     } catch (error) {
         console.trace(error);

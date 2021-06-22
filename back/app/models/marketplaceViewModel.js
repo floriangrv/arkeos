@@ -16,6 +16,7 @@ class MarketplaceViewModel extends CoreModel {
         'created_at',
         'updated_at',
         'author',
+        'author_id',
         'category_name'
     ];
 
