@@ -25,13 +25,13 @@ const Sell_item = (props) => (
       </img>
         
     </div>
-<span className='Category'>Category</span>
+<span className='Category'>{props.item.dataValues.category_name}</span>
 <div className='Seller'>
     <img className='Seller_picture'
         src= {profil}
         alt="Image de profil du vendeur">
       </img>
-      <span className='Seller_pseudo'>Pseudo</span>
+      <span className='Seller_pseudo'>{props.item.dataValues.author}</span>
       </div>
   </div>
 

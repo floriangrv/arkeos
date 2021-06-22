@@ -17,6 +17,7 @@ import Marketplace from "../Marketplace";
 import Sell_item_page from "../Sell_item_page";
 import Images_gallery from "../Images_gallery";
 import ProfilPage from "../ProfilPage";
+import My_profile from "../My_profile";
 
 // == Composant
 const Arkeos = () => {
@@ -48,7 +49,7 @@ const Arkeos = () => {
           </Route>
 
           <Route path="/profile">
-            
+            <My_profile />
           </Route>
 
           <Route exact path="/La-respiration-cutanée">

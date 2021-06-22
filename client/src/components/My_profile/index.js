@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import Profile_modifier from '../Profile_modifier';
 import axios from "axios";
-import "./styles.scss";
+import "./style.css";
 
 const ProfilPage = (props) => {
-  const [member, setMember] = useState([]);
-  const [genre, setGenre] = useState([]);
+  const [pseudo, setPseudo] = useState([]);
   const [species, setSpecies] = useState([]);
+  const [presentation, setPresentation] = useState([]);
+  const [city, setCity] = useState([]);
   const address = window.location.href;
 
   let url = address.split("/");
@@ -14,22 +16,10 @@ const ProfilPage = (props) => {
 
   let token = localStorage.getItem("token");
 
+  const getDataFromApi = () => {
 
-  const senDataToApi = (data) => {
-
-    axios.put(`http://localhost:3000/membres/${id}`, {
-      data: body,
-      headers: {
-        authorization: token,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-
-    .then(function (response) {
-      
-return axios
-      .get(`http://localhost:3000/membres/${id}`, {
+    return axios
+      .get(`http://localhost:3000/profil`, {
         headers: {
           authorization: token,
           Accept: "application/json",
@@ -37,42 +27,40 @@ return axios
         },
       })
       .then((response) => {
-        setMember(response.data.dataValues);
-        setGenre(response.data.dataValues.all_genre);
-        setSpecies(response.data.dataValues.all_species);
+        setPseudo(response.data.dataValues.username);
+        setSpecies(response.data.dataValues.species);
+        setPresentation(response.data.dataValues.presentation);
+        setCity(response.data.dataValues.city);
+        console.log(response.data);
         console.log(response.data.dataValues);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
   };
 
-  let result = [];
-  for (let i = 0; i < species.length; i++) {
-    result.push(`${genre[i]} ${species[i]} `);
-  }
-  const genrespecies = result.join("");
 
   useEffect(() => {
     getDataFromApi();
+    
   }, []);
 
   return (
     <div className="profil-page">
       <div className="main-container">
-        <h2>Profil de {member.username}</h2>
+      <Profile_modifier />
+        <h2>{pseudo}</h2>
         <div className="img-container">
           <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
         </div>
         <div className="content-container">
           <div className="profil-user-container">
-            <h3>{member.city}</h3>
+            <h3>{city}</h3>
           </div>
           <div>
-            <p className="presentation">{member.presentation}</p>
-            <p className="especes">{genrespecies}</p>
+            <p className="presentation">{presentation}</p>
+            <h3>{species}</h3>
+            
           </div>
         </div>
       </div>
