@@ -30,8 +30,6 @@ exports.getAllMarket = async (request, response, next) => {
         // nombre d'article à afficher pour le moment
         options.nbArticles = 20;
 
-        console.log("c'est les options", options);
-
         let articles;
 
         if (options.order === "DESC"){
@@ -61,7 +59,6 @@ exports.showMarket = async (request, response, next) => {
         }
 
         const article = await MarketplaceViewModel.findByPk(id);
-        console.log(article);
 
         if(!article){
             return next();
@@ -76,11 +73,12 @@ exports.showMarket = async (request, response, next) => {
 
 exports.addMarket = async (request, response, next) => {
     try {
+        console.log("dans le addMarker");
         //todoo ajouter de la sécurité
 
         const data = request.body;
         // Il me faut l'auteur, le titre de l'article, le contenu, le(s) thème(s) et ou catégorie(s)
-
+        console.log(data);
         /*
         data.scientific_name
         data.locality
@@ -91,8 +89,7 @@ exports.addMarket = async (request, response, next) => {
         data.birth_date
         data.content
 
-        data.created_at
-        data.updated_at
+   
         data.author_id
         data.category_id
         */

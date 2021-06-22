@@ -26,10 +26,11 @@ const userRouter = require("./app/routers/userRouter.js");
 const loginRouter = require("./app/routers/loginRouter.js");
 const signinRouter = require("./app/routers/signinRouter.js");
 const messageRouter = require("./app/routers/messageRouter");
+const profilRouter = require("./app/routers/profilRouter");
 
 const port = process.env.PORT || 3000;
 
-// pour le moment on autorise toute les entrées
+// pour le moment on autorise toutes les entrées
 app.use(cors("*"));
 
 
@@ -37,13 +38,14 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-// tout les routers
+// tous les routers
 app.use("/login", loginRouter);
 app.use("/signin", signinRouter);
 app.use("/articles", articleRouter);
 app.use("/marketplace", marketRouter);
 app.use("/membres", userRouter);
 app.use("/messages", messageRouter);
+app.use("/profil", profilRouter);
 
 
 app.listen(port, (_) => {
