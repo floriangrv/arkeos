@@ -48,13 +48,9 @@ const Arkeos = () => {
             <Members />
           </Route>
 
-<<<<<<< HEAD
           <Route path="/profile">
             <My_profile />
           </Route>
-=======
-          <Route path="/profile"></Route>
->>>>>>> 97ea45c3da94ddc588a391b86792d34b5c022a4a
 
           <Route exact path="/articles/:id">
             <Article_page />
