@@ -25,6 +25,7 @@ CREATE TABLE "user" (
     "city" text,
     "country" text,
     "presentation" text,
+    "species" text,
     "profile_picture" text DEFAULT '../../app/img/avatar.png',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -43,16 +44,6 @@ CREATE TABLE "marketplace" (
     "category_id" integer NOT NULL REFERENCES "category" ("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
-);
-
-CREATE TABLE "species" (
-    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "number" text NOT NULL,
-    "genre" text NOT NULL,
-    "species" text NOT NULL,
-    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "updated_at" TIMESTAMPTZ,
-    "user_id" integer NOT NULL REFERENCES "user" ("id")
 );
 
 CREATE TABLE "badge" (

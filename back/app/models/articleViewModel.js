@@ -5,6 +5,7 @@ class ArticleViewModel extends CoreModel {
 
     static tableName = 'article_without_breeder';
     static fields = [
+        'author_id',
         'title',
         'content',
         'author',

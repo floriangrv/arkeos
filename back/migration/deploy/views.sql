@@ -12,6 +12,7 @@ SELECT
     "article"."created_at",
     "article"."updated_at",
     "user"."username" AS "author",
+    "user"."id" AS "author_id",
     "theme"."name" AS "theme_name",
     "theme"."color" AS "theme_color",
     "category"."name" AS "category_name",
@@ -27,6 +28,27 @@ FULL JOIN "article_rating" ON "article_rating"."article_id" = "article"."id"
 WHERE "article"."breeding_sheet"='false'
 GROUP BY "article"."id", "user"."id", "theme"."id", "category"."id";
 
+-- vue qui permet de voir tout les articles sans les fiches d'élevage, avec toutes les infos utile
+
+CREATE VIEW "public"."article_breeder" AS
+SELECT
+    "article"."id",
+    "article"."title",
+    "article"."content",
+    "article"."created_at",
+    "article"."updated_at",
+    "user"."username" AS "author",
+    "category"."name" AS "category_name",
+    SUM("article_rating"."rating") "rating"
+
+FROM "article"
+
+FULL JOIN "user" ON "user"."id" = "article"."author_id"
+FULL JOIN "category" ON "category"."id" = "article"."category_id"
+FULL JOIN "article_rating" ON "article_rating"."article_id" = "article"."id"
+
+WHERE "article"."breeding_sheet"='true'
+GROUP BY "article"."id", "user"."id", "category"."id";
 
 -- vue pour la marketplace
 
@@ -44,6 +66,7 @@ SELECT
     "marketplace"."created_at",
     "marketplace"."updated_at",
     "user"."username" AS "author",
+    "user"."id" AS "author_id",
     "category"."name" AS "category_name"
 
 FROM "marketplace"
@@ -59,16 +82,12 @@ SELECT "user".*,
     ARRAY_AGG(DISTINCT "marketplace"."id") AS "all_id_market",
     ARRAY_AGG(DISTINCT "marketplace"."scientific_name") AS "all_animal_in_market",
     ARRAY_AGG(DISTINCT "marketplace"."price") AS "all_price",
-    ARRAY_AGG(DISTINCT "species"."number") AS "all_species_number",
-    ARRAY_AGG(DISTINCT "species"."genre") AS "all_genre",
-    ARRAY_AGG(DISTINCT "species"."species") AS "all_species",
     ARRAY_AGG(DISTINCT "badge"."name") AS "all_badge",
     ARRAY_AGG(DISTINCT "badge"."picture") AS "all_url_badge"
 
 FROM "user"
 
 FULL JOIN "marketplace" ON "user"."id" = "marketplace"."author_id"
-FULL JOIN "species" ON "user"."id" = "species"."user_id"
 FULL JOIN "user_has_badge" ON "user"."id" = "user_has_badge"."user_id"
 FULL JOIN "badge" ON "user_has_badge"."user_id" = "badge"."id"
 
