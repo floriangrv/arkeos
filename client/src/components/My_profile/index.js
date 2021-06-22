@@ -14,8 +14,21 @@ const ProfilPage = (props) => {
 
   let token = localStorage.getItem("token");
 
-  const getDataFromApi = () => {
-    axios
+
+  const senDataToApi = (data) => {
+
+    axios.put(`http://localhost:3000/membres/${id}`, {
+      data: body,
+      headers: {
+        authorization: token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+
+    .then(function (response) {
+      
+return axios
       .get(`http://localhost:3000/membres/${id}`, {
         headers: {
           authorization: token,
@@ -29,6 +42,11 @@ const ProfilPage = (props) => {
         setSpecies(response.data.dataValues.all_species);
         console.log(response.data.dataValues);
       });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   };
 
   let result = [];
