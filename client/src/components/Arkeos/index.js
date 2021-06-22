@@ -47,11 +47,9 @@ const Arkeos = () => {
             <Members />
           </Route>
 
-          <Route path="/profile">
-            
-          </Route>
+          <Route path="/profile"></Route>
 
-          <Route exact path="/La-respiration-cutanée">
+          <Route exact path="/articles/:id">
             <Article_page />
           </Route>
 
