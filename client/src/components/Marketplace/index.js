@@ -38,7 +38,7 @@ console.log(items)
   useEffect(() => {
     getDataFromApi();
   }, []);
-      console.log(response);
+     
     
   
   return (
