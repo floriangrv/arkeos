@@ -42,7 +42,6 @@ exports.showAllMembers = async (request, response, next) => {
   try {
     //todoo prévoir le tri par plus ancien
     const data = request.body;
-    console.log(data);
 
     let options = {};
 
@@ -57,7 +56,6 @@ exports.showAllMembers = async (request, response, next) => {
     if (!members) {
       return next();
     }
-
     response.json(members);
   } catch (error) {
     console.trace(error);
@@ -133,6 +131,10 @@ exports.updateUser = async (request, response, next) => {
 
       // si c'est l'auteur qui demande la modification alors ok, sinon non
 
+      if(id_user !== request.user){
+        return next();
+      }
+
       const newValue = request.body;
       /*
         newValue.email 
@@ -147,10 +149,7 @@ exports.updateUser = async (request, response, next) => {
       newValue.id = id_user;
 
       const user = await userModel.updateUser(newValue);
-      
-      if(!user){
-          return next();
-      }
+
       
       response.status(200).json({user});
 
@@ -166,12 +165,12 @@ exports.deleteUser = async (request, response, next) => {
       const id_user = parseInt(request.params.id, 10);
 
       // si c'est l'user qui demande la suppression alors ok, sinon non
+      if(id_user !== request.user){
+          return next();
+      }
 
       const user = await UserModel.delete(id_user);
       
-      if(!user){
-          return next();
-      }
       
       response.status(200).json({user});
 

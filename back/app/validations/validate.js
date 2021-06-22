@@ -16,6 +16,7 @@ const validate = {
                 // La méthode validate retourne : 
                 // - une propriété value contenant les valeurs, mais on en a pas besoin
                 // - un prorpiété error contenant la nature de l'erreur
+    
                 await schema.validateAsync(request.query);
                 next();
             } catch (error) {
@@ -31,6 +32,7 @@ const validate = {
         return async (request, response, next) => {
 
             try {
+              
                 await schema.validateAsync(request.body);
                 next();
             } catch (error) {
@@ -45,6 +47,7 @@ const validate = {
 
         return async (request, response, next) => {
             try {
+               
                 await schema.validateAsync(request.params);
                 next();
             } catch (error) {

@@ -4,6 +4,17 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+//Socket.io
+
+/*
+const http = require('http');
+const server = http.createServer(app);
+
+app.get('/', (req, res) => {
+  res.send('<h1>Hello world</h1>');
+});
+*/
+
 
 // gestion des tokens
 const jwt = require("jsonwebtoken");
@@ -23,6 +34,8 @@ app.use(cors("*"));
 
 
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 // tout les routers
 app.use("/login", loginRouter);

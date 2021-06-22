@@ -96,10 +96,14 @@ exports.addMarket = async (request, response, next) => {
         data.author_id
         data.category_id
         */
+        
+        data.author_id = request.user;
 
        // je remplace les virgule par des points, afin de ne pas avoir d'erreur dans la base
        data.price = data.price.replace(/,/g, '.');
     
+
+       
         const article = await MarketplaceModel.addMarket(data);
 
         if(!article){
@@ -123,6 +127,9 @@ exports.updateMarket = async (request, response, next) => {
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la modification alors ok, sinon non
 
+        if(author_id !== request.user){
+            return next();
+        }
         
         const newValue = request.body;
         // je stock l'id de l'article
@@ -131,10 +138,6 @@ exports.updateMarket = async (request, response, next) => {
         newValue.price = newValue.price.replace(/,/g, '.');
 
         const article = await MarketplaceModel.updateMarket(newValue);
-
-        if(!article){
-            return next();
-        }
         
         response.status(200).json({article});
 
@@ -150,14 +153,15 @@ exports.deleteMarket = async (request, response, next) => {
 
         const id_article = parseInt(request.params.id, 10);
 
+        if(author_id !== request.user){
+            return next();
+        }
+
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la suppression alors ok, sinon non
 
         const article = await MarketplaceModel.delete(id_article);
         
-        if(!article){
-            return next();
-        }
         
         response.status(200).json({article});
 

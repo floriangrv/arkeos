@@ -17,7 +17,7 @@ exports.authenticateToken = (request, response, next) => {
 
     if (err) return res.sendStatus(403);
 
-    request.user = user;
+    request.user = user.id;
 
     next();
   });
