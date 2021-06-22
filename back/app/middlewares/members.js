@@ -10,21 +10,14 @@ exports.generateAccessToken = (user) => {
 exports.authenticateToken = (request, response, next) => {
   const authHeader = request.headers["authorization"];
   const token = authHeader;
-  console.log(authHeader);
-  console.log(token + "le token");
 
-  //if (token == null) return response.redirect("/articles");
+  if (token == null) return response.json("Error: not connected");
 
-  console.log("après le if");
-  console.log(process.env.TOKEN_SECRET);
   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-    console.log(err + "err");
-    console.log(user + "user");
 
     if (err) return res.sendStatus(403);
 
     request.user = user;
-    console.log("je suis dans le middleware O_o");
 
     next();
   });

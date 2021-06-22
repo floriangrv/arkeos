@@ -147,9 +147,9 @@ class CoreModel {
         try {
             const result = await client.query(`DELETE FROM "${this.tableName}" WHERE id=$1 RETURNING *`, [id]);
             if (result.rows[0]) {
-                return "L'article a bien été supprimer !";
+                return "Delete perform !";
             } else {
-                return "Erreur, cet article n'existe pas !"
+                return "Error, could not be deleted";
             }
         } catch (error) {
             console.trace(error);

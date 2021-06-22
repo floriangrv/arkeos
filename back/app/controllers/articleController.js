@@ -85,7 +85,7 @@ exports.addArticle = async (request, response, next) => {
         //todoo ajouter de la sécurité
 
         const data = request.body;
-        // Il me faut l'auteur, le titre de l'article, le contenu, le(s) thème(s) et ou catégorie(s)
+        // Il me faut l'auteur, le titre de l'article, le contenu, le thème et ou catégorie
 
         /*
         data.title 
@@ -95,8 +95,8 @@ exports.addArticle = async (request, response, next) => {
         data.theme_id
         */
 
-        data.title = data.title.replace(/'/g, '_');
-        data.content = data.content.replace(/'/g, '_');
+        data.title = data.title.replace(/'/g, "''");
+        data.content = data.content.replace(/'/g, "''");
 
         const article = await ArticleModel.addArticle(data);
 
