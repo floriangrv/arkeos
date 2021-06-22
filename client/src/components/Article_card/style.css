@@ -11,6 +11,9 @@
 border-radius: 10px;
 margin: 20px;
 box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
+overflow: hidden;
+
+
 }
 
 .Card:hover {
@@ -51,7 +54,8 @@ box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
   display: flex;
   flex-wrap: wrap;
   color: #F9F7ED;
-  padding: 5px 10px 10px 10px;
+  padding: 5px 10px 10px 10px; 
+
 }
 
 .Card_body h1 {
@@ -71,9 +75,10 @@ box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
   font-family: 'Roboto';
   text-align: justify;
   font-size: 1rem;
+ height: 50px;
+ padding-bottom: 0.5rem;
   
 }
-
 
 .votes {
   display: flex;

@@ -2,7 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-const userController = require('../controllers/userController');
+const messageController = require('../controllers/messageController');
+
 
 // Pour le controle des données utilisateurs
 const schemas = require('../validations/schemas');
@@ -12,22 +13,32 @@ const validate = require('../validations/validate');
 const {authenticateToken} = require('../middlewares/members');
 
 
-router.use(authenticateToken);
-// affiche les membres classé par nouveauté par défaut quand on est visiteur
-router.get('/', userController.showAllMembers);
+//router.use(authenticateToken);
 
+// affiche les messages
+router.get('/:receiver/:sender', messageController.showMessages);
+
+
+
+
+/*
 // recherche un ou des membres, par ville ou username
 router.get('/search', userController.searchMembers);
 
 // affiche un membre
 router.get('/:id', userController.showMember);
 
-// supprime un membre
-router.delete('/:id', userController.deleteUser);
+*/
 
-// modifie un membre
-router.put('/:id', validate.body(schemas.userUpdateSchema), userController.updateUser);
 
+
+/*
+// supprime un article
+router.delete('/:id', userController.deleteArticle);
+
+// modifie un article
+router.put('/:id', userController.updateArticle);
+*/
 
 
 module.exports = router;

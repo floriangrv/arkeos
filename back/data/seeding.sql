@@ -632,9 +632,15 @@ INSERT INTO "photo" ("location", "url_picture", "article_id", "author_id") VALUE
 
 INSERT INTO "message" ("content", "receiver_id", "sender_id") VALUES
     ('Salut mec !', 1, 2),
-    ('Bonjour bonjour !', 2, 4),
-    ('La forme nico ?', 2, 4),
-    ('Hello word', 1, 4);
+    ('Salut ça va ?', 2, 1),
+    ('Nikel et toi ?', 1, 2),
+    ('La forme ouais', 2, 1),
+    ('Bonjour bonjour !', 4, 1),
+    ('La forme nico ?', 4, 1),
+    ('La grande forme ouais', 1, 4),
+    ('Et toi ?', 1, 4),
+    ('Salut flo !', 2, 4),
+    ('Tu es là ?', 2, 4);
 
 INSERT INTO "comment" ("content", "author_id", "article_id") VALUES
     ('Pas mal ton article !', 3, 3),

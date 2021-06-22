@@ -23,6 +23,7 @@ class MarketplaceModel extends CoreModel {
 
     static async addMarket(data) {
         try {
+            
             const result = await client.query(`INSERT INTO "${this.tableName}" 
             ("scientific_name", "locality", "phase", "born_captivity", "price", "native_country", "birth_date", "content", "author_id", "category_id") 
             VALUES

@@ -28,8 +28,7 @@ exports.getConnected = async (request, response, next) => {
         response.status(403).json(data.errors);
       } else {
         const token = generateAccessToken({
-          email: hash.email,
-          password: hash.password,
+          id: hash.id,
         });
 
         response.status(200).json(token);
