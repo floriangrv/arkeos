@@ -7,6 +7,7 @@ const Profilpage = (props) => {
   const [member, setMember] = useState([]);
   const [genre, setGenre] = useState([]);
   const [species, setSpecies] = useState([]);
+  const [updateForm, setUpdateForm] = useState(false);
   const address = window.location.href;
 
   let url = address.split("/");
