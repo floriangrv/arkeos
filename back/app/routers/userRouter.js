@@ -4,6 +4,10 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 
+// Pour le controle des données utilisateurs
+const schemas = require('../validations/schemas');
+const validate = require('../validations/validate');
+
 // middleware pour controller le token
 const {authenticateToken} = require('../middlewares/members');
 
@@ -22,7 +26,7 @@ router.get('/:id', userController.showMember);
 router.delete('/:id', userController.deleteUser);
 
 // modifie un membre
-router.put('/:id', userController.updateUser);
+router.put('/:id', validate.body(schemas.userUpdateSchema), userController.updateUser);
 
 
 

@@ -95,8 +95,8 @@ exports.addArticle = async (request, response, next) => {
         data.theme_id
         */
 
-        data.title = data.title.replace(/'/g, '_');
-        data.content = data.content.replace(/'/g, '_');
+        data.title = data.title.replace(/'/g, "''");
+        data.content = data.content.replace(/'/g, "''");
 
         const article = await ArticleModel.addArticle(data);
 

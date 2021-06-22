@@ -4,6 +4,11 @@ const router = express.Router();
 
 const messageController = require('../controllers/messageController');
 
+
+// Pour le controle des données utilisateurs
+const schemas = require('../validations/schemas');
+const validate = require('../validations/validate');
+
 // middleware pour controller le token
 const {authenticateToken} = require('../middlewares/members');
 
