@@ -28,7 +28,7 @@ console.log(items)
         
        
         console.log(response);
-        setItems(response.data.dataValue)
+        setItems(response.data)
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +60,7 @@ console.log(items)
 
          <div className="sellItems">
             {items.map((item) => (
-              <Sell_item key={item.id} items={items} />
+              <Sell_item key={item.dataValues.id} item={item} />
             ))}
           </div>
 

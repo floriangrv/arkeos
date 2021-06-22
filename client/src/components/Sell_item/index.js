@@ -13,8 +13,8 @@ const Sell_item = (props) => (
       <p className="Sell_item_info"> Localité : {props.item.dataValues.locality}</p>
       <p className="Sell_item_info"> Phase : {props.item.dataValues.phase}</p>
       <p className="Sell_item_info"> NC : {props.item.dataValues.born_captivity}</p>
-      <p className="Sell_item_info"> Pays de naissance : {props.article.dataValues.native_country}</p>
-      <p className="Sell_item_info"> Date de naissance :{props.article.dataValues.birth_date}</p>
+      <p className="Sell_item_info"> Pays de naissance : {props.item.dataValues.native_country}</p>
+      <p className="Sell_item_info"> Date de naissance :{props.item.dataValues.birth_date}</p>
       <span className='Price'>€</span>
     </div>
 
