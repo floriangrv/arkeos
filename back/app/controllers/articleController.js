@@ -95,6 +95,8 @@ exports.addArticle = async (request, response, next) => {
         data.theme_id
         */
 
+        data.author_id = request.user;
+
         data.title = data.title.replace(/'/g, "''");
         data.content = data.content.replace(/'/g, "''");
 
@@ -121,11 +123,12 @@ exports.deleteArticle = async (request, response, next) => {
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la suppression alors ok, sinon non
 
-        const article = await ArticleModel.delete(id_article);
-        
-        if(!article){
+        if(author_id !== request.user){
             return next();
         }
+
+        const article = await ArticleModel.delete(id_article);
+        
         
         response.status(200).json({article});
 
@@ -144,13 +147,14 @@ exports.updateArticle = async (request, response, next) => {
         // Il me faut l'auteur, et l'id de l'article
         // si c'est l'auteur qui demande la modification alors ok, sinon non
 
+        if(author_id !== request.user){
+            return next();
+        }
+        
         const newValue = request.body;
         newValue.id = id_article;
         const article = await ArticleModel.updateArticle(newValue);
         
-        if(!article){
-            return next();
-        }
         
         response.status(200).json({article});
 
