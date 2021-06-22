@@ -38,3 +38,21 @@
 #img {
   display: none
 }
+
+#content {
+  resize: none;
+  
+}
+
+#Submit_button{
+  border: none;
+  border-radius: 0.5rem;
+background-color: #FFFFFF;
+color: #A5C6BA;
+font-weight: bold;
+text-shadow: 1px 1px 2px #F9F7ED;
+}
+
+#Submit_button:hover {
+  cursor: pointer;
+}

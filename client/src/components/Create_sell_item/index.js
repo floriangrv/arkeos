@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import { useForm } from 'react-hook-form'
+import axios from "axios";
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +30,22 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
 
   },
+  button: {
+    width: "10em",
+    height: "2.5em",
+    margin: "1em 0 0 2em",
+    backgroundColor: "#A5C6BA",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    color: "#F9F7ED",
+    border: "none",
+    borderRadius: "0.3rem",
+
+    "&:hover": {
+      background: "#F9F7ED",
+      color: "#6B6661",
+    },
+  }
 }));
 
 export default function Create_sell_item() {
@@ -42,9 +60,33 @@ export default function Create_sell_item() {
     setOpen(false);
   };
 
+  const { register, handleSubmit } = useForm()
+const onSubmit= (data) => {
+  console.log(data);
+  // Je peux faire ma requête ajax a cet endroit là: 
+  axios({
+    method: "post",
+    url: "/http://localhost:3000/marketplace",
+    data: data,
+  })
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
+}
+
+const onErrors = (errors) => {
+  console.log(errors);
+}
+  
+
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button className={classes.button} type="button" onClick={handleOpen}>
         Créer une annonce
       </button>
       <Modal
@@ -63,41 +105,45 @@ export default function Create_sell_item() {
         <Fade in={open}>
           <div className={classes.paper}>
 
-            <form action="" method="get" className="Sell_item_form">
-              <label className="Sell_item_label" htmlFor="name">Nom scientifique (Genre espèce): </label>
-              <input type="text" name="name" id="name" required />
-              <label className="Sell_item_label" htmlFor="name">Localité : </label>
-              <input type="text" name="name" id="name" required />
-              <label className="Sell_item_label" htmlFor="name">Phase : </label>
-              <input type="text" name="name" id="name" required />
-              <label className="Sell_item_label" htmlFor="NC">L'animal est-il né en captivité ? </label>
+            <form  className="Sell_item_form" onSubmit={handleSubmit(onSubmit, onErrors)} >
+              <label className="Sell_item_label" htmlFor="scientific_name">Nom scientifique (Genre espèce): </label>
+              <input {...register("scientific_name", { required: true })} type="text" id="name" required />
+              <label className="Sell_item_label" htmlFor="locality">Localité : </label>
+              <input {...register('locality', { required: true })} type="text" id="locality" required />
+              <label className="Sell_item_label" htmlFor="phase">Phase : </label>
+              <input {...register('phase', { required: true })} type="text" id="phase" required />
+              <label className="Sell_item_label" htmlFor="born_captivity">L'animal est-il né en captivité ? </label>
               <div className="Radio">
-                <label className="Radio_label" htmlFor="NC">Oui</label>
-                <input type="radio" id="NC" name="NC" value="true"
+                <label className="Radio_label" htmlFor="born_captivity">Oui</label>
+                <input {...register('born_captivity', { required: true })} type="radio"  value="true"
                   defaultChecked />
 
 
               </div>
 
               <div className="Radio">
-                <label className="Radio_label" htmlFor="NC">Non</label>
-                <input type="radio" id="NC2" name="NC" value="false" />
+                <label className="Radio_label" htmlFor="born_captivity">Non</label>
+                <input {...register('born_captivity', { required: true })} type="radio"  value="false" />
 
               </div>
+
               <label className="Sell_item_label" htmlFor="name">Pays de naissance  : </label>
-              <input type="text" name="name" id="name" required />
-              <label className="Sell_item_label" htmlFor="name">Date de naissance (AAAA/MM/JJ) : </label>
-              <input type="text" name="name" id="name" required />
-              <label className="Sell_item_label SpecialLabel" htmlFor="story">Informations complémentaires :</label>
-              <textarea id="story" name="story"
+              <input {...register('native_country', { required: true })} type="text" id="native_country" required />
+              <label className="Sell_item_label" htmlFor="birth_date">Date de naissance (AAAA/MM/JJ) : </label>
+              <input {...register('birth_date', { required: true })} type="text" id="birth_date" required />
+              <label className="Sell_item_label SpecialLabel" htmlFor="content">Informations complémentaires :</label>
+              <textarea {...register('content', { required: true })} id="content" 
                 rows="5" cols="33">
               </textarea>
               <label className="Sell_item_label SpecialLabel" htmlFor="avatar">Ajouter une image :</label>
 
-              <input type="file"
-                id="img" name="Sell_item_upload_image"
+              <input {...register('Sell_item_upload_image', { required: false })} type="file"
+                id="img" 
                 accept="image/png, image/jpeg"></input>
-                <label htmlFor="img"><PhotoCameraIcon /></label>
+              <label htmlFor="img"><PhotoCameraIcon /></label>
+              <label className="Sell_item_label" htmlFor="price">Prix : </label>
+              <input {...register('price', { required: true })} type="text" id="price" required />
+              <input type="submit" value="Envoyer le formulaire"/>
             </form>
 
           </div>
