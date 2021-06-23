@@ -53,22 +53,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Create_article(props) {
-console.log (props)
+
 
 const [modifycontent, setModifycontent] = useState ("")
+const [modifytitle, setModifytitle] = useState ("")
 
 useEffect (() => {
+  setModifytitle (props.data.title)
   setModifycontent (props.data.content)
-},[props.data.content])
+},[props.data.content, props.data.title])
 
-
-
-console.log (modifycontent)
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  let token = localStorage.getItem("token");
 
+  let token = localStorage.getItem("token");
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -77,14 +77,19 @@ console.log (modifycontent)
     setOpen(false);
   };
 
+const address = window.location.href;
+  let url = address.split("/");
+  let id = url[url.length - 1];
+
   const { register, handleSubmit } = useForm()
+
   const onSubmit = (data) => {
-    console.log(data);
+    
 
     // Je peux faire ma requête ajax a cet endroit là: 
     axios
       .put(
-        "http://localhost:3000/articles",
+        `http://localhost:3000/articles/${id}`,
 
         data,
 
@@ -99,7 +104,7 @@ console.log (modifycontent)
       )
       .then(function (response) {
         //handle success
-        console.log(response);
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error
@@ -107,7 +112,34 @@ console.log (modifycontent)
       });
   }
 
+const onDelete = () => {
+    
 
+    // Je peux faire ma requête ajax a cet endroit là: 
+    axios
+      .delete(
+        `http://localhost:3000/articles/${id}`,
+
+
+        {
+          headers: {
+            authorization: token,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+
+      )
+      .then(function (response) {
+        //handle success
+        window.location.reload()
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+
+  }
 
 
   return (
@@ -153,7 +185,7 @@ console.log (modifycontent)
               </select>
 
               <label className="Create_article_label Create_article_title" htmlFor="Article_title">Titre de l'article : </label>
-              <input {...register("title", { required: true })} type="text" id="Article_title" value= {props.data.title}/>
+              <input {...register("title", { required: true })} type="text" id="Article_title" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
 
               <label className="Create_article_label" htmlFor="Article_body">Corps de l'article :</label>
               <textarea {...register('content')}  id="Article_body"
@@ -168,9 +200,10 @@ console.log (modifycontent)
 
               <input {...register("breeding_sheet", { required: true })} type="hidden" value= "false" />
 
-              <input type="submit" value="Créer l' article" />
+              <input type="submit" value="Enregistrer les modifications" />
+              
             </form>
-
+            <input type="submit" value="Supprimer l'article" onClick= {onDelete}/>
           </div>
         </Fade>
       </Modal>
