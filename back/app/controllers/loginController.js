@@ -30,8 +30,11 @@ exports.getConnected = async (request, response, next) => {
         const token = generateAccessToken({
           id: hash.id,
         });
-
-        response.status(200).json(token);
+        const user = {
+          id: hash.id,
+          username: hash.username
+        };
+        response.status(200).json(token, user);
       }
     });
   } catch (error) {

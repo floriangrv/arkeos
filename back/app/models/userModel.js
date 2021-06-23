@@ -42,8 +42,8 @@ class UserModel extends CoreModel {
   static async showData(data) {
     try {
       const result = await client.query(
-        `SELECT "id", "password", "email" FROM "${this.tableName}" 
-            WHERE "email" = $1`,
+        `SELECT "id", "password", "email", "username" FROM "${this.tableName}" 
+            WHERE "email" = $1 RETURNING "id", "username"`,
         [data.email]
       );
 

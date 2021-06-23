@@ -36,7 +36,7 @@ class ArticleModel extends CoreModel {
             const result = await client.query(`UPDATE "article" SET "title"=$1, "content"=$2, "category_id"=$3, "theme_id"=$4 WHERE id=$5 RETURNING *`, 
             [obj.title, obj.content, obj.category_id, obj.theme_id, obj.id]);
             if (result.rows[0]) {
-                return "L'article a bien été modifier !";
+                return result;
             } else {
                 return "Erreur, cet article n'a pas pu être modifier !"
             }
