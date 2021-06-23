@@ -1,8 +1,42 @@
 
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import axios from "axios";
+
+
+const address = window.location.href;
+  let url = address.split("/");
+  let id = url[url.length - 1];
+
+  let token = localStorage.getItem('token');
+
+const Rating = () => {
+
+  return axios
+  .post(
+    `http://localhost:3000/articles/${id}/raiting`,
+    
+    {
+      headers: {
+        authorization: token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+
+  )
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
+};
+
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -24,12 +58,12 @@ export default function IconLabelButtons() {
   const classes = useStyles();
 
   
-  const [count, setCount] = useState(0);
+
 
   return (
     <div>
  
-      <Button  onClick={() => setCount(count + 1)}
+      <Button  onClick={() => Rating ()}
         variant="contained"
         color="primary"
         size="large"
@@ -37,7 +71,7 @@ export default function IconLabelButtons() {
         className={classes.button}
         startIcon={<FavoriteIcon />}
       >
-        {count}
+       
       </Button>
     </div>
   );
