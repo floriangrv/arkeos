@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Article_card from "../Article_card";
+import Categorie_selector from "../Categorie_selector";
 import "./style.css";
 
 const Articles = () => {
@@ -14,18 +15,19 @@ const Articles = () => {
 
     const response = await fetch(url);
     const responseJson = await response.json();
-    
-    
 
     setArticles(responseJson);
   };
 
   return (
-    <div className="articles">
-      {articles.map((article) => (
-        <Article_card key={article.dataValues.id} article={article} />
-      ))}
-    </div>
+    <>
+      <Categorie_selector />
+      <div className="articles">
+        {articles.map((article) => (
+          <Article_card key={article.dataValues.id} article={article} />
+        ))}
+      </div>
+    </>
   );
 };
 
