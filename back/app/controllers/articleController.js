@@ -98,7 +98,7 @@ exports.addArticle = async (request, response, next) => {
 
         data.author_id = request.user;
 
-        data.title = data.title.replace(/'/g, "''");
+       data.title = data.title.replace(/'/g, "''");
         data.content = data.content.replace(/'/g, "''");
 
         const article = await ArticleModel.addArticle(data);
@@ -188,7 +188,7 @@ exports.addRating = async (request, response, next) => {
         data.id_user = request.user;
 
         const rate = await RatingArticleModel.findRating(data);
-        console.log(rate);
+        console.log('j aime les beignets :', rate);
 
         if(rate){
             return 'Vous avez déjà voté !';
