@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -52,7 +52,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Create_article() {
+export default function Create_article(props) {
+console.log (props)
+
+const [modifycontent, setModifycontent] = useState ("")
+
+useEffect (() => {
+  setModifycontent (props.data.content)
+},[props.data.content])
+
+
+
+console.log (modifycontent)
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   let token = localStorage.getItem("token");
@@ -71,7 +83,7 @@ export default function Create_article() {
 
     // Je peux faire ma requête ajax a cet endroit là: 
     axios
-      .post(
+      .put(
         "http://localhost:3000/articles",
 
         data,
@@ -101,7 +113,7 @@ export default function Create_article() {
   return (
     <div>
       <button className={classes.button} type="button" onClick={handleOpen}>
-        Créer un article
+       Modifier l'article
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -121,14 +133,16 @@ export default function Create_article() {
 
             <form className="Create_article_form" onSubmit={handleSubmit(onSubmit)} >
 
-              <select {...register("category_id", { required: true })} id="pet-category">
+            <label className="Create_article_label" htmlFor="category">Catégorie :</label>
+              <select {...register("category_id", { required: true })} name= "category" id="Create_article_category">
                 <option value="1">Lézard</option>
                 <option value="2">Amphibien</option>
                 <option value="3">Serpent</option>
                 <option value="4">Tortue</option>
               </select>
 
-              <select {...register("theme_id", { required: true })} id="pet-category">
+              <label className="Create_article_label" htmlFor="theme">Thème :</label>
+              <select {...register("theme_id", { required: true })} name= "theme" id= "Create_article_theme">
                 <option value="1">Soins et pathologies</option>
                 <option value="2">Terrarium</option>
                 <option value="3">Alimentation</option>
@@ -138,12 +152,12 @@ export default function Create_article() {
                 <option value="7">Biotope et histoire naturelle</option>
               </select>
 
-              <label className="Create_article_label" htmlFor="Article_title">Titre de l'article : </label>
-              <input {...register("title", { required: true })} type="text" id="Article_title" />
+              <label className="Create_article_label Create_article_title" htmlFor="Article_title">Titre de l'article : </label>
+              <input {...register("title", { required: true })} type="text" id="Article_title" value= {props.data.title}/>
 
               <label className="Create_article_label" htmlFor="Article_body">Corps de l'article :</label>
-              <textarea {...register('content')} id="Article_body"
-                rows="20" cols="33">
+              <textarea {...register('content')}  id="Article_body"
+                rows="20" cols="33"value= {modifycontent} onChange= {(e) => setModifycontent(e.target.value)} > 
               </textarea>
               <label className="Create_article_label" htmlFor="Article_image">Ajouter une image :</label>
 

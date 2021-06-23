@@ -20,7 +20,7 @@ const MemberCard = (props) => {
           <h4>{props.city}</h4>
           <p className="card-text">{props.presentation}</p>
           <p className="card-text">
-            {props.genre} {props.species}
+            
           </p>
         </div>
       </a>

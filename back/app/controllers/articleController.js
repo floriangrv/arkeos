@@ -109,7 +109,10 @@ exports.addArticle = async (request, response, next) => {
         data.theme_id
         */
 
-    data.author_id = request.user;
+        data.author_id = request.user;
+
+       data.title = data.title.replace(/'/g, "''");
+        data.content = data.content.replace(/'/g, "''");
 
     data.title = data.title.replace(/'/g, "''");
     data.content = data.content.replace(/'/g, "''");
@@ -200,8 +203,8 @@ exports.addRating = async (request, response, next) => {
     data.id_article = parseInt(request.params.id, 10);
     data.id_user = request.user;
 
-    const rate = await RatingArticleModel.findRating(data);
-    console.log(rate);
+        const rate = await RatingArticleModel.findRating(data);
+        console.log('j aime les beignets :', rate);
 
     if (rate) {
       return "Vous avez déjà voté !";
