@@ -14,8 +14,6 @@ const MemberList = (props) => {
           username={member.dataValues.username}
           city={member.dataValues.city}
           presentation={member.dataValues.presentation}
-          genre={member.dataValues.genre}
-          species={member.dataValues.species}
         />
       ))}
     </div>
