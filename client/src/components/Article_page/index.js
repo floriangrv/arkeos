@@ -3,6 +3,7 @@ import frog from "../../assets/images/frog.jpg";
 import profil from "../../assets/images/profil.png";
 import Like_button from "../Like_button";
 import Comment from "../Comments";
+import CommentairePost from "../CommentairePost";
 import "./style.css";
 import axios from "axios";
 
@@ -65,17 +66,7 @@ const Article = () => {
         <Comment />
 
         <div className="Answer_form_container">
-          <div className="Answer_form">
-            <form action="/ma-page-de-traitement" method="post">
-              <textarea
-                className="Form"
-                placeholder="Inscrivez votre reponse"
-              ></textarea>
-              <div className="Submit_container">
-                <input className="Submit" type="submit" value="Envoyer"></input>
-              </div>
-            </form>
-          </div>
+          <CommentairePost />
         </div>
       </div>
     </div>

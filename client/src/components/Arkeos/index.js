@@ -32,7 +32,6 @@ const Arkeos = () => {
           <Route path="/message">{/* Message composant example  */}</Route>
 
           <Route exact path="/">
-            <Categorie_selector />
             <Articles />
           </Route>
 
