@@ -23,3 +23,20 @@ exports.authenticateToken = (request, response, next) => {
     next();
   });
 };
+
+// middleware pour controler l'id du user, sans bloquer 
+exports.controlIfToken = (request, response, next) => {
+  const authHeader = request.headers["authorization"];
+  const token = authHeader;
+
+  if (token == null) return next();
+
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+
+    if (err) return next();
+
+    request.user = user.id;
+
+    next();
+  });
+};
