@@ -22,7 +22,7 @@ class RatingArticleModel extends CoreModel {
             if (result.rows[0]){
                 return result.rows[0];
             } else {
-                return "Error";
+                return false;
             }
         } catch (error) {
             console.trace(error);

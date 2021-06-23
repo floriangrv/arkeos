@@ -1,5 +1,6 @@
 const ArticleModel = require("../models/articleModel");
 const ArticleViewModel = require("../models/articleViewModel");
+const CommentModel = require("../models/commentModel");
 const RatingArticleModel = require("../models/ratingArticleModel");
 
 exports.getAllArticles = async (request, response, next) => {
@@ -198,21 +199,23 @@ exports.updateArticle = async (request, response, next) => {
 exports.addRating = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
-
+    
     const data = {};
     data.id_article = parseInt(request.params.id, 10);
     data.id_user = request.user;
+    
+    if (!request.user){
+      return `Not connected`;
+    }
 
-        const rate = await RatingArticleModel.findRating(data);
-        console.log('j aime les beignets :', rate);
-
+    const rate = await RatingArticleModel.findRating(data);
+    
     if (rate) {
-      return "Vous avez déjà voté !";
+      const deleteLike = await RatingArticleModel.deleteRating(data);
+      return deleteLike;
     }
 
     const rating = await RatingArticleModel.addRaiting(data);
-
-    console.log(rating);
 
     response.status(200).json({ rating });
   } catch (error) {
@@ -223,24 +226,24 @@ exports.addRating = async (request, response, next) => {
   }
 };
 
-exports.deleteRating = async (request, response, next) => {
+exports.addComment = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
-
-    const data = {};
-    data.id_article = parseInt(request.params.id, 10);
-    data.id_user = request.user;
-
-    const rate = await RatingArticleModel.findRating(data);
-    console.log(rate);
-
-    if (!rate) {
-      return "Vous n'avez jamais voté O_o !";
+    
+    if (!request.user){
+      return `Not connected`;
     }
 
-    const rating = await RatingArticleModel.deleteRating(data);
+    const data = {};
+    data.article_id = parseInt(request.params.id, 10);
+    data.author_id = request.user;
+    data.content = request.body.content;
 
-    response.status(200).json({ rating });
+    console.log(data);
+
+    const comment = await CommentModel.addComment(data);
+
+    response.status(200).json({ comment });
   } catch (error) {
     console.trace(error);
     response

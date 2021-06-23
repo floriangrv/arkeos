@@ -19,7 +19,7 @@ class ChatViewModel extends CoreModel {
   static async showConversation(id) {
     const result = await client.query(`SELECT * FROM ${this.tableName} 
     WHERE receiver_id = $1 AND sender_id = $2 
-    OR sender_id = $3 AND receiver_id = $4`, 
+    OR sender_id = $3 AND receiver_id = $4 RETURNING *`, 
     [id.receiver, id.sender, id.receiver, id.sender]);
 
     if (!result.rows[0]) {
