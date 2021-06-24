@@ -87,7 +87,7 @@ export default function Create_article() {
       )
       .then(function (response) {
         //handle success
-        console.log(response);
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error

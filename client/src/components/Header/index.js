@@ -13,7 +13,7 @@ let token = localStorage.getItem('token');
  return (
    
   <div className= "Header">
-<h1 className= "Title">Arkeos</h1>
+<h1 className= "Title"><a href="/">Arkeos</a></h1>
 <div className= "Buttons">
 
 <>

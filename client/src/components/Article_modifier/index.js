@@ -132,7 +132,7 @@ const onDelete = () => {
       )
       .then(function (response) {
         //handle success
-        window.location.reload()
+        window.location = '/'
       })
       .catch(function (response) {
         //handle error
