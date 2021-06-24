@@ -16,11 +16,13 @@ router.get('/:id', articleController.showArticle);
 
 router.use(authenticateToken);
 
+
 // vote +1 à un article
 router.post('/:id/raiting', articleController.addRating);
 
-// delete le vote à un article
-router.delete('/:id/raiting', articleController.deleteRating);
+// add comment
+router.post('/:id/comment', articleController.addComment);
+
 
 // ajoute un article
 router.post('/', articleController.addArticle);
