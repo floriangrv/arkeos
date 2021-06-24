@@ -17,7 +17,9 @@ import Marketplace from "../Marketplace";
 import Sell_item_page from "../Sell_item_page";
 import ProfilPage from "../ProfilPage";
 import My_profile from "../My_profile";
+import Legislation from "../Legislation";
 import Create_article from "../Create_article";
+import Agenda from "../Agenda";
 
 // == Composant
 const Arkeos = () => {
@@ -40,12 +42,16 @@ const Arkeos = () => {
             <Marketplace />
           </Route>
 
-          <Route exact path="/marketplace/item">
+          <Route exact path="/marketplace/:id">
             <Sell_item_page />
           </Route>
 
           <Route path="/members">
             <Members />
+          </Route>
+
+          <Route path="/calendar">
+            <Agenda />
           </Route>
 
           <Route path="/profile">
@@ -56,6 +62,7 @@ const Arkeos = () => {
             <Article_page />
           </Route>
 
+
           <Route exact path="/signin">
             <SignInPage />
           </Route>
@@ -65,6 +72,10 @@ const Arkeos = () => {
 
           <Route path="/membres/:id">
             <ProfilPage />
+          </Route>
+
+          <Route exact path="/legislation">
+            <Legislation />
           </Route>
         </Switch>
       </div>

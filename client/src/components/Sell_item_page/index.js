@@ -28,6 +28,8 @@ const Sell_item_page = () => {
   const classes = useStyles();
 
   return (
+    <>
+   {/*<a href={"/articles/" + props.dataValues.id}></a>*/}
   <div className="Item_page">
     <div className="Item_infos">
       <div className="Item_picture_container">
@@ -61,7 +63,7 @@ const Sell_item_page = () => {
 
     </div>
   </div>
-  
+  </>
 )}
 
 export default Sell_item_page

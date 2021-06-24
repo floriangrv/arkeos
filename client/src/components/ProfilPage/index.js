@@ -32,11 +32,9 @@ const ProfilPage = (props) => {
       });
   };
 
-  let result = [];
-  for (let i = 0; i < species.length; i++) {
-    result.push(`${genre[i]} ${species[i]} `);
-  }
-  const genrespecies = result.join("");
+  
+ 
+  
 
   useEffect(() => {
     getDataFromApi();
@@ -56,12 +54,12 @@ const ProfilPage = (props) => {
           </div>
           <div>
             <p className="presentation">{member.presentation}</p>
-            <p className="especes">{genrespecies}</p>
+            <p className="especes">{species}</p>
           </div>
         </div>
       </div>
     </div>
   );
-};
 
+}
 export default ProfilPage;
