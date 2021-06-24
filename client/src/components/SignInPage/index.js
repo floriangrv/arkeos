@@ -24,15 +24,17 @@ const SignInPage = () => {
         }
       )
       .then((res) => {
-        console.log(res);
-
         if (res.data.errors) {
           console.log(res.data.errors);
         } else {
-          window.location = "/";
-          localStorage.setItem("token", res.data);
+          // window.location = "/";
+
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", res.data.user.id);
           let token = localStorage.getItem("token");
+          let user = localStorage.getItem("user");
           console.log(token);
+          console.log(user);
         }
       })
       .catch((err) => {

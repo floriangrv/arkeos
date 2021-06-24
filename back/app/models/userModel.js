@@ -59,20 +59,30 @@ class UserModel extends CoreModel {
 
   static async updateUser(obj) {
     try {
-        const result = await client.query(`UPDATE "user" 
+      const result = await client.query(
+        `UPDATE "user" 
         SET "email"=$1, "city"=$2, "country"=$3, "presentation"=$4,"profile_picture"=$5, "username"=$6
-        WHERE id=$7 RETURNING *`, 
-        [obj.email, obj.city, obj.country, obj.presentation, obj.profile_picture, obj.username, obj.id]);
-        
-        if (result.rows[0]) {
-            return "The profile is updated";
-        } else {
-            return "Error, the profile is not updated";
-        }
+        WHERE id=$7 RETURNING *`,
+        [
+          obj.email,
+          obj.city,
+          obj.country,
+          obj.presentation,
+          obj.profile_picture,
+          obj.username,
+          obj.id,
+        ]
+      );
+
+      if (result.rows[0]) {
+        return "The profile is updated";
+      } else {
+        return "Error, the profile is not updated";
+      }
     } catch (error) {
-        console.trace(error);
+      console.trace(error);
     }
-}
+  }
 }
 
 module.exports = UserModel;

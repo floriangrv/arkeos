@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const CommentairePost = () => {
+const CommentairePost = (props) => {
   const [commentaire, setCommentaire] = useState("");
   const [author, setAuthor] = useState("");
   let token = localStorage.getItem("token");
@@ -14,9 +14,9 @@ const CommentairePost = () => {
 
     axios
       .post(
-        `http://localhost:3000/articles/12`,
+        `http://localhost:3000/articles/${props.id}/comment`,
         {
-          commentaire,
+          content: commentaire,
         },
         {
           headers: {
@@ -28,6 +28,7 @@ const CommentairePost = () => {
       )
       .then((res) => {
         console.log(res);
+        window.location.reload();
       });
   };
   return (
