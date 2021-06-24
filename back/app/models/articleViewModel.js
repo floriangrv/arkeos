@@ -31,7 +31,8 @@ class ArticleViewModel extends CoreModel {
                 "user"."username" AS "author", "user"."profile_picture" AS "avatar"
                 FROM "comment"
                 JOIN "user" ON "user"."id" = "comment"."author_id"
-                WHERE "article_id" = $1`, [id]);
+                WHERE "article_id" = $1
+                ORDER BY "created_at" ASC`, [id]);
 
             const result = [article.rows[0], comment.rows, photoArticle.rows];
             return result;

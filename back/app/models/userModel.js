@@ -43,7 +43,7 @@ class UserModel extends CoreModel {
     try {
       const result = await client.query(
         `SELECT "id", "password", "email", "username" FROM "${this.tableName}" 
-            WHERE "email" = $1 RETURNING "id", "username"`,
+            WHERE "email" = $1`,
         [data.email]
       );
 
