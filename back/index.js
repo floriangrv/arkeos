@@ -10,7 +10,10 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const { createAdapter } = require("@socket.io/postgres-adapter");
+
+app.set('view engine', 'ejs');
+app.set('views', './app/views');
+app.use(express.static('./app/statics'));
 
 
 // gestion des tokens
@@ -41,7 +44,7 @@ const { request } = require("express");
 
 app.use(controlIfToken);
 
-if (request.user){
+//if (request.user){
    //on écoute les messages
   io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
@@ -49,7 +52,7 @@ if (request.user){
       io.emit('chat message', msg);
     });
   });
-}
+//}
 
 // tous les routers
 app.use("/login", loginRouter);
