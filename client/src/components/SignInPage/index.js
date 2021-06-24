@@ -27,7 +27,7 @@ const SignInPage = () => {
         if (res.data.errors) {
           console.log(res.data.errors);
         } else {
-          // window.location = "/";
+          window.location = "/";
 
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user", res.data.user.id);
