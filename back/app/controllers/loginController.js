@@ -32,9 +32,10 @@ exports.getConnected = async (request, response, next) => {
         });
         const user = {
           id: hash.id,
-          username: hash.username
+          username: hash.username,
         };
-        response.status(200).json(token, user);
+        console.log(user);
+        response.status(200).json({ token, user });
       }
     });
   } catch (error) {

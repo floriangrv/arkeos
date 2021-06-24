@@ -6,7 +6,7 @@ import Comment from "../Comments";
 import CommentairePost from "../CommentairePost";
 import "./style.css";
 import axios from "axios";
-import Article_modifier from '../Article_modifier';
+import Article_modifier from "../Article_modifier";
 
 const Article = () => {
   const [content, setContent] = useState([]);
@@ -38,7 +38,6 @@ const Article = () => {
   useEffect(() => {
     getDataFromApi();
   }, []);
-
 
   return (
     <>
@@ -72,11 +71,11 @@ const Article = () => {
         <div className="Answers">
           <Comment />
 
-        <div className="Answer_form_container">
-          <CommentairePost />
+          <div className="Answer_form_container">
+            <CommentairePost id={id} />
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
