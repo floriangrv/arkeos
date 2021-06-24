@@ -18,6 +18,7 @@ import Sell_item_page from "../Sell_item_page";
 import ProfilPage from "../ProfilPage";
 import My_profile from "../My_profile";
 import Legislation from "../Legislation";
+import Messagerie from "../Messagerie";
 import Create_article from "../Create_article";
 import Agenda from "../Agenda";
 
@@ -31,7 +32,9 @@ const Arkeos = () => {
         <LeftMenu />
         <Header />
         <Switch>
-          <Route path="/message">{/* Message composant example  */}</Route>
+          <Route path="/message">
+            <Messagerie />
+          </Route>
 
           <Route exact path="/">
             <Create_article />
