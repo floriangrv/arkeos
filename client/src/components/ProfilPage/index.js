@@ -32,10 +32,6 @@ const ProfilPage = (props) => {
       });
   };
 
-  
- 
-  
-
   useEffect(() => {
     getDataFromApi();
   }, []);
@@ -46,7 +42,6 @@ const ProfilPage = (props) => {
         <h2>Profil de {member.username}</h2>
         <div className="img-container">
           <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
-          <UploadImg />
         </div>
         <div className="content-container">
           <div className="profil-user-container">
@@ -60,6 +55,5 @@ const ProfilPage = (props) => {
       </div>
     </div>
   );
-
-}
+};
 export default ProfilPage;
