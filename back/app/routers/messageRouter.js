@@ -11,9 +11,9 @@ const {authenticateToken} = require('../middlewares/members');
 //router.use(authenticateToken);
 
 // affiche les messages
-router.get('/:sender', messageController.showMessages);
+router.get('/:receiver', messageController.showMessages);
 
 // envoie un message
-router.post('/:sender', messageController.addMessages);
+router.post('/:receiver', messageController.addMessages);
 
 module.exports = router;
