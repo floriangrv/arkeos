@@ -67,6 +67,14 @@ exports.getAllArticles = async (request, response, next) => {
       return next();
     }
 
+    for (const article of articles){
+      const content = article.dataValues.content.split(' ');
+      content.length = 40;
+      result = content.join(" ");
+      console.log(result);
+      article.dataValues.content = result;
+    }
+
     response.json(articles);
   } catch (error) {
     console.trace(error);
