@@ -42,11 +42,14 @@ exports.addMessages = async (request, response, next) => {
         
         //data.sender_id = 1;
         
-        data.content = request.body;
+        data.content = request.body.content;
 
-        if (isNaN(id.receiver) || isNaN(id.sender)){
+        if (isNaN(data.receiver_id) || isNaN(data.sender_id)){
             return next();
         }
+
+
+        console.log(data);
 
         const messages = await MessageModel.addConversation(data);
 
