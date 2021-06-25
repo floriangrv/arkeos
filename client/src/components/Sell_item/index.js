@@ -45,7 +45,7 @@ const Sell_item = (props) => (
           src={profil}
           alt="Image de profil du vendeur"
         ></img>
-        <span className="Seller_pseudo">{props.item.dataValues.author}</span>
+        <span className="Seller_pseudo"> <a href={"/membres/" + props.item.dataValues.author_id}>{props.item.dataValues.author}</a> </span>
       </div>
     </div>
   </div>

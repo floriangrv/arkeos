@@ -30,14 +30,22 @@
   
 }
 
+.Main_conversation li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .Main_conversation li .Answer_container {
-  width: 60%;
-  height: 20%;
+  width: 80%;
+
   background-color: rgb(107, 102, 97, 0.8);
   border: none;
+  
 }
 
 .Answer_area {
   width: 100%;
   height: 15%;
  }
+

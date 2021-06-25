@@ -67,7 +67,6 @@ export default function IconLabelButtons() {
         variant="contained"
         color="primary"
         size="large"
-        
         className={classes.button}
         startIcon={<FavoriteIcon />}
       >

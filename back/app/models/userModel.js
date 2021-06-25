@@ -83,6 +83,21 @@ class UserModel extends CoreModel {
       console.trace(error);
     }
   }
+
+  static async findById(id) {
+    console.log(id);
+    const result = await client.query(`SELECT "id", "username", "profile_picture" 
+    FROM "user" 
+    WHERE "id" = $1`, 
+    [id]);
+    console.log(result.rows[0]);
+    if (!result.rows[0]) {
+        return null;
+    }
+    return result.rows[0];
+};
+
+
 }
 
 module.exports = UserModel;

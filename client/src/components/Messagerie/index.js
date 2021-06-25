@@ -56,17 +56,9 @@ console.log(messages)
 
         {messages.map((message) => (  
           
-          
-          (message.sender_id === user_id) 
+           (<li> <Message1 key={message.id} data={message} /> </li>)) 
 
-       ? <li> <Message2 key={message.id} data={message} /> </li> 
-
-      : <li> <Message1 key={message.id} data={message} /> </li>
-          
-        ))}
-        
- 
-        
+        )}
         </ul>
       </div>
         <div className=" Answer_area">

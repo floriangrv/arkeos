@@ -10,10 +10,13 @@ const {authenticateToken} = require('../middlewares/members');
 
 router.use(authenticateToken);
 
-// affiche les messages
+// affiche les messages d'une discussion
 router.get('/:receiver', messageController.showMessages);
 
 // envoie un message
 router.post('/:receiver', messageController.addMessages);
+
+// affiche les discussions
+router.get('/', messageController.showDiscussion);
 
 module.exports = router;
