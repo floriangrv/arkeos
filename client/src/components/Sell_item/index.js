@@ -28,7 +28,7 @@ const Sell_item = (props) => (
           {" "}
           Date de naissance :{props.item.dataValues.birth_date}
         </p>
-        <span className="Price">{props.item.dataValues.price}</span>
+        <span className="Price">{props.item.dataValues.price}€</span>
       </div>
 
       <div className="Sell_item_picture_container">
