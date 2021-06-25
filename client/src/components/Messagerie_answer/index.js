@@ -15,11 +15,11 @@ const Messagerie_answer = () => {
   console.log(id);
 
   const CreatePost = (event) => {
-    event.preventDefault()
-  }
+   
+  
   axios.post(`http://localhost:3000/messages/${id}`,
     {
-      //trucback : post,
+     content : post,
     },
  {
       headers: {
@@ -32,7 +32,7 @@ const Messagerie_answer = () => {
       console.log(res)
     })
 
-
+  }
 
   return (
     <div className=" Chat_answer">
@@ -40,7 +40,7 @@ const Messagerie_answer = () => {
 
         <textarea id="Chat_answer_area"
           rows="5" cols="33"
-          value={post} onChange={(e) => setPost(e.target.value)}>
+           value= {post} onChange={(e) => setPost(e.target.value)}>
 
         </textarea>
         <button className=" Send_answer_button" type="submit" value="Envoyer">Envoyer</button>

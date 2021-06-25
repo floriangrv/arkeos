@@ -30,7 +30,7 @@ export default function Sign_up_button() {
         color="primary"
         size="large"
         value="Inscription"
-        href="signup"
+        href="/signup"
         className={classes.button}
         startIcon={<BorderColorIcon />}
       >

@@ -1,5 +1,6 @@
 const MessageModel = require('../models/messageModel');
 const ChatViewModel = require('../models/chatViewModel');
+const UserModel = require("../models/userModel");
 
 
 exports.showMessages = async (request, response, next) => {
@@ -42,11 +43,14 @@ exports.addMessages = async (request, response, next) => {
         
         //data.sender_id = 1;
         
-        data.content = request.body;
+        data.content = request.body.content;
 
-        if (isNaN(id.receiver) || isNaN(id.sender)){
+        if (isNaN(data.receiver_id) || isNaN(data.sender_id)){
             return next();
         }
+
+
+        console.log(data);
 
         const messages = await MessageModel.addConversation(data);
 
@@ -57,6 +61,45 @@ exports.addMessages = async (request, response, next) => {
         console.log(messages);
 
         response.json({messages});
+
+    } catch (error) {
+        console.trace(error);
+        response.status(500).json({ error: `Server error, please contact an administrator` });
+    }
+};
+
+exports.showDiscussion = async (request, response, next) => {
+    try {
+        const id = request.user;
+
+        if (isNaN(id)){
+            return next();
+        }
+
+        const discussions = await ChatViewModel.showDiscussions(id);
+        console.log(discussions);
+
+        if(!discussions){
+            return next();
+        }
+
+        const result = [];
+
+        for (const discussion of discussions){
+            if (discussion.receiver_id !== id || result.find(value => value !== discussion.receiver_id)){
+                const user = await UserModel.findById(discussion.receiver_id);
+                result.push(user);
+            } else if (discussion.sender_id !== id || result.find(value => value !== discussion.sender_id)) {
+                const user = await UserModel.findById(discussion.sender_id);
+                result.push(user);
+            }
+        } 
+
+
+        console.log(result);
+
+        response.json(result);
+       
 
     } catch (error) {
         console.trace(error);
