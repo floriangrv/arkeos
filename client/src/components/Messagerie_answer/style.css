@@ -27,7 +27,8 @@ textarea:focus {
   height: 100%;
 }
 
-form {
+
+.Chat_answer form {
   display: flex;
   align-items: flex-start;
   width: 100%;
