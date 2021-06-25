@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadImg from "../UploadImg";
+import { DropzoneArea } from "material-ui-dropzone";
 import "./styles.scss";
 
 const Profilpage = (props) => {
@@ -49,7 +50,8 @@ const Profilpage = (props) => {
         <h2>Profil de {member.username}</h2>
         <div className="img-container">
           <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
-          <UploadImg />
+          <DropzoneArea onChange={this.handleChange.bind(this)} />
+          />
         </div>
         <div className="content-container">
           <div className="profil-user-container">
