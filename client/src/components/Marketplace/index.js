@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Create_sell_item from '../Create_sell_item';
-import Sell_item from '../Sell_item';
-import './style.css'
-
-
-
+import Create_sell_item from "../Create_sell_item";
+import Sell_item from "../Sell_item";
+import CategoryMarketplace_selector from "../CategoryMarketplace_selector";
+import "./style.css";
 
 const Marketplace = () => {
-  let token = localStorage.getItem('token');
+  let token = localStorage.getItem("token");
   const [items, setItems] = useState([]);
+  const [category, setCategory] = useState(false);
 
-console.log(items)
+  console.log(items);
+  console.log(category);
 
-  
+  useEffect(() => {
+    getDataFromApi(category);
+  }, [category]);
+
   const getDataFromApi = () => {
-
     axios
-      .get(`http://localhost:3000/marketplace`, {
+      .get(`http://localhost:3000/marketplace/?category=${category}`, {
         headers: {
           authorization: token,
           Accept: "application/json",
@@ -25,53 +27,32 @@ console.log(items)
         },
       })
       .then((response) => {
-        
-       
         console.log(response);
-        setItems(response.data)
+        setItems(response.data);
       })
       .catch((error) => {
         console.log(error);
-      } )
+      });
   };
 
-  useEffect(() => {
-    getDataFromApi();
-  }, []);
-     
-    
-  
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value);
+    console.log(e);
+  };
+
   return (
-    
-    <>
-      <div className='Select_buttons'>
-        <div className="Selector_container">
-          <label className="Label" htmlFor="category">
-            Catégorie
-    </label>
-          <select className="Select" name="category" id="category">
-            <option value="all">Toutes les catégories</option>
-            <option value="Serpents">Serpents</option>
-            <option value="Lézards">Lézards</option>
-            <option value="Tortues">Tortues</option>
-            <option value="Amphibiens">Amphibiens</option>
-          </select>
-          {token ? <Create_sell_item /> : null}
+    <div className="markeplace-container">
+      <label className="Label" htmlFor="category"></label>
+      <CategoryMarketplace_selector CategoryonChange={handleChangeCategory} />
+      {token ? <Create_sell_item /> : null}
 
-         <div className="sellItems">
-            {items.map((item) => (
-              <Sell_item key={item.dataValues.id} item={item} />
-            ))}
-          </div>
-
-        </div>
-
+      <div className="sellItems">
+        {items.map((item) => (
+          <Sell_item key={item.dataValues.id} item={item} />
+        ))}
       </div>
-
-    </>
-  )
+    </div>
+  );
 };
 
-
-
-export default Marketplace
+export default Marketplace;
