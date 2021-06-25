@@ -8,7 +8,7 @@ const messageController = require('../controllers/messageController');
 // middleware pour controller le token
 const {authenticateToken} = require('../middlewares/members');
 
-//router.use(authenticateToken);
+router.use(authenticateToken);
 
 // affiche les messages
 router.get('/:receiver', messageController.showMessages);

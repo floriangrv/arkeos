@@ -7,9 +7,9 @@ exports.showMessages = async (request, response, next) => {
         const id = {};
         id.receiver = parseInt(request.params.receiver, 10);
 
-        //id.sender = request.user;
+        id.sender = request.user;
 
-        id.sender = 1;
+        //id.sender = 1;
 
         if (isNaN(id.receiver) || isNaN(id.sender)){
             return next();
@@ -24,6 +24,7 @@ exports.showMessages = async (request, response, next) => {
         console.log(messages);
 
         response.json({messages});
+       
 
     } catch (error) {
         console.trace(error);
@@ -37,8 +38,9 @@ exports.addMessages = async (request, response, next) => {
    
         data.receiver_id = parseInt(request.params.receiver, 10);
         
-        //data.sender_id = request.user;
-        data.sender_id = 1;
+        data.sender_id = request.user;
+        
+        //data.sender_id = 1;
         
         data.content = request.body;
 
