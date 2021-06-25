@@ -52,6 +52,7 @@ const ProfilPage = (props) => {
             <p className="especes">{species}</p>
           </div>
         </div>
+        <button className='Contact_member'> <a href={"/message/" + id}> Contacter </a> </button>
       </div>
     </div>
   );

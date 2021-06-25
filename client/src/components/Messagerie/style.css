@@ -11,48 +11,23 @@
 .Chat_card {
   display: flex;
   flex-wrap: nowrap;
-  width: 70%;
+  flex-direction: column;
+  width: 50%;
   height: 70%;
   border-radius: 1em;
-  background-color: #F9F7ED;
+  background-image: linear-gradient(to right bottom, rgb(165, 198, 186, 0.5), rgb(255, 255, 255));
+  box-shadow: 3px 3px 8px 2px rgba(107,102,97,0.7);
+  
 }
 
-.Conversations {
-  height: 100%;
-  width: 20vw;
-  border-radius: 1em 0 0 1em;
-  background-color: #938E85;
-}
+
 
 .Main_conversation {
-  width: 90vw;
-  height: 100%;
- 
-}
-
-.Chat_messages {
   width: 100%;
   height: 85%;
-  border-radius: 1em;
 }
-.Chat_answer {
+
+.Answer_area {
   width: 100%;
   height: 15%;
-  border-radius: 0 0 1em 0 ;
-  background-color: #6B6661;
-}
-
-#Chat_answer_area {
-  width: 100%;
-  height: 100%;
-  border-radius: 0 0 1em 0 ;
-  background-color: #6B6661;
-  resize: none;
-  color: #A5C6BA;
-  font-family: 'Roboto';
-  font-size: 1rem;
-}
-
-#Chat_answer_area:focus {
-  outline: none;
-}
+ }
