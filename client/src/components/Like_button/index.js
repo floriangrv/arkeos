@@ -1,42 +1,14 @@
-
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import axios from "axios";
 
-
 const address = window.location.href;
-  let url = address.split("/");
-  let id = url[url.length - 1];
+let url = address.split("/");
+let id = url[url.length - 1];
 
-  let token = localStorage.getItem('token');
-
-const Rating = () => {
-
-  return axios
-  .post(
-    `http://localhost:3000/articles/${id}/raiting`,
-    
-    {
-      headers: {
-        authorization: token,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    }
-
-  )
-    .then(function (response) {
-      //handle success
-      console.log(response);
-    })
-    .catch(function (response) {
-      //handle error
-      console.log(response);
-    });
-};
-
+let token = localStorage.getItem("token");
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -45,33 +17,59 @@ const useStyles = makeStyles((theme) => ({
     margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",
     color: "#F9F7ED",
-    '&:hover': {
+    "&:hover": {
       background: "#F9F7ED",
-      color: "#6B6661"
-   },
-    
+      color: "#6B6661",
+    },
   },
-
 }));
 
-export default function IconLabelButtons() {
+const IconLabelButtons = (props) => {
+  const [counter, setCounter] = useState("0");
   const classes = useStyles();
 
-  
+  const onClick = () => {
+    axios
+      .post(
+        `http://localhost:3000/articles/${props.data.id}/raiting`,
+        {
+          raiting: counter,
+        },
 
+        {
+          headers: {
+            authorization: token,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+  };
+
+  useEffect(() => {
+    setCounter(props.data.rating);
+  }, [props.data.rating]);
 
   return (
     <div>
- 
-      <Button  onClick={() => Rating ()}
+      <Button
+        onClick={() => onClick()}
         variant="contained"
         color="primary"
         size="large"
         className={classes.button}
         startIcon={<FavoriteIcon />}
       >
-       
+        {counter}
       </Button>
     </div>
   );
-}
+};
+export default IconLabelButtons;

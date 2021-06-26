@@ -67,8 +67,8 @@ exports.getAllArticles = async (request, response, next) => {
       return next();
     }
 
-    for (const article of articles){
-      const content = article.dataValues.content.split(' ');
+    for (const article of articles) {
+      const content = article.dataValues.content.split(" ");
       content.length = 40;
       result = content.join(" ");
       console.log(result);
@@ -118,10 +118,10 @@ exports.addArticle = async (request, response, next) => {
         data.theme_id
         */
 
-        data.author_id = request.user;
+    data.author_id = request.user;
 
-       data.title = data.title.replace(/'/g, "''");
-        data.content = data.content.replace(/'/g, "''");
+    data.title = data.title.replace(/'/g, "''");
+    data.content = data.content.replace(/'/g, "''");
 
     data.title = data.title.replace(/'/g, "''");
     data.content = data.content.replace(/'/g, "''");
@@ -207,22 +207,23 @@ exports.updateArticle = async (request, response, next) => {
 exports.addRating = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
-    
+
     const data = {};
     data.id_article = parseInt(request.params.id, 10);
     data.id_user = request.user;
-    
-    if (!request.user){
+    console.log(request.user);
+    if (!request.user) {
       return `Not connected`;
     }
 
     const rate = await RatingArticleModel.findRating(data);
-    
+    console.log(rate);
     if (rate) {
       const deleteLike = await RatingArticleModel.deleteRating(data);
+      console.log(deleteLike);
       return deleteLike;
     }
-
+    data.rating = 1;
     const rating = await RatingArticleModel.addRaiting(data);
 
     response.status(200).json({ rating });
@@ -237,8 +238,8 @@ exports.addRating = async (request, response, next) => {
 exports.addComment = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
-    
-    if (!request.user){
+
+    if (!request.user) {
       return `Not connected`;
     }
 

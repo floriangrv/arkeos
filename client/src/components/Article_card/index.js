@@ -21,7 +21,7 @@ const Article_card = (props) => {
           <p className="Article_body">{props.article.dataValues.content}</p>
         </div>
         <div className="votes">
-          <Like_button />
+          <Like_button data={props} />
         </div>
       </div>
     </a>
