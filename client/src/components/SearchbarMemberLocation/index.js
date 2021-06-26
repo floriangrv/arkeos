@@ -12,7 +12,7 @@ function SearchbarMemberLocation(props) {
           className="prompt"
           value={props.value}
           onChange={(event) => props.setSearchCity(event.target.value)}
-          placeholder="ville"
+          placeholder="Ville"
         />
       </div>
     </form>

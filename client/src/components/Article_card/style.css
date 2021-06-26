@@ -8,7 +8,7 @@
   background: #6B6661;
   width: 320px;
   height: 360px;
-border-radius: 10px;
+border-radius: 0.4rem;
 margin: 20px;
 box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
 overflow: hidden;

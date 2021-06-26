@@ -4,12 +4,17 @@ import profil from "../../assets/images/profil.png";
 import "./style.css";
 
 const Sell_item = (props) => (
+  console.log(props),
+
+  
+ 
   <div className="Market_container">
+     <a href={"/marketplace/" + props.item.dataValues.id}>
     <div className="Sell_item_container">
       <div className="Sell_item">
         <p className="Sell_item_info">
           {" "}
-          Nom scientifique : {props.item.dataValues.scientific_name}
+          Nom scientifique : {props.item.dataValues.scientific_name} 
         </p>
         <p className="Sell_item_info">
           {" "}
@@ -48,7 +53,9 @@ const Sell_item = (props) => (
         <span className="Seller_pseudo"> <a href={"/membres/" + props.item.dataValues.author_id}>{props.item.dataValues.author}</a> </span>
       </div>
     </div>
+    </a>
   </div>
+
 );
 
 export default Sell_item;

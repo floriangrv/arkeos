@@ -1,12 +1,12 @@
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: "10em",
-    height: "3em",
+    width: "15em",
+    height: "5em",
     margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",
     fontSize: 10,
@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
     color: "#F9F7ED",
 
     "&:hover": {
-      background: "rgb(249, 247, 237)",
+      background: "#F9F7ED",
       color: "#6B6661",
     },
   },
 }));
 
-export default function Sign_in_button() {
+export default function Add_event() {
   const classes = useStyles();
 
   return (
@@ -30,11 +30,12 @@ export default function Sign_in_button() {
         color="primary"
         size="large"
         value="Connexion"
-        href="/signin"
+        href=  "https://calendar.google.com/calendar/embed?src=dv65fm3h31jdg5g41de7nti6qk%40group.calendar.google.com&ctz=Europe%2FParis"
+        target="blank"
         className={classes.button}
-        startIcon={<AccountCircleIcon />}
+        startIcon={<EventAvailableIcon />}
       >
-        Connexion
+        Ajouter un événement
       </Button>
     </div>
   );

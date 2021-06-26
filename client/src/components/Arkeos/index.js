@@ -20,7 +20,7 @@ import My_profile from "../My_profile";
 import Legislation from "../Legislation";
 import Messagerie from "../Messagerie";
 import Conversations from "../Conversations";
-import Create_article from "../Create_article";
+
 import Agenda from "../Agenda";
 
 // == Composant
@@ -33,12 +33,16 @@ const Arkeos = () => {
         <LeftMenu />
         <Header />
         <Switch>
-          <Route path="/message">
+          <Route exact path="/message">
             <Conversations />
           </Route>
 
+          <Route exact path="/message/:id">
+            <Messagerie />
+          </Route>
+
           <Route exact path="/">
-            <Create_article />
+            
             <Articles />
           </Route>
 

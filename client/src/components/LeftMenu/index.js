@@ -7,10 +7,8 @@ import LeftMenuItems from '../LeftMenuItems'
 import MessageIcon from '@material-ui/icons/Message';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import PersonIcon from '@material-ui/icons/Person';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
-import DescriptionIcon from '@material-ui/icons/Description';
 import { NavLink } from 'react-router-dom'
 import GavelIcon from '@material-ui/icons/Gavel';
 
@@ -21,51 +19,49 @@ import './styles.scss'
 const LeftMenu = () => {
   return (
 
-    
-      <div className="leftmenu">
+
+    <div className="leftmenu">
       <Menu >
-        
-        <NavLink exact to="/" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Accueil" Icon={HomeIcon}/>
+
+        <NavLink exact to="/" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Accueil" Icon={HomeIcon} />
         </NavLink>
 
-        <NavLink to="/message" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Messagerie" Icon={MessageIcon}/>
+
+
+        <NavLink to="/message" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Messagerie" Icon={MessageIcon} />
         </NavLink>
 
-        <NavLink to="/marketplace" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Marketplace" Icon={ShoppingCartIcon}/>
-        </NavLink>
-        
-        <NavLink to="/members" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Membres" Icon={PeopleIcon}/>
+        <NavLink to="/profile" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Profil" Icon={PersonIcon} />
         </NavLink>
 
-        <NavLink to="/questions" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Questions" Icon={QuestionAnswerIcon}/>
+        <NavLink to="/marketplace" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Marketplace" Icon={ShoppingCartIcon} />
         </NavLink>
 
-        <NavLink to="/profile" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Profil" Icon={PersonIcon}/>
+        <NavLink to="/members" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Membres" Icon={PeopleIcon} />
         </NavLink>
 
-        <NavLink to="/calendar" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Agenda" Icon={InsertInvitationIcon}/>
+
+
+
+        <NavLink to="/calendar" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Agenda" Icon={InsertInvitationIcon} />
         </NavLink>
 
-        <NavLink to="/breed" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Fiches d'élevage" Icon={DescriptionIcon}/>
+
+        <NavLink to="/legislation" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Législation" Icon={GavelIcon} />
         </NavLink>
+      </Menu>
 
-        <NavLink to="/legislation" style= {{ outline: 'none' }}>
-        <LeftMenuItems name="Législation" Icon={GavelIcon}/>
-        </NavLink>
-        </Menu>
 
-        
 
-      
-      </div>
+
+    </div>
   )
 }
 

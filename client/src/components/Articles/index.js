@@ -36,6 +36,7 @@ const Articles = () => {
   console.log(theme);
   return (
     <>
+    
       <Categorie_selector
         CategoryonChange={handleChangeCategory}
         ThemeonChange={handleChangeTheme}

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import StarsIcon from '@material-ui/icons/Stars';
 import cameleon from '../../assets/images/cameleon.png'
+import axios from "axios";
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -24,12 +25,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sell_item_page = () => {
+  let token = localStorage.getItem("token");
+  const address = window.location.href;
+  let url = address.split("/");
+  let id = url[url.length - 1];
 
+  const [articledata, setArticledata] = useState([]);
+
+  useEffect(() => {
+    getDataFromApi();
+  }, []);
+
+  const getDataFromApi = () => {
+    axios
+      .get(`http://localhost:3000/marketplace/${id}`, {
+        headers: {
+          authorization: token,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setArticledata(response.data.dataValues)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const classes = useStyles();
 
   return (
     <>
-   {/*<a href={"/articles/" + props.dataValues.id}></a>*/}
+   
   <div className="Item_page">
     <div className="Item_infos">
       <div className="Item_picture_container">
@@ -51,14 +79,19 @@ const Sell_item_page = () => {
       </Button>
     </div>
       <div className="Item_description">
-      <p className="Sell_item_description"> Nom scientifique : Chamaeleo calyptratus</p>
-      <p className="Sell_item_description"> Localité : </p>
-      <p className="Sell_item_description"> Phase :</p>
-      <p className="Sell_item_description"> NC : Oui</p>
-      <p className="Sell_item_description"> Pays de naissance : France</p>
-      <p className="Sell_item_description"> Date de naissance : 2020</p>
-      <p className="Sell_item_description"> Informations complémentaires : Un peu caracteriél mais très sympa, il adore se cacher sous les feuilles et se déplacer sur les lianes. Bien sûr ils se met souvent sous la lampe pour aller chercher la chaleur et les UV. Il adore les grillons et aussi les criquets !</p>
-      <span className='Price Item_price'>60 €</span>
+      <p className="Sell_item_description"> Nom scientifique : {articledata.scientific_name}</p>
+      <p className="Sell_item_description"> Nom scientifique : {articledata.scientific_name}</p>
+      <p className="Sell_item_description"> Localité : {articledata.locality} </p>
+      <p className="Sell_item_description"> Phase : {articledata.phase}</p>
+      <p className="Sell_item_description"> NC : {articledata.born_captivity}</p>
+      <p className="Sell_item_description"> Pays de naissance : {articledata.native_country}</p>
+      <p className="Sell_item_description"> Date de naissance : {articledata.birth_date}</p>
+      <p className="Sell_item_description"> Informations complémentaires : {articledata.content}</p>
+      <div className='Price_container'>
+        <p className='Price Item_price'>{articledata.price} €
+        </p>
+        </div>
+      
       </div>
 
     </div>
