@@ -56,7 +56,7 @@ const Article = () => {
             <hr className="One_article_divider "></hr>
             <p className="One_article_body">{content}</p>
 
-            <Like_button />
+            <Like_button data={articledata} />
 
             <div className="Profil_picture_container">
               <img
