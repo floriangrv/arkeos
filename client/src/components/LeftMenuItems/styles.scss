@@ -4,21 +4,22 @@
   align-items: center;
   margin-top: 20px;
   overflow-y: hidden;
+  font-weight: bold;
   *:focus {
     outline: none;
 }
 
   &:hover {
-    color: #4e4a46;
-    border-radius: 35px;
-    background-color: #F9F7ED;
+    color: #A5C6BA;
+    border-radius: 0.5em;
+    background-color: rgb(249, 247, 237);
   }
 
 }
 
 .leftmenu-items > h2{
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.5rem;
   margin-right: 20px;
 
 }
@@ -73,7 +74,7 @@ bm-item active {
 
 /* General sidebar styles */
 .bm-menu {
-  background: #A5C6BA;
+  background: rgb(165, 198, 186, 0.9);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }

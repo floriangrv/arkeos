@@ -4,8 +4,10 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import DescriptionIcon from '@material-ui/icons/Description';
 import { useForm } from 'react-hook-form'
 import axios from "axios";
+import Button from '@material-ui/core/Button';
 import './style.css'
 
 
@@ -34,18 +36,19 @@ const useStyles = makeStyles((theme) => ({
 
   },
   button: {
-    width: "10em",
-    height: "2.5em",
-    margin: "1em 0 0 2em",
+    width: "13em",
+    height: "3em",
+    margin: "0 2rem 0 2rem",
     backgroundColor: "#A5C6BA",
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontWeight: "bold",
     color: "#F9F7ED",
     border: "none",
     borderRadius: "0.3rem",
+    boxShadow: "0px 1px 1px 0.5px rgba(107,102,97,0.7)",
 
     "&:hover": {
-      background: "#F9F7ED",
+      background: "rgb(249, 247, 237,0.5)",
       color: "#6B6661",
     },
   }
@@ -99,10 +102,10 @@ export default function Create_article() {
 
 
   return (
-    <div>
-      <button className={classes.button} type="button" onClick={handleOpen}>
+    < >
+      <Button id= "Create_button" className={classes.button} type="button"  startIcon={<DescriptionIcon />} onClick={handleOpen}>
         Créer un article
-      </button>
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -160,6 +163,6 @@ export default function Create_article() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

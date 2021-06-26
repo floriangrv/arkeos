@@ -12,7 +12,7 @@
 flex-wrap: wrap;
 justify-content: flex-start;
 align-items: flex-start;
-  width: 60vw;
+  width: 50vw;
   min-height: 100vh;
 border-radius: 10px;
 background-color: #6B6661;
@@ -37,7 +37,7 @@ margin: 2rem;
 
 .Item_description {
   margin: 2rem;
-  width: 80%;
+  width: 90%;
 }
 
 .Sell_item_description {
@@ -50,14 +50,23 @@ margin: 2rem;
 .favorite {
   position: absolute;
   text-align: center;
-  right: 20rem;
+  right: 27rem;
   top: 20rem;
+}
+
+.Price_container {
+  display: flex;
+justify-content: flex-end;
+  width: 100%;
+  
 }
 
 .Item_price {
   right: 20rem;
   top: 55rem;
-  width: 10rem;
-  height: 6rem;
+  width: 15rem;
+  height: 9rem;
   font-size: 4rem;
+  position: static;
+  margin-top: 2rem;
 }

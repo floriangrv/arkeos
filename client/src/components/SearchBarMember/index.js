@@ -12,7 +12,7 @@ function SearchbarMember(props) {
           className="prompt"
           value={props.value}
           onChange={(event) => props.setSearchMembers(event.target.value)}
-          placeholder="pseudo"
+          placeholder="Pseudo"
         />
       </div>
     </form>

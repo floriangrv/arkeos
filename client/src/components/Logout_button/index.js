@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     height: "3em",
     margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",
-    fontSize: 10,
+    fontSize: "0.8rem",
     fontWeight: "bold",
     color: "#F9F7ED",
 
     '&:hover': {
-      background: "#F9F7ED",
+      background: "rgb(249, 247, 237)",
       color: "#6B6661"
       
    },

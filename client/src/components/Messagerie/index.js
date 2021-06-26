@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Messagerie_answer from '../Messagerie_answer';
 import Message1 from "../Message1";
-import Message2 from "../Message2";
 import axios from 'axios';
 import './style.css';
 

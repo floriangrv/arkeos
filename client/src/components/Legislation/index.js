@@ -19,6 +19,8 @@ const Legislation = () => (
         <p className="L2">Il s'agit d'une adaptatin de la CITES par l'Union Européenne.
         </p>
         <p className="L3">la réglementation française</p>
+
+        <p className="L3 L7"> ⚠ Il est interdit de poster une annonce dans la Marketplace si elle concerne une espèce soumise au certificat de capacité dès le premier individu. ⚠</p>
     </div>
 
     <div className="Law_container">

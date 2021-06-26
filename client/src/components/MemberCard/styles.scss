@@ -7,13 +7,15 @@
 
 .card-body {
   text-align: center;
+  margin: 1rem;
+  font-family: 'Roboto';
 }
 
 .card {
   width: 330px;
+  height: 380px;
   background: #f2f3f7;
-  box-shadow: 0.6em 0.6em 1.2em #d2dce9,
-    -0.5em -0.5em 1em #ffffff;
+  box-shadow: 3px 5px 20px 5px rgb(252, 252, 250);
   border-radius: 20px;
   margin: 20px;
  
@@ -31,25 +33,27 @@
 .card-image-container {
   display: flex;
   padding: 20px 20px;
-  background-image: linear-gradient(to right top, #a5c6ba, #bcd2c2, #d2dece, #e7eadc, #f9f7ed);
+  background-image: linear-gradient(to right top, rgb(165, 198, 186, 0.7), rgb(188, 210, 194, 0.7), rgb(210, 222, 206, 0.7), rgb(231, 234, 220, 0.7), rgb(249, 247, 237, 0.7));
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
 
 .card-body h3 {
-  font-size: 18px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #6B6661;
   
 }
 
 .card-body h4 {
-  font-size: 14px;
+  font-size: 1.2rem;
   padding: 5px 0px 15px 0px;
   color: #a5c6ba;;
   
 }
 
 .card-body p {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 10px 10px;
-  color: #3f3c39;
+  color: #6B6661;
 }
