@@ -9,12 +9,17 @@ import axios from "axios";
 import Article_modifier from "../Article_modifier";
 
 const Article = () => {
+ 
   const [content, setContent] = useState([]);
   const [author, setAuthor] = useState([]);
   const [title, setTitle] = useState([]);
   const [articledata, setArticledata] = useState([]);
+  const [author_id, setAuthor_id] = useState([]);
 
   let token = localStorage.getItem("token");
+  let user_id = localStorage.getItem("user");
+console.log(user_id);
+
   const address = window.location.href;
   let url = address.split("/");
   let id = url[url.length - 1];
@@ -29,10 +34,14 @@ const Article = () => {
         },
       })
       .then((response) => {
+        console.log(response)
         setContent(response.data[0].content);
         setTitle(response.data[0].title);
         setAuthor(response.data[0].author);
         setArticledata(response.data[0]);
+        setAuthor_id (response.data[0].author_id)
+        console.log(response.data[0].author_id, user_id)
+      
       });
   };
   useEffect(() => {
@@ -41,7 +50,7 @@ const Article = () => {
 
   return (
     <>
-      {token ? <Article_modifier data={articledata} /> : null}
+      {user_id == author_id ? <Article_modifier data={articledata} /> : null}
       <div className="Article">
         <div className="One_article_card">
           <div className="Image_container">

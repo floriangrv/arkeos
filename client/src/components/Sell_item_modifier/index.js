@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -15,12 +15,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'Wrap',
-    width: '200',
-    overflowY: 'scroll',
-    color: '#F9F7ED',
-    fontWeight: "bold",
+    width: '400',
+    overflowY: 'scroll'
 
   },
   paper: {
@@ -38,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
   button: {
     width: "10em",
     height: "2.5em",
-    margin: "0 0 0 3em",
+    margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",
-    boxShadow: "0px 1px 3px 1px rgba(107,102,97,0.7)",
     fontSize: "1rem",
     fontWeight: "bold",
     color: "#F9F7ED",
@@ -55,11 +52,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Create_sell_item() {
+export default function Sell_item_modifier(props) {
+
+
+
+const [sellitemdata, setModifysellitemdata] = useState ("")
+
+useEffect (() => {
+  setModifysellitemdata (props.data)
+  
+},[props.data])
+console.log(sellitemdata);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  let token = localStorage.getItem("token");
 
+  let token = localStorage.getItem("token");
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -68,14 +77,19 @@ export default function Create_sell_item() {
     setOpen(false);
   };
 
+const address = window.location.href;
+  let url = address.split("/");
+  let id = url[url.length - 1];
+
   const { register, handleSubmit } = useForm()
+
   const onSubmit = (data) => {
-    console.log(data);
+    
 
     // Je peux faire ma requête ajax a cet endroit là: 
     axios
-      .post(
-        "http://localhost:3000/marketplace",
+      .put(
+        `http://localhost:3000/marketplace/${id}`,
 
         data,
 
@@ -90,7 +104,7 @@ export default function Create_sell_item() {
       )
       .then(function (response) {
         //handle success
-        console.log(response);
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error
@@ -98,13 +112,40 @@ export default function Create_sell_item() {
       });
   }
 
+const onDelete = () => {
+    
 
+    // Je peux faire ma requête ajax a cet endroit là: 
+    axios
+      .delete(
+        `http://localhost:3000/marketplace/${id}`,
+
+
+        {
+          headers: {
+            authorization: token,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+
+      )
+      .then(function (response) {
+        //handle success
+        window.location = '/'
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+
+  }
 
 
   return (
     <div>
       <button className={classes.button} type="button" onClick={handleOpen}>
-        Créer une annonce
+       Modifier l'annonce
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -122,7 +163,7 @@ export default function Create_sell_item() {
         <Fade in={open}>
           <div className={classes.paper}>
 
-            <form className="Sell_item_form" onSubmit={handleSubmit(onSubmit)} >
+          <form className="Sell_item_modifier_form" onSubmit={handleSubmit(onSubmit)} >
               <label htmlFor="pet-category">Catégorie:</label>
 
               <select {...register("category_id", { required: true })} id="pet-category">
@@ -134,13 +175,13 @@ export default function Create_sell_item() {
 
               </select>
               <label className="Sell_item_label" htmlFor="scientific_name">Nom scientifique (Genre espèce): </label>
-              <input {...register("scientific_name", { required: true })} type="text" id="name" />
+              <input {...register("scientific_name", { required: true })} type="text" id="name" value= {sellitemdata.scientific_name} onChange= {(e) => setModifysellitemdata(e.target.value)} />
 
 
               <label className="Sell_item_label" htmlFor="locality">Localité : </label>
-              <input {...register('locality',)} type="text" id="locality" />
+              <input {...register('locality',)} type="text" id="locality" value= {sellitemdata.locality} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
               <label className="Sell_item_label" htmlFor="phase">Phase : </label>
-              <input {...register('phase',)} type="text" id="phase" />
+              <input {...register('phase',)} type="text" id="phase" value= {sellitemdata.phase} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
               <label className="Sell_item_label" htmlFor="born_captivity">L'animal est-il né en captivité ? </label>
               <div className="Radio">
                 <label className="Radio_label" htmlFor="born_captivity">Oui</label>
@@ -157,12 +198,12 @@ export default function Create_sell_item() {
               </div>
 
               <label className="Sell_item_label" htmlFor="name">Pays de naissance  : </label>
-              <input {...register('native_country', { required: true })} type="text" id="native_country" />
+              <input {...register('native_country', { required: true })} type="text" id="native_country" value= {sellitemdata.native_country} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
               <label className="Sell_item_label" htmlFor="birth_date">Date de naissance (AAAA/MM/JJ) : </label>
-              <input {...register('birth_date', { required: true })} type="text" id="birth_date" />
+              <input {...register('birth_date', { required: true })} type="text" id="birth_date" value= {sellitemdata.birth_date} onChange= {(e) => setModifysellitemdata(e.target.value)} />
               <label className="Sell_item_label SpecialLabel" htmlFor="content">Informations complémentaires :</label>
               <textarea {...register('content')} id="content"
-                rows="5" cols="33">
+                rows="5" cols="33" value= {sellitemdata.content} onChange= {(e) => setModifysellitemdata(e.target.value)}>
               </textarea>
               <label className="Sell_item_label SpecialLabel" htmlFor="avatar">Ajouter une image :</label>
 
@@ -171,10 +212,10 @@ export default function Create_sell_item() {
                 accept="image/png, image/jpeg"></input>
               <label htmlFor="img"><PhotoCameraIcon /></label>
               <label className="Sell_item_label" htmlFor="price">Prix : </label>
-              <input {...register('price', { required: true })} type="number" id="price" />
+              <input {...register('price', { required: true })} type="number" id="price" value= {sellitemdata.price} onChange= {(e) => setModifysellitemdata(e.target.value)} />
               <input type="submit" value="Envoyer le formulaire" />
             </form>
-
+            <input type="submit" value="Supprimer l'article" onClick= {onDelete}/>
           </div>
         </Fade>
       </Modal>

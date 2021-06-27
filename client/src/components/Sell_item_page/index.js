@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import StarsIcon from '@material-ui/icons/Stars';
 import cameleon from '../../assets/images/cameleon.png'
+import Sell_item_modifier from "../Sell_item_modifier";
 import axios from "axios";
 import './style.css'
 
@@ -59,6 +60,7 @@ const Sell_item_page = () => {
     <>
    
   <div className="Item_page">
+    <Sell_item_modifier data= {articledata}/>
     <div className="Item_infos">
       <div className="Item_picture_container">
       <img className='Item_picture'
