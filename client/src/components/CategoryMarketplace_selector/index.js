@@ -1,10 +1,11 @@
 import React from "react";
+import './style.css'
 
 const CategoryMarketplace_selector = (props) => {
   return (
     <>
       <select
-        className="Select"
+        className=" Marketplace_selector"
         name="category"
         id="category"
         onChange={props.CategoryonChange}

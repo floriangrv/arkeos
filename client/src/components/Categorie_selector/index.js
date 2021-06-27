@@ -2,9 +2,14 @@ import React from "react";
 import "./style.css";
 import Create_article from "../Create_article";
 
-const Categorie_selector = (props) => (
+const Categorie_selector = (props) => {
+
+  let token = localStorage.getItem("token");
+
+  return (
   <div className="Selector_container">
-    <Create_article />
+    
+    {token ? <Create_article /> : null}
     <label className="Label" htmlFor="category">
       Catégorie
     </label>
@@ -43,6 +48,6 @@ const Categorie_selector = (props) => (
       <option value="Législation">Législation</option>
     </select>
   </div>
-);
+  )};
 
 export default Categorie_selector;

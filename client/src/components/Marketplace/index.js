@@ -41,17 +41,23 @@ const Marketplace = () => {
   };
 
   return (
-    <div className="markeplace-container">
-      <label className="Label" htmlFor="category"></label>
-      <CategoryMarketplace_selector CategoryonChange={handleChangeCategory} />
-      {token ? <Create_sell_item /> : null}
+    <>
+      <div className="Selectors">
+        {token ? <Create_sell_item /> : null}
+        <label className="Label" htmlFor="category"></label>
+        <CategoryMarketplace_selector CategoryonChange={handleChangeCategory} />
 
-      <div className="sellItems">
-        {items.map((item) => (
-          <Sell_item key={item.dataValues.id} item={item} />
-        ))}
       </div>
-    </div>
+      <div className="markeplace-container">
+
+
+        <div className="sellItems">
+          {items.map((item) => (
+            <Sell_item key={item.dataValues.id} item={item} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

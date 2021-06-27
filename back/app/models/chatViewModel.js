@@ -17,7 +17,9 @@ class ChatViewModel extends CoreModel {
   }
 
   static async showConversation(id) {
-    const result = await client.query(`SELECT * FROM ${this.tableName} 
+    const result = await client.query(`SELECT "id", "content", "receiver_id", "sender_id", "author",
+    TO_CHAR("created_at", 'DD-MM-YYYY HH24:MI') "created_at"
+    FROM ${this.tableName} 
     WHERE receiver_id = $1 AND sender_id = $2 
     OR sender_id = $3 AND receiver_id = $4`, 
     [id.receiver, id.sender, id.receiver, id.sender]);
