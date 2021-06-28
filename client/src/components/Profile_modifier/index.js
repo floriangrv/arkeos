@@ -129,29 +129,30 @@ export default function Profile_modifier(props) {
               <label className="Profil_modifier_label" htmlFor="Pseudo">
                 Pseudo :{" "}
               </label>
-              <input {...register("username")} type="text" id="username" />
+              <input {...register("username")} type="text" id="username" value= {profildata.username} onChange= {(e) => setProfildata(e.target.value)}/>
 
               <label htmlFor="email"> Email:</label>
-              <input {...register("email")} type="email" id="email" />
+              <input {...register("email")} type="email" id="email" value= {profildata.email} onChange= {(e) => setProfildata(e.target.value)}/>
 
               <label className="Profil_modifier_label" htmlFor="City">
                 Ville :{" "}
               </label>
-              <input {...register("city")} type="text" id="city" />
+              <input {...register("city")} type="text" id="city" value= {profildata.city} onChange= {(e) => setProfildata(e.target.value)}/>
 
-              <label className="Profil_modifier_form" htmlFor="Presentation">
+              <label className="Profil_modifier_form" htmlFor="Presentation" >
                 Présentation :{" "}
               </label>
               <input
                 {...register("presentation")}
                 type="text"
                 id="Presentation"
+                value= {profildata.presentation} onChange= {(e) => setProfildata(e.target.value)}
               />
 
               <label className="Profil_modifier_form" htmlFor="species">
                 Mes animaux (Genre espèce) :{" "}
               </label>
-              <input {...register("species")} type="text" id="species" />
+              <input {...register("species")} type="text" id="species" value= {profildata.species} onChange= {(e) => setProfildata(e.target.value)} />
 
               <label className="Profil_modifier_form" htmlFor="Profile_img">
                 Ajouter une image :

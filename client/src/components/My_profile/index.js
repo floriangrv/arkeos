@@ -45,15 +45,23 @@ const ProfilPage = (props) => {
          <Profile_modifier data= {profildata} />
       <div className="profil-main-container">
    
-        
+       
         <div className="img-container">
           <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
         </div>
+         <div className="profil-important-infos">
+              <p className="profil-pseudo">{profildata.username}</p>
+            <p className="profil-location">{profildata.city}</p>
+            </div>
         <div className="content-container">
           <div className="profil-user-container">
-            <p className="profil-pseudo">{profildata.username}</p>
-            <p className="profil-infos">{profildata.city}</p>
-            <p className="presentation">{profildata.presentation}</p>
+            
+            
+
+            <p className="Profil-category">Présentation</p>
+            <p className="profil-infos">{profildata.presentation}</p>
+
+            <p className="Profil-category">Mes animaux</p>
             <p>{profildata.species}</p>
           </div>
           <div>

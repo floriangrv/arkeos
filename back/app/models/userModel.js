@@ -61,11 +61,12 @@ class UserModel extends CoreModel {
     try {
       const result = await client.query(
         `UPDATE "user" 
-        SET "email"=$1, "city"=$2, "country"=$3, "presentation"=$4,"profile_picture"=$5, "username"=$6
-        WHERE id=$7 RETURNING *`,
+        SET "email"=$1, "city"=$2, "species"=$3, "country"=$4,"presentation"=$5, "profile_picture"=$6, "username"=$7
+        WHERE id=$8 RETURNING *`,
         [
           obj.email,
           obj.city,
+          obj.species,
           obj.country,
           obj.presentation,
           obj.profile_picture,
