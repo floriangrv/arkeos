@@ -66,6 +66,7 @@ const IconLabelButtons = (props) => {
         size="large"
         className={classes.button}
         startIcon={<FavoriteIcon />}
+        value={counter}
       >
         {counter}
       </Button>

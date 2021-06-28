@@ -4,19 +4,16 @@ import "./styles.scss";
 const MemberCard = (props) => {
   console.log(props.id);
 
-  let token = localStorage.getItem('token')
+  let token = localStorage.getItem("token");
+
+  const CapitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 
   return (
-
     <div className="card">
-
-      {token ?
-        <a href={"/membres/" + props.id} >
-
-
-
-
-
+      {token ? (
+        <a href={"/membres/" + props.id}>
           <div className="card-image-container">
             <img
               className="card-img-top"
@@ -28,17 +25,13 @@ const MemberCard = (props) => {
           <div className="card-body">
             <h3>{props.username}</h3>
 
-            <h4>{props.city}</h4>
+            <h4>{CapitalizeFirstLetter(props.city)}</h4>
             <p className="card-text">{props.presentation}</p>
-            <p className="card-text">
-
-            </p>
+            <p className="card-text"></p>
           </div>
         </a>
-        :
-        <a href={"/log"} >
-
-
+      ) : (
+        <a href={"/log"}>
           <div className="card-image-container">
             <img
               className="card-img-top"
@@ -50,16 +43,14 @@ const MemberCard = (props) => {
           <div className="card-body">
             <h3>{props.username}</h3>
 
-            <h4>{props.city}</h4>
+            <h4>{CapitalizeFirstLetter(props.city)}</h4>
             <p className="card-text">{props.presentation}</p>
-            <p className="card-text">
-
-            </p>
+            <p className="card-text"></p>
           </div>
-
-        </a>}
+        </a>
+      )}
     </div>
   );
-}
+};
 
-export default MemberCard
+export default MemberCard;

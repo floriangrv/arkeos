@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -10,13 +10,13 @@ import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    width: '200',
-    overflowY: 'scroll'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    width: "200",
+    overflowY: "scroll",
   },
   paper: {
     border: "none",
@@ -49,20 +49,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Profile_modifier(props) {
-
   console.log(props);
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   let token = localStorage.getItem("token");
 
-  const [profildata, setProfildata] = useState ("")
+  const [profildata, setProfildata] = useState("");
   console.log(profildata);
 
-  useEffect (() => {
-    setProfildata (props.data)
-    
-  },[props.data])
+  useEffect(() => {
+    setProfildata(props.data);
+  }, [props.data]);
   console.log(profildata);
 
   const handleOpen = () => {
