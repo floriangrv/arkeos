@@ -120,11 +120,11 @@ exports.deleteDiscussion = async (request, response, next) => {
         data.id_user = request.user;
         data.id_discussion = request.params.discussion;
 
-        if (isNaN(id_user) || (isNaN(id_discussion))){
+        if (isNaN(data.id_user) || (isNaN(data.id_discussion))){
             return next();
         }
 
-        const discussion = await ChatViewModel.deleteDiscussion(data);
+        const discussion = await MessageModel.deleteDiscussion(data);
 
 
         response.json(discussion);

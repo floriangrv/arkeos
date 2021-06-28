@@ -56,7 +56,7 @@ const Conversations = () => {
                
               </div>
               <div className= "Delete_button_container">
-                <Delete_conversation_button />
+                <Delete_conversation_button data={discussions}/>
               </div>
                
             </li>))

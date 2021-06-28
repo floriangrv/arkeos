@@ -9,7 +9,7 @@ import axios from "axios";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
+  modal3: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: '200',
     overflowY: 'scroll'
   },
-  paper: {
+  paper3: {
     border: "none",
     backgroundColor: "#A5C6BA",
     boxShadow: theme.shadows[5],
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     borderRadius: 5,
   },
-  button: {
+  button3: {
     width: "10em",
     height: "2.5em",
     margin: "0 0 2rem 0",
@@ -105,13 +105,13 @@ export default function Profile_modifier(props) {
 
   return (
     <div>
-      <button className={classes.button} type="button" onClick={handleOpen}>
+      <button className={classes.button3} type="button" onClick={handleOpen}>
         Mofifier mon profil
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className={classes.modal3}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -121,7 +121,7 @@ export default function Profile_modifier(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className={classes.paper3}>
             <form
               className="Profil_modifier_form"
               onSubmit={handleSubmit(onSubmit)}
@@ -162,6 +162,7 @@ export default function Profile_modifier(props) {
                 type="file"
                 id="Profile_img"
                 accept="image/png, image/jpeg"
+                
               ></input>
               <label htmlFor="img">
                 <PhotoCameraIcon />

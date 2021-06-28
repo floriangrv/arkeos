@@ -48,6 +48,10 @@ console.log(user_id);
     getDataFromApi();
   }, []);
 
+  useEffect(() => {
+    console.log(articledata);
+  }, [articledata]);
+
   return (
     <>
       {user_id == author_id ? <Article_modifier data={articledata} /> : null}

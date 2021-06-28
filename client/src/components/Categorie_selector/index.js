@@ -23,7 +23,6 @@ const Categorie_selector = (props) => {
       <option value="Serpents">Serpents</option>
       <option value="Lézards">Lézards</option>
       <option value="Tortues">Tortues</option>
-      <option value="Crocodiliens">Crocodiliens</option>
       <option value="Amphibiens">Amphibiens</option>
     </select>
 

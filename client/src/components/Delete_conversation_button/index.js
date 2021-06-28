@@ -8,7 +8,7 @@ const address = window.location.href;
 let url = address.split("/");
 let id = url[url.length - 1];
 
-let token = localStorage.getItem("token");
+
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -28,17 +28,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Delete_conversation_button = (props) => {
-  const [id, setId] = useState();
+  
+  let token = localStorage.getItem("token");
   const classes = useStyles();
 
+  console.log(props)
+
+  const discussion_id = props.data[0].discussion_id
+  console.log(discussion_id)
+
   const onClick = () => {
+
     axios
       .delete(
-        `http://localhost:3000/messages/${discussion.id}`,
-        {
-          raiting: counter,
-        },
-
+        `http://localhost:3000/messages/${discussion_id}`,
         {
           headers: {
             authorization: token,
@@ -48,7 +51,7 @@ const Delete_conversation_button = (props) => {
         }
       )
       .then(function (response) {
-        console.log(response);
+        console.log(response)
       })
       .catch(function (response) {
         //handle error
@@ -56,9 +59,7 @@ const Delete_conversation_button = (props) => {
       });
   };
 
-  /*useEffect(() => {
-    setId(props.data.discussion.id);
-  }, [props.data.discussion.id]);*/
+  
 
   return (
     <div>

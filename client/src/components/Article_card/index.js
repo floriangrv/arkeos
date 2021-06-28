@@ -16,12 +16,12 @@ const Article_card = (props) => {
           ></img>
         </div>
         <div className="Card_body">
-          <h1>{props.article.dataValues.title}</h1>
+          <h1 className="Card_body_title">{props.article.dataValues.title}</h1>
           <hr className="divider"></hr>
           <p className="Article_body">{props.article.dataValues.content}</p>
         </div>
         <div className="votes">
-          <Like_button data={props} />
+          <Like_button data={props.article.dataValues} />
         </div>
       </div>
     </a>

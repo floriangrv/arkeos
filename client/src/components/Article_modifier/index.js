@@ -11,7 +11,7 @@ import './style.css'
 
 
 const useStyles = makeStyles((theme) => ({
-  modal1: {
+  modal2: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll'
 
   },
-  paper: {
+  paper2: {
 
     border: 'none',
     backgroundColor: '#A5C6BA',
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
 
   },
-  button: {
+  button2: {
     width: "10em",
     height: "2.5em",
     margin: "1em 0 0 2em",
@@ -144,13 +144,13 @@ const onDelete = () => {
 
   return (
     <div>
-      <button className={classes.button} type="button" onClick={handleOpen}>
+      <button className={classes.button2} type="button" onClick={handleOpen}>
        Modifier l'article
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal1}
+        className={classes.modal2}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -161,7 +161,7 @@ const onDelete = () => {
 
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className={classes.paper2}>
 
             <form className="Modify_article_form" onSubmit={handleSubmit(onSubmit)} >
 
