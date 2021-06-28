@@ -13,7 +13,7 @@ import './style.css'
 
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
+  modal1: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll'
 
   },
-  paper: {
+  paper1: {
 
     border: 'none',
     backgroundColor: '#A5C6BA',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
 
   },
-  button: {
+  button1: {
     width: "13em",
     height: "3em",
     margin: "0 2rem 0 2rem",
@@ -103,13 +103,13 @@ export default function Create_article() {
 
   return (
     < >
-      <Button id= "Create_button" className={classes.button} type="button"  startIcon={<DescriptionIcon />} onClick={handleOpen}>
+      <Button id= "Create_button" className={classes.button1} type="button"  startIcon={<DescriptionIcon />} onClick={handleOpen}>
         Créer un article
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className={classes.modal1}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -120,7 +120,7 @@ export default function Create_article() {
 
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className={classes.paper1}>
 
             <form className="Create_article_form" onSubmit={handleSubmit(onSubmit)} >
 

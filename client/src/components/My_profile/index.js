@@ -62,7 +62,7 @@ const ProfilPage = (props) => {
             <p className="profil-infos">{profildata.presentation}</p>
 
             <p className="Profil-category">Mes animaux</p>
-            <p>{profildata.species}</p>
+            <p className="profil-infos" >{profildata.species}</p>
           </div>
           <div>
             

@@ -1,4 +1,4 @@
-.Create_article_form {
+.Modify_article_form {
   display: flex;
   flex-direction: column;
   width: 50rem;
@@ -7,31 +7,31 @@
   font-family: 'Roboto';
 }
 
-#Article_title {
+#Modify_article_title {
   margin: auto;
 }
 
-#Article_body {
+#Modify_article_body {
   resize: none;
   font-family: 'Roboto';
   
 }
 
-.Create_article_label {
+.Modify_article_label {
   margin: 0.8rem;
 }
 
-.Create_article_title {
+.Modify_article_title {
   margin: 1rem 0rem 0rem 0rem;
 }
 
-#Create_article_category {
+#Modify_article_category {
 width: 50%;
 margin: auto;
 text-align-last: center;
 }
 
-#Create_article_theme {
+#Modify_article_theme {
   width: 50%;
   margin: auto;
   text-align-last: center;

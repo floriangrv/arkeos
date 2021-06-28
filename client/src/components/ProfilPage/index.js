@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadImg from "../UploadImg";
+import Contact_button from "../Contact_button";
 import "./styles.scss";
 
 const ProfilPage = (props) => {
   const [member, setMember] = useState([]);
-  const [genre, setGenre] = useState([]);
   const [species, setSpecies] = useState([]);
   const address = window.location.href;
-
+ 
   let url = address.split("/");
   let id = url[url.length - 1];
   console.log(id);
@@ -35,24 +35,37 @@ const ProfilPage = (props) => {
   useEffect(() => {
     getDataFromApi();
   }, []);
-
+  console.log(member)
   return (
     <div className="profil-page">
-      <div className="main-container">
-        <h2>Profil de {member.username}</h2>
-        <div className="img-container">
-          <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
+      <div className="profil-main-container">
+ <div className="img-container">
+
+ <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
+      
         </div>
+        <div className="profil-important-infos">
+<p className="profil-pseudo" >{member.username}</p>
+<p className="profil-location">{member.city}</p>
+        </div>
+        
         <div className="content-container">
           <div className="profil-user-container">
-            <h3>{member.city}</h3>
+          <p className="Profil-category">Présentation</p>
+            <p className="profil-infos">{member.presentation}</p>
+            <p className="Profil-category">Mes animaux</p>
+<p className="profil-infos">{species}</p>
+
           </div>
           <div>
-            <p className="presentation">{member.presentation}</p>
-            <p className="especes">{species}</p>
+            
+            
           </div>
         </div>
-        <button className='Contact_member'> <a href={"/message/" + id}> Contacter </a> </button>
+        <div>
+          <Contact_button data={id}/>
+        </div>
+        
       </div>
     </div>
   );

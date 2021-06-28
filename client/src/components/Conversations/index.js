@@ -50,10 +50,15 @@ const Conversations = () => {
 
             (<li key={discussion.id} className= "Conversation_container">
               <div className= "Conversation" >
-                <p ><a href={`/message/${discussion.id}`}>{discussion.username}</a></p>
                 <img src={discussion.profile_picture}  />
+                <p ><a href={`/message/${discussion.id}`}>{discussion.username}</a></p>
+                
+               
+              </div>
+              <div className= "Delete_button_container">
                 <Delete_conversation_button />
               </div>
+               
             </li>))
 
           )}

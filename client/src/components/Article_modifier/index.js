@@ -11,7 +11,7 @@ import './style.css'
 
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
+  modal1: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -150,7 +150,7 @@ const onDelete = () => {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className={classes.modal1}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -163,9 +163,9 @@ const onDelete = () => {
         <Fade in={open}>
           <div className={classes.paper}>
 
-            <form className="Create_article_form" onSubmit={handleSubmit(onSubmit)} >
+            <form className="Modify_article_form" onSubmit={handleSubmit(onSubmit)} >
 
-            <label className="Create_article_label" htmlFor="category">Catégorie :</label>
+            <label className="Modify_article_label" htmlFor="category">Catégorie :</label>
               <select {...register("category_id", { required: true })} name= "category" id="Create_article_category">
                 <option value="1">Lézard</option>
                 <option value="2">Amphibien</option>
@@ -173,7 +173,7 @@ const onDelete = () => {
                 <option value="4">Tortue</option>
               </select>
 
-              <label className="Create_article_label" htmlFor="theme">Thème :</label>
+              <label className="Modify_article_label" htmlFor="theme">Thème :</label>
               <select {...register("theme_id", { required: true })} name= "theme" id= "Create_article_theme">
                 <option value="1">Soins et pathologies</option>
                 <option value="2">Terrarium</option>
@@ -184,16 +184,16 @@ const onDelete = () => {
                 <option value="7">Biotope et histoire naturelle</option>
               </select>
 
-              <label className="Create_article_label Create_article_title" htmlFor="Article_title">Titre de l'article : </label>
-              <input {...register("title", { required: true })} type="text" id="Article_title" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
+              <label className="Modify_article_label Create_article_title" htmlFor="Article_title">Titre de l'article : </label>
+              <input {...register("title", { required: true })} type="text" id="Modify_article_title" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
 
-              <label className="Create_article_label" htmlFor="Article_body">Corps de l'article :</label>
+              <label className="Mofidy_article_label" htmlFor="Modify_article_body">Corps de l'article :</label>
               <textarea {...register('content')}  id="Article_body"
                 rows="20" cols="33"value= {modifycontent} onChange= {(e) => setModifycontent(e.target.value)} > 
               </textarea>
-              <label className="Create_article_label" htmlFor="Article_image">Ajouter une image :</label>
+              <label className="Modify_article_label" htmlFor="Modify_article_image">Ajouter une image :</label>
 
-              <input {...register('Create_article_upload_image', { required: false })} type="file"
+              <input {...register('Modify_article_upload_image', { required: false })} type="file"
                 id="img"
                 accept="image/png, image/jpeg"></input>
               <label htmlFor="img"><PhotoCameraIcon /></label>
