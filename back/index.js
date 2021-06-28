@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const morgan = require('morgan');
 
 
 //Socket.io
@@ -27,6 +28,7 @@ const loginRouter = require("./app/routers/loginRouter");
 const signinRouter = require("./app/routers/signinRouter");
 const messageRouter = require("./app/routers/messageRouter");
 const profilRouter = require("./app/routers/profilRouter");
+const imageRouter = require("./app/routers/imageRouter");
 
 const port = process.env.PORT || 3000;
 
@@ -35,6 +37,7 @@ app.use(cors("*"));
 
 
 app.use(express.json());
+app.use(morgan('dev'));
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -62,6 +65,7 @@ app.use("/marketplace", marketRouter);
 app.use("/membres", userRouter);
 app.use("/messages", messageRouter);
 app.use("/profil", profilRouter);
+app.use("/image", imageRouter);
 
 
 
