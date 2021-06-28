@@ -37,28 +37,32 @@ exports.addMessages = async (request, response, next) => {
     try {
         const data = {};
    
-        data.receiver_id = parseInt(request.params.receiver, 10);
+        data.receiver = parseInt(request.params.receiver, 10);
         
-        data.sender_id = request.user;
+        data.sender = request.user;
         
-        //data.sender_id = 1;
+        //data.sender = 1;
         
         data.content = request.body.content;
 
-        if (isNaN(data.receiver_id) || isNaN(data.sender_id)){
+        if (isNaN(data.receiver) || isNaN(data.sender)){
             return next();
         }
 
 
-        console.log(data);
+        const searchIfMessages = await ChatViewModel.showConversation(data);
 
-        const messages = await MessageModel.addConversation(data);
-
-        if(!messages){
-            return next();
+        let messages;
+        if (searchIfMessages){
+            data.discussion_id = searchIfMessages[0].discussion_id;
+            messages = await MessageModel.addConversation(data);
+        } else {
+            const discussion = await MessageModel.addDiscussion(data.sender);
+            console.log("la discussion", discussion);
+            data.discussion_id = discussion.id;
+            messages = await MessageModel.addConversation(data);
+            console.log("le message", messages);
         }
-
-        console.log(messages);
 
         response.json({messages});
 
@@ -70,14 +74,13 @@ exports.addMessages = async (request, response, next) => {
 
 exports.showDiscussion = async (request, response, next) => {
     try {
-        const id = request.user;
+        const id = parseInt(request.user, 10);
 
         if (isNaN(id)){
             return next();
         }
 
         const discussions = await ChatViewModel.showDiscussions(id);
-        console.log(discussions);
 
         if(!discussions){
             return next();
@@ -88,6 +91,10 @@ exports.showDiscussion = async (request, response, next) => {
         for (const discussion of discussions){
             if (discussion.receiver_id !== id || result.find(value => value !== discussion.receiver_id)){
                 const user = await UserModel.findById(discussion.receiver_id);
+                user.discussion_id = discussion.discussion_id;
+                if (discussion.delete_by){
+                    user.discussion.delete_by = discussion.delete_by;
+                }
                 result.push(user);
             } else if (discussion.sender_id !== id || result.find(value => value !== discussion.sender_id)) {
                 const user = await UserModel.findById(discussion.sender_id);
@@ -99,6 +106,28 @@ exports.showDiscussion = async (request, response, next) => {
         console.log(result);
 
         response.json(result);
+       
+
+    } catch (error) {
+        console.trace(error);
+        response.status(500).json({ error: `Server error, please contact an administrator` });
+    }
+};
+
+exports.deleteDiscussion = async (request, response, next) => {
+    try {
+        const data = {};
+        data.id_user = request.user;
+        data.id_discussion = request.params.discussion;
+
+        if (isNaN(id_user) || (isNaN(id_discussion))){
+            return next();
+        }
+
+        const discussion = await ChatViewModel.deleteDiscussion(data);
+
+
+        response.json(discussion);
        
 
     } catch (error) {

@@ -108,13 +108,22 @@ CREATE TABLE "comment" (
     "article_id" integer NOT NULL REFERENCES "article" ("id") ON DELETE CASCADE
 );
 
+CREATE TABLE "discussion" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "created_by" INT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "delete_by" INT DEFAULT null
+);
+
 CREATE TABLE "message" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "content" text NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "discussion_id" integer REFERENCES "discussion" ("id") ON DELETE CASCADE,
     "receiver_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE,
     "sender_id" integer NOT NULL REFERENCES "user" ("id") ON DELETE CASCADE
 );
+
 
 -- Tables de liaison --
 
