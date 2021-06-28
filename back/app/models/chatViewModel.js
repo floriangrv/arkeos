@@ -50,3 +50,4 @@ class ChatViewModel extends CoreModel {
   
 }
 module.exports = ChatViewModel;
+
