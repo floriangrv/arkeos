@@ -19,4 +19,7 @@ router.post('/:receiver', messageController.addMessages);
 // affiche les discussions
 router.get('/', messageController.showDiscussion);
 
+// supprime une discussion
+router.delete('/:discussion', messageController.deleteDiscussion);
+
 module.exports = router;

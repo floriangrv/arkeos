@@ -17,13 +17,13 @@ class ChatViewModel extends CoreModel {
   }
 
   static async showConversation(id) {
-    const result = await client.query(`SELECT "id", "content", "receiver_id", "sender_id", "author",
+    const result = await client.query(`SELECT "id", "content", "discussion_id", "receiver_id", "sender_id", "author",
     TO_CHAR("created_at", 'DD-MM-YYYY HH24:MI') "created_at"
     FROM ${this.tableName} 
     WHERE receiver_id = $1 AND sender_id = $2 
     OR sender_id = $3 AND receiver_id = $4`, 
     [id.receiver, id.sender, id.receiver, id.sender]);
-
+    
     if (!result.rows[0]) {
         return null;
     }
@@ -31,11 +31,16 @@ class ChatViewModel extends CoreModel {
   };
 
   static async showDiscussions(id) {
-    const result = await client.query(`SELECT DISTINCT "chat_view"."receiver_id", "chat_view"."sender_id"
+    console.log(id);
+    const result = await client.query(`SELECT DISTINCT "chat_view"."receiver_id", "chat_view"."sender_id", 
+    "chat_view"."discussion_id", "discussion"."delete_by"
     FROM ${this.tableName}
-    WHERE receiver_id = $1 OR sender_id = $2 `, 
-    [id, id]);
+    FULL JOIN "discussion" ON "discussion"."id" = "chat_view"."id"
+    WHERE receiver_id = $1 
+    OR sender_id = $1`, 
+    [id]);
 
+    console.log(result.rows[0]);
     if (!result.rows[0]) {
         return null;
     }
