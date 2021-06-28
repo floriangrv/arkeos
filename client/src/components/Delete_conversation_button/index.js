@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import axios from "axios";
 
 const address = window.location.href;
@@ -24,14 +24,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IconLabelButtons = (props) => {
-  const [counter, setCounter] = useState("0");
+const Delete_conversation_button = (props) => {
+  const [id, setId] = useState();
   const classes = useStyles();
 
   const onClick = () => {
     axios
-      .post(
-        `http://localhost:3000/articles/${props.data.id}/raiting`,
+      .delete(
+        `http://localhost:3000/messages/${discussion.id}`,
         {
           raiting: counter,
         },
@@ -54,8 +54,8 @@ const IconLabelButtons = (props) => {
   };
 
   useEffect(() => {
-    setCounter(props.data.rating);
-  }, [props.data.rating]);
+    setId(props.data.discussion.id);
+  }, [props.data.discussion.id]);
 
   return (
     <div>
@@ -65,11 +65,11 @@ const IconLabelButtons = (props) => {
         color="primary"
         size="large"
         className={classes.button}
-        startIcon={<FavoriteIcon />}
+        startIcon={<DeleteForeverIcon />}
       >
-        {counter}
+        
       </Button>
     </div>
   );
 };
-export default IconLabelButtons;
+export default Delete_conversation_button;

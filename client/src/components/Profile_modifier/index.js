@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -10,13 +10,13 @@ import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "Wrap",
-    width: "1400",
-    overflowY: "scroll",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    width: '200',
+    overflowY: 'scroll'
   },
   paper: {
     border: "none",
@@ -31,25 +31,39 @@ const useStyles = makeStyles((theme) => ({
   button: {
     width: "10em",
     height: "2.5em",
-    margin: "1em 0 0 2em",
+    margin: "0 0 2rem 0",
     backgroundColor: "#A5C6BA",
     fontSize: "1rem",
     fontWeight: "bold",
     color: "#F9F7ED",
     border: "none",
     borderRadius: "0.3rem",
+    boxShadow: "0px 1px 1px 0.5px rgba(107,102,97,0.7)",
+    marginBottom: "2rem",
 
     "&:hover": {
-      background: "#F9F7ED",
+      background: "rgb(249, 247, 237,0.5)",
       color: "#6B6661",
     },
   },
 }));
 
-export default function Profile_modifier() {
+export default function Profile_modifier(props) {
+
+  console.log(props);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   let token = localStorage.getItem("token");
+
+  const [profildata, setProfildata] = useState ("")
+  console.log(profildata);
+
+  useEffect (() => {
+    setProfildata (props.data)
+    
+  },[props.data])
+  console.log(profildata);
 
   const handleOpen = () => {
     setOpen(true);

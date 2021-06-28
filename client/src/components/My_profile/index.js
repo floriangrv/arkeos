@@ -4,10 +4,8 @@ import axios from "axios";
 import "./style.css";
 
 const ProfilPage = (props) => {
-  const [pseudo, setPseudo] = useState([]);
-  const [species, setSpecies] = useState([]);
-  const [presentation, setPresentation] = useState([]);
-  const [city, setCity] = useState([]);
+  const [profildata, setProfildata] = useState([]);
+  
   const address = window.location.href;
 
   let url = address.split("/");
@@ -27,10 +25,7 @@ const ProfilPage = (props) => {
         },
       })
       .then((response) => {
-        setPseudo(response.data.dataValues.username);
-        setSpecies(response.data.dataValues.species);
-        setPresentation(response.data.dataValues.presentation);
-        setCity(response.data.dataValues.city);
+        setProfildata(response.data.dataValues);
         console.log(response.data);
         console.log(response.data.dataValues);
       })
@@ -47,19 +42,22 @@ const ProfilPage = (props) => {
 
   return (
     <div className="profil-page">
-      <div className="main-container">
-      <Profile_modifier />
-        <h2>{pseudo}</h2>
+         <Profile_modifier data= {profildata} />
+      <div className="profil-main-container">
+   
+        
         <div className="img-container">
           <img src="https://assets-fr.imgfoot.com/media/cache/1200x1200/jerome-boateng-604a6fef05693.jpg" />
         </div>
         <div className="content-container">
           <div className="profil-user-container">
-            <h3>{city}</h3>
+            <p className="profil-pseudo">{profildata.username}</p>
+            <p className="profil-infos">{profildata.city}</p>
+            <p className="presentation">{profildata.presentation}</p>
+            <p>{profildata.species}</p>
           </div>
           <div>
-            <p className="presentation">{presentation}</p>
-            <h3>{species}</h3>
+            
             
           </div>
         </div>

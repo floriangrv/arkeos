@@ -72,7 +72,7 @@ const Legislation = () => (
         <div className="Law_card_body">
           <h1 className="L6">la réglementation française</h1>
           <hr className="divider"></hr>
-          <div className="Article_body">
+          <div className="Law_article_body">
 
           <p className="L5"><a target="_blank" href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000037491137/">L'arrêté du 8 octobre 2018</a></p>
           
