@@ -20,7 +20,7 @@ import My_profile from "../My_profile";
 import Legislation from "../Legislation";
 import Messagerie from "../Messagerie";
 import Conversations from "../Conversations";
-
+import Redirect_page from "../Redirect_page";
 import Agenda from "../Agenda";
 
 // == Composant
@@ -44,6 +44,21 @@ const Arkeos = () => {
           <Route exact path="/">
             
             <Articles />
+          </Route>
+
+          <Route exact path="/messages/log">
+            
+            <Redirect_page />
+          </Route>
+
+          <Route exact path="/profil/log">
+            
+            <Redirect_page />
+          </Route>
+
+          <Route exact path="/member/log">
+            
+            <Redirect_page />
           </Route>
 
           <Route exact path="/marketplace">

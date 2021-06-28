@@ -107,7 +107,7 @@ margin-top: 2rem;
     padding: 1rem;
   }
 
-  .Article_body {
+  .Law_article_body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

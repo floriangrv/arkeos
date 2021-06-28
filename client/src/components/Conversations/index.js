@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Delete_conversation_button from "../Delete_conversation_button";
 import axios from 'axios';
 
 import './style.css';
@@ -51,6 +52,7 @@ const Conversations = () => {
               <div className= "Conversation" >
                 <p ><a href={`/message/${discussion.id}`}>{discussion.username}</a></p>
                 <img src={discussion.profile_picture}  />
+                <Delete_conversation_button />
               </div>
             </li>))
 

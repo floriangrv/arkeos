@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#F9F7ED",
 
     '&:hover': {
-      background: "rgb(249, 247, 237)",
+      background: "rgb(249, 247, 237,0.5)",
       color: "#6B6661"
       
    },

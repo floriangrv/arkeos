@@ -17,7 +17,11 @@ import './styles.scss'
 
 
 const LeftMenu = () => {
+
+  let token = localStorage.getItem('token')
+
   return (
+
 
 
     <div className="leftmenu">
@@ -27,23 +31,35 @@ const LeftMenu = () => {
           <LeftMenuItems name="Accueil" Icon={HomeIcon} />
         </NavLink>
 
-
-
+        {token ?
         <NavLink to="/message" style={{ outline: 'none' }}>
           <LeftMenuItems name="Messagerie" Icon={MessageIcon} />
         </NavLink>
+:
+        <NavLink to="/messages/log" style={{ outline: 'none' }}>
+          <LeftMenuItems name="Messagerie" Icon={MessageIcon} />
+        </NavLink>}
 
-        <NavLink to="/profile" style={{ outline: 'none' }}>
-          <LeftMenuItems name="Profil" Icon={PersonIcon} />
-        </NavLink>
+        {token ?
+          <NavLink to="/profile" style={{ outline: 'none' }}>
+            <LeftMenuItems name="Profil" Icon={PersonIcon} />
+          </NavLink>
+          : <NavLink to="/profil/log" style={{ outline: 'none' }}>
+            <LeftMenuItems name="Profil" Icon={PersonIcon} />
+          </NavLink>
+        }
 
         <NavLink to="/marketplace" style={{ outline: 'none' }}>
           <LeftMenuItems name="Marketplace" Icon={ShoppingCartIcon} />
         </NavLink>
 
-        <NavLink to="/members" style={{ outline: 'none' }}>
-          <LeftMenuItems name="Membres" Icon={PeopleIcon} />
-        </NavLink>
+        {token ?
+          <NavLink to="/members" style={{ outline: 'none' }}>
+            <LeftMenuItems name="Membres" Icon={PeopleIcon} />
+          </NavLink>
+          : <NavLink to="/member/log" style={{ outline: 'none' }}>
+            <LeftMenuItems name="Membres" Icon={PeopleIcon} />
+          </NavLink>}
 
 
 
