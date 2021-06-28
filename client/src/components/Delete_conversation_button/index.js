@@ -12,14 +12,17 @@ let token = localStorage.getItem("token");
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: "6em",
-    height: "3em",
-    margin: "1em 0 0 2em",
+    width: "8rem",
+    height: "3rem",
+    margin: "auto",
     backgroundColor: "#A5C6BA",
     color: "#F9F7ED",
+    fontSize: "0.8rem",
+    padding: "1rem",
     "&:hover": {
       background: "rgb(249, 247, 237)",
       color: "#6B6661",
+      
     },
   },
 }));
@@ -53,9 +56,9 @@ const Delete_conversation_button = (props) => {
       });
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     setId(props.data.discussion.id);
-  }, [props.data.discussion.id]);
+  }, [props.data.discussion.id]);*/
 
   return (
     <div>
@@ -67,7 +70,7 @@ const Delete_conversation_button = (props) => {
         className={classes.button}
         startIcon={<DeleteForeverIcon />}
       >
-        
+        Supprimer
       </Button>
     </div>
   );
