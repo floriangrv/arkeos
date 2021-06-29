@@ -28,7 +28,6 @@ class MessageModel extends CoreModel {
 
 
     static async addDiscussion(id) {
-        console.log("c'est l'id et le created by", id);
         const result = await client.query(`INSERT INTO "discussion" ("created_by") VALUES 
         ($1) RETURNING *`, 
         [id],);
@@ -42,8 +41,8 @@ class MessageModel extends CoreModel {
     static async deleteDiscussion(data) {
         const discussion = await client.query(`SELECT * FROM "discussion" WHERE "id"=$1`, 
         [data.id_discussion],);
-        console.log(discussion.rows[0].delete_by);
-        if (discussion.rows[0].delete_by !== null && discussion.rows[0].delete_by !== data.id_user){
+
+        if (discussion.rows[0].delete_by !== null && discussion.rows[0].delete_by != data.id_user){
             await client.query(`DELETE FROM "discussion" WHERE "id"=$1`, [data.id_discussion]);
             await client.query(`DELETE FROM "message" WHERE "discussion_id"=$1`, [data.id_discussion]);
             return "Deleted";
@@ -51,7 +50,7 @@ class MessageModel extends CoreModel {
     
         const result = await client.query(`UPDATE "discussion" SET "delete_by"=$1 WHERE id=$2 RETURNING *`, 
         [data.id_user, data.id_discussion],);
-    
+        
         if (!result.rows[0]) {
             return null;
         }

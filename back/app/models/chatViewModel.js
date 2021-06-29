@@ -23,27 +23,25 @@ class ChatViewModel extends CoreModel {
     WHERE receiver_id = $1 AND sender_id = $2 
     OR sender_id = $3 AND receiver_id = $4`, 
     [id.receiver, id.sender, id.receiver, id.sender]);
+    if (!result.rows[0]) {
+      return null;
+    }
+    return result.rows;
+  };
+  
+  static async showDiscussions(id) {
+    const result = await client.query(`SELECT DISTINCT "chat_view"."receiver_id", "chat_view"."sender_id", 
+    "chat_view"."discussion_id", "discussion"."delete_by"
+    FROM ${this.tableName}
+    FULL JOIN "discussion" ON "discussion"."id" = "chat_view"."discussion_id"
+    WHERE "discussion"."delete_by" != $1 AND receiver_id = $1
+    OR sender_id = $1`, 
+    [id]);
     
     if (!result.rows[0]) {
         return null;
     }
-    return result.rows;
-  };
 
-  static async showDiscussions(id) {
-    console.log(id);
-    const result = await client.query(`SELECT DISTINCT "chat_view"."receiver_id", "chat_view"."sender_id", 
-    "chat_view"."discussion_id", "discussion"."delete_by"
-    FROM ${this.tableName}
-    FULL JOIN "discussion" ON "discussion"."id" = "chat_view"."id"
-    WHERE receiver_id = $1 
-    OR sender_id = $1`, 
-    [id]);
-
-    console.log(result.rows[0]);
-    if (!result.rows[0]) {
-        return null;
-    }
     return result.rows;
   };
 

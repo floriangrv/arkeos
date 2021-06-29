@@ -22,7 +22,6 @@ exports.showMessages = async (request, response, next) => {
             return next();
         }
 
-        console.log(messages);
 
         response.json({messages});
        
@@ -58,10 +57,8 @@ exports.addMessages = async (request, response, next) => {
             messages = await MessageModel.addConversation(data);
         } else {
             const discussion = await MessageModel.addDiscussion(data.sender);
-            console.log("la discussion", discussion);
             data.discussion_id = discussion.id;
             messages = await MessageModel.addConversation(data);
-            console.log("le message", messages);
         }
 
         response.json({messages});
@@ -88,22 +85,20 @@ exports.showDiscussion = async (request, response, next) => {
 
         const result = [];
 
+
         for (const discussion of discussions){
-            if (discussion.receiver_id !== id || result.find(value => value !== discussion.receiver_id)){
+            if ((discussion.receiver_id !== id && discussion.delete_by !== id) || (result.find(value => value !== discussion.receiver_id) && discussion.delete_by !== id)){
                 const user = await UserModel.findById(discussion.receiver_id);
                 user.discussion_id = discussion.discussion_id;
-                if (discussion.delete_by){
-                    user.discussion.delete_by = discussion.delete_by;
-                }
                 result.push(user);
-            } else if (discussion.sender_id !== id || result.find(value => value !== discussion.sender_id)) {
+            } else if ((discussion.sender_id !== id && discussion.delete_by !== id) || (result.find(value => value !== discussion.sender_id) && discussion.delete_by !== id)) {
                 const user = await UserModel.findById(discussion.sender_id);
                 result.push(user);
             }
         } 
 
 
-        console.log(result);
+        //console.log(result);
 
         response.json(result);
        
@@ -118,14 +113,12 @@ exports.deleteDiscussion = async (request, response, next) => {
     try {
         const data = {};
         data.id_user = request.user;
-        data.id_discussion = request.params.discussion;
-
-        if (isNaN(data.id_user) || (isNaN(data.id_discussion))){
-            return next();
-        }
+        console.log(data.id_user);
+        data.id_discussion = parseInt(request.params.discussion, 10);
 
         const discussion = await MessageModel.deleteDiscussion(data);
 
+        console.log(discussion);
 
         response.json(discussion);
        

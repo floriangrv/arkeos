@@ -10,7 +10,7 @@ const CategoryMarketplace_selector = (props) => {
         id="category"
         onChange={props.CategoryonChange}
       >
-        <option value="">Toutes les catégories</option>
+        <option value="false">Toutes les catégories</option>
         <option value="Serpents">Serpents</option>
         <option value="Lézards">Lézards</option>
         <option value="Tortues">Tortues</option>
