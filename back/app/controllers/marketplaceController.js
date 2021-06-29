@@ -14,10 +14,6 @@ exports.getAllMarket = async (request, response, next) => {
       options.category = data.category;
     }
 
-    //todoo reste a coder le traitement de plusieurs themes
-    if (data.theme !== undefined && data.theme !== "false") {
-      options.theme = data.theme;
-    }
     if (data.date !== undefined && data.date !== "false") {
       options.orderByFields = '"created_at"';
       options.order = data.date;
