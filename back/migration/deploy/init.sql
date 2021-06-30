@@ -37,6 +37,7 @@ CREATE TABLE "marketplace" (
     "phase" text,
     "born_captivity" boolean NOT NULL,
     "price" real NOT NULL,
+    "url_picture" text DEFAULT 'cameleon.png',
     "native_country" text NOT NULL,
     "birth_date" date NOT NULL,
     "content" text,

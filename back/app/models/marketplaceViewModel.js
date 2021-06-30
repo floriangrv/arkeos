@@ -12,6 +12,7 @@ class MarketplaceViewModel extends CoreModel {
         'phase',
         'born_captivity',
         'price',
+        'url_picture',
         'native_country',
         'birth_date',
         'content',
@@ -33,15 +34,13 @@ class MarketplaceViewModel extends CoreModel {
 
             if (options.category === undefined){
                 // si il n'y a ni filtre de catégories, ni de themes
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 ORDER BY $1 ASC LIMIT $2`, 
                 [options.orderByFields, options.nbArticles]);
             } else if (options.category !== undefined){
                 // si il ya le filtre de categories
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE category_name=$1 
                 ORDER BY $2 ASC LIMIT $3`, 
@@ -52,16 +51,14 @@ class MarketplaceViewModel extends CoreModel {
             options.search2 = firstCharacterUpperCase(options.search);
             if (options.category === undefined){
                 // si il n'y a ni filtre de catégories, ni de themes, mais une recherche de l'user
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date" 
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' 
                 ORDER BY $3 ASC LIMIT $4`, 
                 [options.search, options.search2, options.orderByFields, options.nbArticles]);
             } else if (options.category !== undefined){
                 // si il ya le filtre de categories
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE category_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' 
                 ORDER BY $5 ASC LIMIT $5`, 
@@ -88,15 +85,13 @@ class MarketplaceViewModel extends CoreModel {
 
             if (options.category === undefined){
                 // si il n'y a ni filtre de catégories, ni de themes
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 ORDER BY $1 DESC LIMIT $2`, 
                 [options.orderByFields, options.nbArticles]);
             } else if (options.category !== undefined){
                 // si il ya le filtre de categories
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE category_name=$1 
                 ORDER BY $2 DESC LIMIT $3`, 
@@ -106,16 +101,14 @@ class MarketplaceViewModel extends CoreModel {
             options.search2 = firstCharacterUpperCase(options.search);
             if (options.category === undefined){
                 // si il n'y a ni filtre de catégories, ni de themes, mais une recherche de l'user
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' 
                 ORDER BY $3 DESC LIMIT $4`, 
                 [options.search, options.search2, options.orderByFields, options.nbArticles]);
             } else if (options.category !== undefined){
                 // si il ya le filtre de categories
-                result = await client.query(`SELECT "id", "scientific_name", "locality", "phase", "born_captivity", "price", "native_country",
-                "content", "created_at", "updated_at", "author", "author_id", "category_name", "birth_date"
+                result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE category_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' 
                 ORDER BY $5 DESC LIMIT $5`, 

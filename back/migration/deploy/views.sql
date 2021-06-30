@@ -59,6 +59,7 @@ SELECT
     "marketplace"."scientific_name",
     "marketplace"."locality",
     "marketplace"."phase",
+    "marketplace"."url_picture",
     "marketplace"."born_captivity",
     "marketplace"."price",
     "marketplace"."native_country",
