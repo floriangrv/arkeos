@@ -12,9 +12,11 @@ const server = http.createServer(app);
 //const { Server } = require("socket.io");
 //const io = new Server(server);
 
+/*
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 app.use(express.static('./app/statics'));
+*/
 
 
 // gestion des tokens
