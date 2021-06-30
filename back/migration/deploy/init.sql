@@ -26,7 +26,7 @@ CREATE TABLE "user" (
     "country" text,
     "presentation" text,
     "species" text,
-    "profile_picture" text DEFAULT '../../app/img/avatar.png',
+    "profile_picture" text DEFAULT 'avatar.png',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
@@ -112,7 +112,7 @@ CREATE TABLE "discussion" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "created_by" INT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "delete_by" INT DEFAULT null
+    "delete_by" integer
 );
 
 CREATE TABLE "message" (

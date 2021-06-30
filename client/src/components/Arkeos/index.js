@@ -42,22 +42,18 @@ const Arkeos = () => {
           </Route>
 
           <Route exact path="/">
-            
             <Articles />
           </Route>
 
           <Route exact path="/messages/log">
-            
             <Redirect_page />
           </Route>
 
           <Route exact path="/profil/log">
-            
             <Redirect_page />
           </Route>
 
           <Route exact path="/member/log">
-            
             <Redirect_page />
           </Route>
 
@@ -85,7 +81,6 @@ const Arkeos = () => {
             <Article_page />
           </Route>
 
-
           <Route exact path="/signin">
             <SignInPage />
           </Route>
@@ -99,6 +94,10 @@ const Arkeos = () => {
 
           <Route exact path="/legislation">
             <Legislation />
+          </Route>
+
+          <Route exact path="/log">
+            <Redirect_page />
           </Route>
         </Switch>
       </div>
