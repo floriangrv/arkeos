@@ -74,6 +74,16 @@ align-items: center;
 margin-top: 1rem;
 }
 
+.Conversation_image-container {
+  height: 80px;
+  width: 80px;
+}
+
+.Conversation_image-container img {
+  width: 100%;
+  height: auto;
+  
+}
 
 @keyframes shake {
   10%, 90% {

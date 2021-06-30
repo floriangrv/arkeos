@@ -42,7 +42,10 @@ const Sell_item = (props) => {
           <div className="Sell_item_picture_container">
             <img
               className="Sell_item_picture"
-              src={cameleon}
+              src={
+                "http://localhost:3000/image/" +
+                props.item.dataValues.url_picture
+              }
               alt="Image de l'article"
             ></img>
           </div>

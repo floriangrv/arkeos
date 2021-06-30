@@ -4,8 +4,9 @@ const jwt = require("jsonwebtoken");
 // generate the token
 
 exports.generateAccessToken = (user) => {
-  return jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: "5000s" });
-};
+  //token valide 1 semaine
+  return jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: "604800s" });
+  };
 
 exports.authenticateToken = (request, response, next) => {
   const authHeader = request.headers["authorization"];

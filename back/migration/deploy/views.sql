@@ -9,6 +9,7 @@ SELECT
     "article"."id",
     "article"."title",
     "article"."content",
+    "article"."url_picture",
     TO_CHAR("article"."created_at", 'DD-MM-YYYY HH24:MI') "created_at",
     TO_CHAR("article"."updated_at", 'DD-MM-YYYY HH24:MI') "updated_at",
     "user"."username" AS "author",
@@ -58,6 +59,7 @@ SELECT
     "marketplace"."scientific_name",
     "marketplace"."locality",
     "marketplace"."phase",
+    "marketplace"."url_picture",
     "marketplace"."born_captivity",
     "marketplace"."price",
     "marketplace"."native_country",
@@ -66,6 +68,7 @@ SELECT
     TO_CHAR("marketplace"."created_at", 'DD-MM-YYYY HH24:MI') "created_at",
     "marketplace"."updated_at",
     "user"."username" AS "author",
+    "user"."profile_picture" AS "profile_picture",
     "user"."id" AS "author_id",
     "category"."name" AS "category_name"
 

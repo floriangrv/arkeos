@@ -8,6 +8,7 @@ class ArticleModel extends CoreModel {
         'title',
         'content',
         'breeding_sheet',
+        'url_picture',
         'author_id',
         'category_id',
         'theme_id'

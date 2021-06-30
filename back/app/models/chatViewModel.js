@@ -17,9 +17,11 @@ class ChatViewModel extends CoreModel {
   }
 
   static async showConversation(id) {
-    const result = await client.query(`SELECT "id", "content", "discussion_id", "receiver_id", "sender_id", "author",
-    TO_CHAR("created_at", 'DD-MM-YYYY HH24:MI') "created_at"
+    const result = await client.query(`SELECT "chat_view"."id", "chat_view"."content", 
+    "chat_view"."discussion_id", "chat_view"."receiver_id", "chat_view"."sender_id", "chat_view"."author",
+    TO_CHAR("chat_view"."created_at", 'DD-MM-YYYY HH24:MI') "created_at", "user"."profile_picture" AS "profile_picture"
     FROM ${this.tableName} 
+    JOIN "user" ON "user"."id" = "chat_view"."sender_id"
     WHERE receiver_id = $1 AND sender_id = $2 
     OR sender_id = $3 AND receiver_id = $4`, 
     [id.receiver, id.sender, id.receiver, id.sender]);
