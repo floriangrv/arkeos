@@ -73,7 +73,9 @@ const Article = () => {
             <div className="Profil_picture_container">
               <img
                 className="Profil_picture"
-                src={profil} // a remplacer
+                src={
+                  "http://localhost:3000/image/" + articledata.author_picture
+                } // a remplacer
                 alt="Image de profil"
               ></img>
               <p className="Author_pseudo">{author}</p>
