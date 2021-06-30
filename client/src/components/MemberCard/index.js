@@ -23,9 +23,9 @@ const MemberCard = (props) => {
           </div>
 
           <div className="card-body">
-            <h3>{CapitalizeFirstLetter(props.username)}</h3>
+            <h3>{props.username}</h3>
 
-            <h4>{CapitalizeFirstLetter(props.city)}</h4>
+            <h4>{props.city}</h4>
             <p className="card-text">{props.presentation}</p>
             <p className="card-text"></p>
           </div>
@@ -41,9 +41,9 @@ const MemberCard = (props) => {
           </div>
 
           <div className="card-body">
-            <h3>{CapitalizeFirstLetter(props.username)}</h3>
+            <h3>{props.username}</h3>
 
-            <h4>{CapitalizeFirstLetter(props.city)}</h4>
+            <h4>{props.city}</h4>
             <p className="card-text">{props.presentation}</p>
             <p className="card-text"></p>
           </div>
