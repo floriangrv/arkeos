@@ -14,6 +14,7 @@ const MemberList = (props) => {
           username={member.dataValues.username}
           city={member.dataValues.city}
           presentation={member.dataValues.presentation}
+          picture={member.dataValues.profile_picture}
         />
       ))}
     </div>

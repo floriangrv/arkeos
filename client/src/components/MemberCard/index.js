@@ -17,13 +17,13 @@ const MemberCard = (props) => {
           <div className="card-image-container">
             <img
               className="card-img-top"
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+              src={"http://localhost:3000/image/" + props.picture}
               alt="image"
             />
           </div>
 
           <div className="card-body">
-            <h3>{props.username}</h3>
+            <h3>{CapitalizeFirstLetter(props.username)}</h3>
 
             <h4>{CapitalizeFirstLetter(props.city)}</h4>
             <p className="card-text">{props.presentation}</p>
@@ -41,7 +41,7 @@ const MemberCard = (props) => {
           </div>
 
           <div className="card-body">
-            <h3>{props.username}</h3>
+            <h3>{CapitalizeFirstLetter(props.username)}</h3>
 
             <h4>{CapitalizeFirstLetter(props.city)}</h4>
             <p className="card-text">{props.presentation}</p>
