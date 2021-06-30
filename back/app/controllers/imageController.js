@@ -6,18 +6,21 @@ exports.showImage = async (request, response, next) => {
     try {
         const { filename } = request.params;
 
-        console.log(filename);
+        console.log("c'est le filename", filename);
 
         const dirname = path.resolve();
         const fullfilepath = path.join(dirname, 'app/img/' + filename);
-        console.log(fullfilepath);
+
+        console.log("c'est le full path", fullfilepath);
+
         return response.sendFile(fullfilepath);
 
-        const photo = await PhotoModel.showImage(filename);
 
-        console.log(photo);
+        //const photo = await PhotoModel.showImage(filename);
 
-        response.json('/image/:filename');
+        //console.log(photo);
+
+        //response.json('/image/:filename');
        
 
     } catch (error) {
@@ -30,6 +33,7 @@ exports.addImage = async (request, response, next) => {
     try {
         const image = request.file;
 
+        console.log(image);
         const data = {};
         //data.author_id = request.user;
         data.author_id = 1;
@@ -37,15 +41,13 @@ exports.addImage = async (request, response, next) => {
         data.path = image.path;
 
         const photo = await PhotoModel.addImage(data);
-        console.log(photo);
+        console.log("c'est la photo", photo);
 
         if(!photo){
             return next();
         }
 
-
-        console.log(image);
-        response.json('/image');
+        response.json(photo);
 
     } catch (error) {
         console.trace(error);

@@ -59,11 +59,11 @@ const Sell_item_page = () => {
   return (
     <>
    
-  <div className="Item_page">
+  <div className="Sell_item_page">
     <Sell_item_modifier data= {articledata}/>
-    <div className="Item_infos">
-      <div className="Item_picture_container">
-      <img className='Item_picture'
+    <div className="Sell_item_infos">
+      <div className="Sell_item_picture_container">
+      <img className='Sell_item_picture'
         src={cameleon}
         alt="Image de l'article">
       </img>
@@ -80,7 +80,7 @@ const Sell_item_page = () => {
          Favoris !
       </Button>
     </div>
-      <div className="Item_description">
+      <div className="Sell_item_description_container">
       <p className="Sell_item_description"> Nom scientifique : {articledata.scientific_name}</p>
       <p className="Sell_item_description"> Nom scientifique : {articledata.scientific_name}</p>
       <p className="Sell_item_description"> Localité : {articledata.locality} </p>
@@ -89,8 +89,8 @@ const Sell_item_page = () => {
       <p className="Sell_item_description"> Pays de naissance : {articledata.native_country}</p>
       <p className="Sell_item_description"> Date de naissance : {articledata.birth_date}</p>
       <p className="Sell_item_description"> Informations complémentaires : {articledata.content}</p>
-      <div className='Price_container'>
-        <p className='Price Item_price'>{articledata.price} €
+      <div className='Sell_item_price_container'>
+        <p className='Price Sell_item_price'>{articledata.price} €
         </p>
         </div>
       

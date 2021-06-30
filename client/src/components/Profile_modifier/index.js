@@ -70,17 +70,79 @@ export default function Profile_modifier(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
+  console.log(profildata)
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
 
+    // Handling Image Upload: 
+    
+    if (data.profile_picture[0]){
+      
+      const formData = new FormData();
+      formData.append('image', data.profile_picture[0]);
+    
+    
+    axios.post('http://localhost:3000/image', formData, {
+      headers: {
+        authorization: token,
+        Accept: "application/json",
+        'content-type': 'multipart/form-data'
+      },
+    }).then((response) => {
+      // On a notre objet response qui contient le chemin de l'image uploadée
+      console.log(response)
+      axios
+        .put(
+          "http://localhost:3000/profil",
+
+          {
+            data: {
+              username: data.username,
+              email: data.email,
+              city: data.city,
+              presentation: data.presentation,
+              species: data.species,
+              profile_picture: response.data.location
+            },
+          },
+
+          {
+            headers: {
+              authorization: token,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then(function (response) {
+          //handle success
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
+    })
+
     // Je peux faire ma requête ajax a cet endroit là:
-    axios
+  }else {
+      axios
       .put(
         "http://localhost:3000/profil",
 
-        data,
+        {
+          data: {
+            username: data.username,
+            email: data.email,
+            city: data.city,
+            presentation: data.presentation,
+            species: data.species,
+
+          },
+         
+        },
 
         {
           headers: {
@@ -92,19 +154,20 @@ export default function Profile_modifier(props) {
       )
       .then(function (response) {
         //handle success
-        console.log(response);
         window.location.reload();
+        //window.location.reload();
       })
       .catch(function (response) {
         //handle error
-        console.log(response);
+       
       });
+    }
   };
 
   return (
     <div>
       <button className={classes.button3} type="button" onClick={handleOpen}>
-        Mofifier mon profil
+        Modifier mon profil
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -127,15 +190,15 @@ export default function Profile_modifier(props) {
               <label className="Profil_modifier_label" htmlFor="Pseudo">
                 Pseudo :{" "}
               </label>
-              <input {...register("username")} type="text" id="username" value= {profildata.username} onChange= {(e) => setProfildata(e.target.value)}/>
+              <input {...register("username")} type="text" id="username" value={profildata.username} onChange={(e) => setProfildata(e.target.value)} />
 
               <label htmlFor="email"> Email:</label>
-              <input {...register("email")} type="email" id="email" value= {profildata.email} onChange= {(e) => setProfildata(e.target.value)}/>
+              <input {...register("email")} type="email" id="email" value={profildata.email} onChange={(e) => setProfildata(e.target.value)} />
 
               <label className="Profil_modifier_label" htmlFor="City">
                 Ville :{" "}
               </label>
-              <input {...register("city")} type="text" id="city" value= {profildata.city} onChange= {(e) => setProfildata(e.target.value)}/>
+              <input {...register("city")} type="text" id="city" value={profildata.city} onChange={(e) => setProfildata(e.target.value)} />
 
               <label className="Profil_modifier_form" htmlFor="Presentation" >
                 Présentation :{" "}
@@ -144,23 +207,23 @@ export default function Profile_modifier(props) {
                 {...register("presentation")}
                 type="text"
                 id="Presentation"
-                value= {profildata.presentation} onChange= {(e) => setProfildata(e.target.value)}
+                value={profildata.presentation} onChange={(e) => setProfildata(e.target.value)}
               />
 
               <label className="Profil_modifier_form" htmlFor="species">
                 Mes animaux (Genre espèce) :{" "}
               </label>
-              <input {...register("species")} type="text" id="species" value= {profildata.species} onChange= {(e) => setProfildata(e.target.value)} />
+              <input {...register("species")} type="text" id="species" value={profildata.species} onChange={(e) => setProfildata(e.target.value)} />
 
               <label className="Profil_modifier_form" htmlFor="Profile_img">
                 Ajouter une image :
               </label>
               <input
-                {...register("Sell_item_upload_image")}
+                {...register("profile_picture")}
                 type="file"
                 id="Profile_img"
-                accept="image/png, image/jpeg"
-                
+                accept="image/png, image/jpeg, image/jpg"
+
               ></input>
               <label htmlFor="img">
                 <PhotoCameraIcon />
@@ -172,4 +235,6 @@ export default function Profile_modifier(props) {
       </Modal>
     </div>
   );
+
+  
 }

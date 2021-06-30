@@ -1,0 +1,19 @@
+.Submit_comment {
+ border-radius: 0.2rem; 
+ width: 8rem;
+ font-family: 'Roboto';
+ font-weight: bold;
+ color: #F9F7ED;
+ background: #A5C6BA;
+ box-shadow: 0px 1px 1px 0.5px rgba(107,102,97,0.7);
+ border: none;
+
+}
+
+.Submit_comment:hover {
+  cursor: pointer;
+  background: rgb(249, 247, 237,0.5);
+  transition: 0.5s;
+  color: #6B6661;
+
+}

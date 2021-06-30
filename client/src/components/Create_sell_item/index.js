@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import DescriptionIcon from '@material-ui/icons/Description';
+import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form'
 import axios from "axios";
 import './style.css'
@@ -17,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'Wrap',
-    width: '200',
+    width: '400',
     overflowY: 'scroll',
     color: '#F9F7ED',
     fontWeight: "bold",
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   button: {
-    width: "10em",
+    width: "14em",
     height: "2.5em",
     margin: "0 0 0 3em",
     backgroundColor: "#A5C6BA",
@@ -90,7 +92,7 @@ export default function Create_sell_item() {
       )
       .then(function (response) {
         //handle success
-        console.log(response);
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error
@@ -103,9 +105,9 @@ export default function Create_sell_item() {
 
   return (
     <div>
-      <button className={classes.button} type="button" onClick={handleOpen}>
+      <Button className={classes.button} type="button" onClick={handleOpen} startIcon={<DescriptionIcon />}>
         Créer une annonce
-      </button>
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -122,10 +124,10 @@ export default function Create_sell_item() {
         <Fade in={open}>
           <div className={classes.paper}>
 
-            <form className="Sell_item_form" onSubmit={handleSubmit(onSubmit)} >
-              <label htmlFor="pet-category">Catégorie:</label>
+            <form className="Create_sell_item_form" onSubmit={handleSubmit(onSubmit)} >
+              
 
-              <select {...register("category_id", { required: true })} id="pet-category">
+              <select {...register("category_id", { required: true })} id="Create_sell_item_pet_category">
                 <option value="1">Lézard</option>
                 <option value="2">Amphibien</option>
                 <option value="3">Serpent</option>
@@ -133,18 +135,18 @@ export default function Create_sell_item() {
 
 
               </select>
-              <label className="Sell_item_label" htmlFor="scientific_name">Nom scientifique (Genre espèce): </label>
-              <input {...register("scientific_name", { required: true })} type="text" id="name" />
+              <label className="Create_sell_item_label" htmlFor="scientific_name">Nom scientifique (Genre espèce): </label>
+              <input {...register("scientific_name", { required: true })} type="text" className="Create_sell_item_input" />
 
 
-              <label className="Sell_item_label" htmlFor="locality">Localité : </label>
-              <input {...register('locality',)} type="text" id="locality" />
-              <label className="Sell_item_label" htmlFor="phase">Phase : </label>
-              <input {...register('phase',)} type="text" id="phase" />
-              <label className="Sell_item_label" htmlFor="born_captivity">L'animal est-il né en captivité ? </label>
+              <label className="Create_sell_item_label" htmlFor="locality">Localité : </label>
+              <input {...register('locality',)} type="text" className="Create_sell_item_input" />
+              <label className="Create_sell_item_label" htmlFor="phase">Phase : </label>
+              <input {...register('phase',)} type="text" className="Create_sell_item_input" />
+              <label className="Create_sell_item_label" htmlFor="born_captivity">L'animal est-il né en captivité ? </label>
               <div className="Radio">
                 <label className="Radio_label" htmlFor="born_captivity">Oui</label>
-                <input {...register('born_captivity', { required: true })} type="radio" value="true"
+                <input {...register('born_captivity', { required: true })} type="radio" value="true" id="NC"
                   defaultChecked />
 
 
@@ -152,27 +154,27 @@ export default function Create_sell_item() {
 
               <div className="Radio">
                 <label className="Radio_label" htmlFor="born_captivity">Non</label>
-                <input {...register('born_captivity', { required: true })} type="radio" value="false" />
+                <input {...register('born_captivity', { required: true })} type="radio" value="false" id="NC"/>
 
               </div>
 
-              <label className="Sell_item_label" htmlFor="name">Pays de naissance  : </label>
-              <input {...register('native_country', { required: true })} type="text" id="native_country" />
-              <label className="Sell_item_label" htmlFor="birth_date">Date de naissance (AAAA/MM/JJ) : </label>
-              <input {...register('birth_date', { required: true })} type="text" id="birth_date" />
+              <label className="Create_sell_item_label" htmlFor="name">Pays de naissance  : </label>
+              <input {...register('native_country', { required: true })} type="text" className="Create_sell_item_input" />
+              <label className="Create_sell_item_label" htmlFor="birth_date">Date de naissance (AAAA/MM/JJ) : </label>
+              <input {...register('birth_date', { required: true })} type="text" className="Create_sell_item_input"/>
               <label className="Sell_item_label SpecialLabel" htmlFor="content">Informations complémentaires :</label>
               <textarea {...register('content')} id="content"
                 rows="5" cols="33">
               </textarea>
-              <label className="Sell_item_label SpecialLabel" htmlFor="avatar">Ajouter une image :</label>
+              <label className="Create_sell_item_label SpecialLabel" htmlFor="avatar">Ajouter une image :</label>
 
-              <input {...register('Sell_item_upload_image', { required: false })} type="file"
+              <input {...register('Create_sell_item_upload_image', { required: false })} type="file"
                 id="img"
                 accept="image/png, image/jpeg"></input>
-              <label htmlFor="img"><PhotoCameraIcon /></label>
-              <label className="Sell_item_label" htmlFor="price">Prix : </label>
-              <input {...register('price', { required: true })} type="number" id="price" />
-              <input type="submit" value="Envoyer le formulaire" />
+              <label htmlFor="img" id="Create_sell_item_image_icon"><PhotoCameraIcon / ></label>
+              <label className="Create_sell_item_label" htmlFor="price">Prix : </label>
+              <input {...register('price', { required: true })} type="number" className="Create_sell_item_input" />
+              <input type="submit" value="Envoyer le formulaire" id= "Create_sell_item_button" />
             </form>
 
           </div>

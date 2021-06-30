@@ -26,7 +26,7 @@ exports.updateUser = async (request, response, next) => {
     try {
         //todoo ajouter de la sécurité
   
-        const newValue = request.body;
+        const newValue = request.body.data;
 
         /*
           newValue.email 
@@ -41,7 +41,6 @@ exports.updateUser = async (request, response, next) => {
         const member = await UserViewModel.findByPk(request.user);
 
         for (const data in member.dataValues){
-          console.log(data);
           if (member.dataValues[data]) {
             if (!newValue[data]) {
               newValue[data] = member.dataValues[data];
@@ -51,7 +50,9 @@ exports.updateUser = async (request, response, next) => {
         
         newValue.id = request.user;
 
+
         const user = await UserModel.updateUser(newValue);
+
   
         response.status(200).json({user});
   

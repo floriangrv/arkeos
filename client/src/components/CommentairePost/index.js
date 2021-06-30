@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import './style.css'
 
 const CommentairePost = (props) => {
   const [commentaire, setCommentaire] = useState("");
@@ -42,7 +43,7 @@ const CommentairePost = (props) => {
           value={commentaire}
         ></textarea>
         <div className="Submit_container">
-          <input className="Submit" type="submit" value="Envoyer"></input>
+          <input className="Submit_comment" type="submit" value="Envoyer"></input>
         </div>
       </form>
     </div>

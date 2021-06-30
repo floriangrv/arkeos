@@ -13,7 +13,7 @@ import './style.css'
 
 
 const useStyles = makeStyles((theme) => ({
-  modal1: {
+  modal_Create_article: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -23,19 +23,19 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll'
 
   },
-  paper1: {
+  paper_Create_article: {
 
     border: 'none',
     backgroundColor: '#A5C6BA',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(3, 4, 3),
     "&:focus": {
       outline: 'none',
     },
     borderRadius: 5,
 
   },
-  button1: {
+  button_Create_article: {
     width: "13em",
     height: "3em",
     margin: "0 2rem 0 2rem",
@@ -103,13 +103,13 @@ export default function Create_article() {
 
   return (
     < >
-      <Button id= "Create_button" className={classes.button1} type="button"  startIcon={<DescriptionIcon />} onClick={handleOpen}>
+      <Button id= "Create_button" className={classes.button_Create_article} type="button"  startIcon={<DescriptionIcon />} onClick={handleOpen}>
         Créer un article
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal1}
+        className={classes.modal_Create_article}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -120,18 +120,18 @@ export default function Create_article() {
 
       >
         <Fade in={open}>
-          <div className={classes.paper1}>
+          <div className={classes.paper_Create_article}>
 
             <form className="Create_article_form" onSubmit={handleSubmit(onSubmit)} >
-
-              <select {...register("category_id", { required: true })} id="pet-category">
-                <option value="1">Lézard</option>
-                <option value="2">Amphibien</option>
-                <option value="3">Serpent</option>
-                <option value="4">Tortue</option>
+<div className="Create_article_selectors">
+  <select {...register("category_id", { required: true })} id="Create_article_pet_category">
+                <option value="1">Lézards</option>
+                <option value="2">Amphibiens</option>
+                <option value="3">Serpents</option>
+                <option value="4">Tortues</option>
               </select>
 
-              <select {...register("theme_id", { required: true })} id="pet-category">
+              <select {...register("theme_id", { required: true })} id="Create_article_theme">
                 <option value="1">Soins et pathologies</option>
                 <option value="2">Terrarium</option>
                 <option value="3">Alimentation</option>
@@ -140,24 +140,26 @@ export default function Create_article() {
                 <option value="6">Législation</option>
                 <option value="7">Biotope et histoire naturelle</option>
               </select>
+</div>
+              
 
-              <label className="Create_article_label" htmlFor="Article_title">Titre de l'article : </label>
-              <input {...register("title", { required: true })} type="text" id="Article_title" />
+              <label className="Create_article_label" htmlFor="_Create_article_article_title">Titre de l'article : </label>
+              <input {...register("title", { required: true })} type="text" id="Create_article_article_title" />
 
-              <label className="Create_article_label" htmlFor="Article_body">Corps de l'article :</label>
-              <textarea {...register('content')} id="Article_body"
+              <label className="Create_article_label" htmlFor="_Create_article_article_body">Corps de l'article :</label>
+              <textarea {...register('content')} id="Create_article_article_body"
                 rows="20" cols="33">
               </textarea>
-              <label className="Create_article_label" htmlFor="Article_image">Ajouter une image :</label>
+              <label className="Create_article_label" htmlFor="Create_article_article_image">Ajouter une image :</label>
 
               <input {...register('Create_article_upload_image', { required: false })} type="file"
                 id="img"
                 accept="image/png, image/jpeg"></input>
-              <label htmlFor="img"><PhotoCameraIcon /></label>
+              <label id= "Create_article_image_icon" htmlFor="img"><PhotoCameraIcon /></label>
 
               <input {...register("breeding_sheet", { required: true })} type="hidden" value= "false" />
 
-              <input type="submit" value="Créer l' article" />
+              <input type="submit" value="Créer l' article" id= "Create_article_submit" />
             </form>
 
           </div>
