@@ -55,7 +55,10 @@ const Sell_item = (props) => {
           <div className="Seller">
             <img
               className="Seller_picture"
-              src={profil}
+              src={
+                "http://localhost:3000/image/" +
+                props.item.dataValues.profile_picture
+              }
               alt="Image de profil du vendeur"
             ></img>{" "}
             {token ? (

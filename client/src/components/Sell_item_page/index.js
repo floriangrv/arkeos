@@ -66,7 +66,7 @@ const Sell_item_page = () => {
           <div className="Item_picture_container">
             <img
               className="Item_picture"
-              src={cameleon}
+              src={"http://localhost:3000/image/" + articledata.url_picture}
               alt="Image de l'article"
             ></img>
           </div>
