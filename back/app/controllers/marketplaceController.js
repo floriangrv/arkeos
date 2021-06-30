@@ -96,9 +96,6 @@ exports.addMarket = async (request, response, next) => {
 
     data.author_id = request.user;
 
-    // je remplace les virgule par des points, afin de ne pas avoir d'erreur dans la base
-    data.price = data.price.replace(/,/g, ".");
-
     const article = await MarketplaceModel.addMarket(data);
 
     if (!article) {
@@ -130,14 +127,21 @@ exports.updateMarket = async (request, response, next) => {
     }
 
     const newValue = request.body;
+
+    for (const data in currentArticle.dataValues) {
+      if (currentArticle.dataValues[data]) {
+        if (!newValue[data]) {
+          newValue[data] = currentArticle.dataValues[data];
+        }
+      }
+    }
+
     // je stock l'id de l'article
-    newValue.id = id_article;
-    // je remplace les virgule par des points, afin de ne pas avoir d'erreur dans la base
-    newValue.price = newValue.price.replace(/,/g, ".");
+    newValue.data.id = id_article;
 
-    const article = await MarketplaceModel.updateMarket(newValue);
+    const article = await MarketplaceModel.updateMarket(newValue.data);
 
-    response.status(200).json({ article });
+    response.status(200).json(article);
   } catch (error) {
     console.trace(error);
     response

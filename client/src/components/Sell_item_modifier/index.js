@@ -131,7 +131,6 @@ export default function Sell_item_modifier(props) {
             });
         });
     } else {
-      axios;
       axios
         .put(
           `http://localhost:3000/marketplace/${id}`,
