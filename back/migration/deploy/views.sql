@@ -14,6 +14,7 @@ SELECT
     TO_CHAR("article"."updated_at", 'DD-MM-YYYY HH24:MI') "updated_at",
     "user"."username" AS "author",
     "user"."id" AS "author_id",
+    "user"."profile_picture" AS "author_picture",
     "theme"."name" AS "theme_name",
     "theme"."color" AS "theme_color",
     "category"."name" AS "category_name",

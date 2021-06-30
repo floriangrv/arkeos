@@ -54,6 +54,8 @@ exports.addMessages = async (request, response, next) => {
         let messages;
         if (searchIfMessages){
             data.discussion_id = searchIfMessages[0].discussion_id;
+            const discussionReturn = await MessageModel.updateDiscussion(data.discussion_id);
+            console.log(discussionReturn);
             messages = await MessageModel.addConversation(data);
         } else {
             const discussion = await MessageModel.addDiscussion(data.sender);
@@ -71,13 +73,11 @@ exports.addMessages = async (request, response, next) => {
 
 exports.showDiscussion = async (request, response, next) => {
     try {
-        const id = parseInt(request.user, 10);
+        const data = {};
+        data.id = parseInt(request.user, 10);
+        data.idStr = `${request.user}`;
 
-        if (isNaN(id)){
-            return next();
-        }
-
-        const discussions = await ChatViewModel.showDiscussions(id);
+        const discussions = await ChatViewModel.showDiscussions(data);
 
         if(!discussions){
             return next();
@@ -87,11 +87,11 @@ exports.showDiscussion = async (request, response, next) => {
 
 
         for (const discussion of discussions){
-            if ((discussion.receiver_id !== id && discussion.delete_by !== id) || (result.find(value => value !== discussion.receiver_id) && discussion.delete_by !== id)){
+            if ((discussion.receiver_id !== data.id && discussion.delete_by !== data.idStr) || (result.find(value => value !== discussion.receiver_id) && discussion.delete_by !== data.idStr)){
                 const user = await UserModel.findById(discussion.receiver_id);
                 user.discussion_id = discussion.discussion_id;
                 result.push(user);
-            } else if ((discussion.sender_id !== id && discussion.delete_by !== id) || (result.find(value => value !== discussion.sender_id) && discussion.delete_by !== id)) {
+            } else if ((discussion.sender_id !== data.id && discussion.delete_by !== data.idStr) || (result.find(value => value !== discussion.sender_id) && discussion.delete_by !== data.idStr)) {
                 const user = await UserModel.findById(discussion.sender_id);
                 result.push(user);
             }
