@@ -43,7 +43,11 @@ const SignInPage = () => {
   };
   // reste a faire toute la logique front
   return (
-    <form id="signup-form" onSubmit={HandleLogiin}>
+
+    <div id="Sign_in_form_container">
+      <h1 id="Sign_in_title">Connexion</h1>
+
+    <form id="Sign_in_form" onSubmit={HandleLogiin}>
       <label htmlFor="email"></label>
       <input
         placeholder="Email"
@@ -65,11 +69,12 @@ const SignInPage = () => {
         onChange={(event) => setPassword(event.target.value)}
         value={password}
       />
-      <input id="submit-button" type="submit" value="Se connecter" />
-      <em>
-        <a href="/signup">pour s'inscrire c'est par ici !</a>
-      </em>
+      <input id="Sign_in_form_submit_button" type="submit" value="Se connecter" />
+     
+        <a id="Sign_in_form_message" href="/signup">Pour s'inscrire c'est par ici !</a>
+      
     </form>
+    </div>
   );
 };
 

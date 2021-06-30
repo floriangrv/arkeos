@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     height: "3em",
     margin: "1em 0 0 2em",
     backgroundColor: "#A5C6BA",
-    fontSize: 10,
+    fontSize: "0.8rem",
     fontWeight: "bold",
     color: "#F9F7ED",
 

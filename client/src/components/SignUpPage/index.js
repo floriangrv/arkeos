@@ -53,14 +53,17 @@ const SignUpPage = () => {
       {formSubmit ? (
         <>
           <SignInPage />
-          <div className="signup-message">
-            <h3 id="signup-sucess">
-              Enregistrement réussi, veuillez-vous connecter {username} !
+          <div id="Signup_message">
+            <h3 id="Signup_sucess_message">
+              Enregistrement réussi, veuillez-vous connecter <span id="Signup_sucess_username">{username}</span> !
             </h3>
           </div>
         </>
       ) : (
-        <form id="signup-form" onSubmit={handleRegister}>
+        <div id="Signup_form_container">
+          <h1 id="Sign_up_title" > Inscription </h1>
+        <form id="signup_form" onSubmit={handleRegister}>
+          
           <label htmlFor="pseudo"></label>
           <input
             placeholder="Pseudo"
@@ -97,13 +100,14 @@ const SignUpPage = () => {
             type="password"
             name="password"
             id="password-conf"
-            placeholder="Confirmer le Mot de passe"
+            placeholder="Confirmer le mot de passe"
             onChange={(event) => setControlPassword(event.target.value)}
             value={controlPassword}
             required
           />
-          <input id="submit-button" type="submit" value="S'inscrire" />
+          <input id="Signup_form_container_submit_button" type="submit" value="S'inscrire" />
         </form>
+        </div>
       )}
     </>
   );

@@ -12,16 +12,16 @@ let id = url[url.length - 1];
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: "8rem",
-    height: "3rem",
+    width: "7rem",
+    height: "2.5rem",
     margin: "auto",
     backgroundColor: "#A5C6BA",
     color: "#F9F7ED",
-    fontSize: "0.8rem",
+    fontSize: "0.7rem",
     padding: "1rem",
     "&:hover": {
-      background: "rgb(249, 247, 237)",
-      color: "#6B6661",
+      background: "rgba(107,102,97,.8)",
+      color: "#F9F7ED",
       
     },
   },

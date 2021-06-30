@@ -42,22 +42,23 @@ const Conversations = () => {
   return (
 
     <div className="Chat_container">
-      <div className="Chat_card Conversations_card">
+      <h1 className="Conversations_message">Conversations en cours</h1>
+      <div className="Conversations_card">
 
         <ul className= "Conversation_list">
 
           {discussions.map((discussion) => (
 
             (<li key={discussion.id} className= "Conversation_container">
-              <div className= "Conversation" >
+             
                 <img src={discussion.profile_picture}  />
                 <p ><a href={`/message/${discussion.id}`}>{discussion.username}</a></p>
                 
                
-              </div>
-              <div className= "Delete_button_container">
                 <Delete_conversation_button data={discussions}/>
-              </div>
+              
+            
+             
                
             </li>))
 
