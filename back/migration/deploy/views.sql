@@ -9,6 +9,7 @@ SELECT
     "article"."id",
     "article"."title",
     "article"."content",
+    "article"."url_picture",
     TO_CHAR("article"."created_at", 'DD-MM-YYYY HH24:MI') "created_at",
     TO_CHAR("article"."updated_at", 'DD-MM-YYYY HH24:MI') "updated_at",
     "user"."username" AS "author",
