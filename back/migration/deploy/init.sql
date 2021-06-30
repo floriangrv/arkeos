@@ -79,6 +79,7 @@ CREATE TABLE "article" (
     "title" text NOT NULL UNIQUE,
     "content" text NOT NULL,
     "breeding_sheet" boolean NOT NULL,
+    "url_picture" text DEFAULT 'frog.jpg',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,
     "deleted_at" TIMESTAMPTZ,

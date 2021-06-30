@@ -9,6 +9,7 @@ class ArticleViewModel extends CoreModel {
         'title',
         'content',
         'author',
+        'url_picture',
         'theme_name',
         'theme_color',
         'category_name'
@@ -22,7 +23,7 @@ class ArticleViewModel extends CoreModel {
         try {
             const article = await client.query(`SELECT * FROM "article_without_breeder" WHERE "id"=$1`, [id]);
 
-            const photoArticle = await client.query(`SELECT "photo"."url_picture"
+            const photoArticle = await client.query(`SELECT "photo"."location"
             FROM "photo"
             JOIN "article" ON "article"."id" = "photo"."article_id"
             WHERE "article_id" = $1`, [id]);
