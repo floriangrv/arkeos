@@ -184,7 +184,7 @@ export default function Sell_item_modifier(props) {
       )
       .then(function (response) {
         //handle success
-        //window.location = "/";
+        window.location = "/marketplace";
       })
       .catch(function (response) {
         //handle error
@@ -211,25 +211,53 @@ export default function Sell_item_modifier(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-
-          <form className="Sell_item_modifier_form" onSubmit={handleSubmit(onSubmit)} >
-             
-
-              <select {...register("category_id", { required: true })} id="Sell_item_modifier_pet_category">
+            <form
+              className="Sell_item_modifier_form"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <select
+                {...register("category_id", { required: true })}
+                id="Sell_item_modifier_pet_category"
+              >
                 <option value="1">Lézard</option>
                 <option value="2">Amphibien</option>
                 <option value="3">Serpent</option>
                 <option value="4">Tortue</option>
               </select>
-              <label className="Sell_item_label" htmlFor="scientific_name">Nom scientifique (Genre espèce): </label>
-              <input {...register("scientific_name", { required: true })} type="text" className="Sell_item_modifier_input" value= {sellitemdata.scientific_name} onChange= {(e) => setModifysellitemdata(e.target.value)} />
+              <label className="Sell_item_label" htmlFor="scientific_name">
+                Nom scientifique (Genre espèce):{" "}
+              </label>
+              <input
+                {...register("scientific_name", { required: true })}
+                type="text"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.scientific_name}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
 
-
-              <label className="Sell_item_label" htmlFor="locality">Localité : </label>
-              <input {...register('locality',)} type="text" className="Sell_item_modifier_input" value= {sellitemdata.locality} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
-              <label className="Sell_item_label" htmlFor="phase">Phase : </label>
-              <input {...register('phase',)} type="text" className="Sell_item_modifier_input" value= {sellitemdata.phase} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
-              <label className="Sell_item_label" htmlFor="born_captivity">L'animal est-il né en captivité ? </label>
+              <label className="Sell_item_label" htmlFor="locality">
+                Localité :{" "}
+              </label>
+              <input
+                {...register("locality")}
+                type="text"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.locality}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
+              <label className="Sell_item_label" htmlFor="phase">
+                Phase :{" "}
+              </label>
+              <input
+                {...register("phase")}
+                type="text"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.phase}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
+              <label className="Sell_item_label" htmlFor="born_captivity">
+                L'animal est-il né en captivité ?{" "}
+              </label>
               <div className="Radio">
                 <label className="Radio_label" htmlFor="born_captivity">
                   Oui
@@ -253,25 +281,72 @@ export default function Sell_item_modifier(props) {
                 />
               </div>
 
-              <label className="Sell_item_label" htmlFor="name">Pays de naissance  : </label>
-              <input {...register('native_country', { required: true })} type="text" className="Sell_item_modifier_input" value= {sellitemdata.native_country} onChange= {(e) => setModifysellitemdata(e.target.value)}/>
-              <label className="Sell_item_label" htmlFor="birth_date">Date de naissance (AAAA/MM/JJ) : </label>
-              <input {...register('birth_date', { required: true })} type="text" className="Sell_item_modifier_input" value= {sellitemdata.birth_date} onChange= {(e) => setModifysellitemdata(e.target.value)} />
-              <label className="Sell_item_label SpecialLabel" htmlFor="content">Informations complémentaires :</label>
-              <textarea {...register('content')} id="content"
-                rows="5" cols="33" value= {sellitemdata.content} onChange= {(e) => setModifysellitemdata(e.target.value)}>
-              </textarea>
-              <label className="Sell_item_label SpecialLabel" htmlFor="avatar">Ajouter une image :</label>
+              <label className="Sell_item_label" htmlFor="name">
+                Pays de naissance :{" "}
+              </label>
+              <input
+                {...register("native_country", { required: true })}
+                type="text"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.native_country}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
+              <label className="Sell_item_label" htmlFor="birth_date">
+                Date de naissance (AAAA/MM/JJ) :{" "}
+              </label>
+              <input
+                {...register("birth_date", { required: true })}
+                type="text"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.birth_date}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
+              <label className="Sell_item_label SpecialLabel" htmlFor="content">
+                Informations complémentaires :
+              </label>
+              <textarea
+                {...register("content")}
+                id="content"
+                rows="5"
+                cols="33"
+                value={sellitemdata.content}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              ></textarea>
+              <label className="Sell_item_label SpecialLabel" htmlFor="avatar">
+                Ajouter une image :
+              </label>
 
-              <input {...register('Sell_item_upload_image', { required: false })} type="file"
+              <input
+                {...register("Sell_item_upload_image", { required: false })}
+                type="file"
                 id="img"
-                accept="image/png, image/jpeg"></input>
-              <label id="Sell_item_modifier_icon" htmlFor="img"><PhotoCameraIcon /></label>
-              <label className="Sell_item_label" htmlFor="price">Prix : </label>
-              <input {...register('price', { required: true })} type="number" className="Sell_item_modifier_input" value= {sellitemdata.price} onChange= {(e) => setModifysellitemdata(e.target.value)} />
-              <input className="Sell_item_modifier_button"type="submit" value="Envoyer" />
+                accept="image/png, image/jpeg"
+              ></input>
+              <label id="Sell_item_modifier_icon" htmlFor="img">
+                <PhotoCameraIcon />
+              </label>
+              <label className="Sell_item_label" htmlFor="price">
+                Prix :{" "}
+              </label>
+              <input
+                {...register("price", { required: true })}
+                type="number"
+                className="Sell_item_modifier_input"
+                value={sellitemdata.price}
+                onChange={(e) => setModifysellitemdata(e.target.value)}
+              />
+              <input
+                className="Sell_item_modifier_button"
+                type="submit"
+                value="Envoyer"
+              />
             </form>
-            <input className="Sell_item_modifier_button Sell_item_modifier_button_2" type="submit" value="Supprimer l'annonce" onClick= {onDelete}/>
+            <input
+              className="Sell_item_modifier_button Sell_item_modifier_button_2"
+              type="submit"
+              value="Supprimer l'annonce"
+              onClick={onDelete}
+            />
           </div>
         </Fade>
       </Modal>
