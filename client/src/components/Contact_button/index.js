@@ -8,20 +8,18 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: "10em",
-    height: "2.5em",
-    
+    width: "11em",
+    height: "3em",
+    margin: "1em 0 1em 0",
     backgroundColor: "#A5C6BA",
-    boxShadow: "0px 1px 3px 1px rgba(107,102,97,0.7)",
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontWeight: "bold",
     color: "#F9F7ED",
-    border: "none",
-    borderRadius: "0.3rem",
 
     "&:hover": {
-      background: "#F9F7ED",
-      color: "#6B6661",
+      background: "rgb(172, 111, 240, 0.5)",
+      color: "#F9F7ED",
+      transition: "0.5s"
     },
   },
 }));

@@ -51,7 +51,7 @@ const Delete_conversation_button = (props) => {
         }
       )
       .then(function (response) {
-        console.log(response)
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error

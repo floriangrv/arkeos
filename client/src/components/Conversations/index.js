@@ -32,7 +32,10 @@ const Conversations = () => {
   }, []);
 
   return (
+    <>
+    <h1 className="Conversations_message">Conversations en cours</h1>
     <div className="Chat_container">
+      
       <div className="Conversations_card">
         <ul className="Conversation_list">
           {discussions.map((discussion) => (
@@ -60,6 +63,7 @@ const Conversations = () => {
         </ul>
       </div>
     </div>
+    </>
   );
 };
 

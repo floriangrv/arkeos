@@ -46,7 +46,7 @@ const ProfilPage = (props) => {
           <p className="profil-location">{member.city}</p>
         </div>
 
-        <div className="content-container">
+        <div className="Profil_contetnt_container">
           <div className="profil-user-container">
             <p className="Profil-category">Présentation</p>
             <p className="profil-infos">{member.presentation}</p>
