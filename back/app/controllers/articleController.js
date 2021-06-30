@@ -113,20 +113,16 @@ exports.addArticle = async (request, response, next) => {
     /*
         data.title 
         data.content 
-        data.author_id 
         data.category_id 
         data.theme_id
+        data.url_picture
         */
 
-    data.author_id = request.user;
+    data.data.author_id = request.user;
 
-    data.title = data.title.replace(/'/g, "''");
-    data.content = data.content.replace(/'/g, "''");
+    console.log(data);
 
-    data.title = data.title.replace(/'/g, "''");
-    data.content = data.content.replace(/'/g, "''");
-
-    const article = await ArticleModel.addArticle(data);
+    const article = await ArticleModel.addArticle(data.data);
 
     if (!article) {
       return next();
@@ -184,6 +180,8 @@ exports.updateArticle = async (request, response, next) => {
 
     const newValue = request.body;
 
+    console.log("les données front", newValue);
+
     for (const data in articleCurrent.dataValues) {
       if (articleCurrent.dataValues[data]) {
         if (!newValue[data]) {
@@ -192,8 +190,8 @@ exports.updateArticle = async (request, response, next) => {
       }
     }
 
-    newValue.id = id_article;
-    const article = await ArticleModel.updateArticle(newValue);
+    newValue.data.id = id_article;
+    const article = await ArticleModel.updateArticle(newValue.data);
 
     response.status(200).json({ article });
   } catch (error) {
