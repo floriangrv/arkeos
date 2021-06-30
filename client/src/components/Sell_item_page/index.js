@@ -70,17 +70,7 @@ const Sell_item_page = () => {
               alt="Image de l'article"
             ></img>
           </div>
-          <div className="favorite">
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              href="/signin"
-              className={classes.button}
-              startIcon={<StarsIcon />}
-            >
-              Favoris !
-            </Button>
+         
           </div>
           <div className="Sell_item_description_container">
             <p className="Sell_item_description">
@@ -121,7 +111,7 @@ const Sell_item_page = () => {
             </div>
           </div>
         </div>
-      </div>
+      
     </>
   );
 };
