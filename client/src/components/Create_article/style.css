@@ -57,7 +57,8 @@
   background: rgb(249, 247, 237,0.5);
   border: none;
   font-size: 1rem;
-  width: 80%
+  width: 80%;
+  font-weight: normal;
   }
 
   #Create_article_submit {

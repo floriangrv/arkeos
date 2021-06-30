@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    flexWrap: "wrap",
-    width: "200",
+    flexWrap: "Wrap",
+    width: "400",
     overflowY: "scroll",
   },
-  paper3: {
+  paper: {
+    
     border: "none",
     backgroundColor: "#A5C6BA",
     boxShadow: theme.shadows[5],
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     borderRadius: 5,
   },
-  button3: {
+  button: {
     width: "10em",
     height: "2.5em",
     margin: "0 0 2rem 0",
@@ -163,13 +164,13 @@ export default function Profile_modifier(props) {
 
   return (
     <div>
-      <button className={classes.button3} type="button" onClick={handleOpen}>
+      <button className={classes.button} type="button" onClick={handleOpen}>
         Modifier mon profil
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal3}
+        className={classes.modal}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -179,7 +180,7 @@ export default function Profile_modifier(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper3}>
+          <div className={classes.paper}>
             <form
               className="Profil_modifier_form"
               onSubmit={handleSubmit(onSubmit)}
@@ -190,16 +191,16 @@ export default function Profile_modifier(props) {
               <input
                 {...register("username")}
                 type="text"
-                id="username"
+                className= "Modify_article_form_input "
                 value={profildata.username}
                 onChange={(e) => setProfildata(e.target.value)}
               />
 
-              <label htmlFor="email"> Email:</label>
+              <label className="Profil_modifier_label"  htmlFor="email"> Email:</label>
               <input
                 {...register("email")}
                 type="email"
-                id="email"
+                className= "Modify_article_form_input "
                 value={profildata.email}
                 onChange={(e) => setProfildata(e.target.value)}
               />
@@ -210,46 +211,45 @@ export default function Profile_modifier(props) {
               <input
                 {...register("city")}
                 type="text"
-                id="city"
+                className= "Modify_article_form_input "
                 value={profildata.city}
                 onChange={(e) => setProfildata(e.target.value)}
               />
 
-              <label className="Profil_modifier_form" htmlFor="Presentation">
+              <label className="Profil_modifier_label"  htmlFor="Presentation">
                 Présentation :{" "}
               </label>
-              <input
+              <textarea
                 {...register("presentation")}
                 type="text"
-                id="Presentation"
+                rows="20" cols="33"
+                className= "Modify_article_form_input "
                 value={profildata.presentation}
-                onChange={(e) => setProfildata(e.target.value)}
-              />
+                onChange={(e) => setProfildata(e.target.value)}>
+              </textarea>
 
-              <label className="Profil_modifier_form" htmlFor="species">
+              <label className="Profil_modifier_label" htmlFor="species">
                 Mes animaux (Genre espèce) :{" "}
               </label>
               <input
                 {...register("species")}
                 type="text"
-                id="species"
+                className= "Modify_article_form_input "
                 value={profildata.species}
                 onChange={(e) => setProfildata(e.target.value)}
               />
 
-              <label className="Profil_modifier_form" htmlFor="Profile_img">
+              <label className="Profil_modifier_label" htmlFor="Profile_img">
                 Ajouter une image :
               </label>
-              <input
-                {...register("profile_picture")}
-                type="file"
-                id="Profile_img"
-                accept="image/png, image/jpeg, image/jpg"
-              ></input>
-              <label htmlFor="img">
-                <PhotoCameraIcon />
-              </label>
-              <input type="submit" value="Envoyer le formulaire" />
+              <input {...register('Profil_modifier_upload_image', { required: false })} type="file"
+                id="img"
+                accept="image/png, image/jpeg"></input>
+              <label id= "Profil_modifier_image_icon" htmlFor="img"><PhotoCameraIcon /></label>
+
+              <input {...register("breeding_sheet", { required: true })} type="hidden" value= "false" />
+            
+              <input className= "Profil_modifier_form_submit" type="submit" value="Envoyer" />
             </form>
           </div>
         </Fade>
