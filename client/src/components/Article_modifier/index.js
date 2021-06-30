@@ -166,7 +166,7 @@ const onDelete = () => {
             <form className="Modify_article_form" onSubmit={handleSubmit(onSubmit)} >
 
             <label className="Modify_article_label" htmlFor="category">Catégorie :</label>
-              <select {...register("category_id", { required: true })} name= "category" id="Create_article_category">
+              <select {...register("category_id", { required: true })} name= "category" id="Modify_article_pet_category">
                 <option value="1">Lézard</option>
                 <option value="2">Amphibien</option>
                 <option value="3">Serpent</option>
@@ -174,7 +174,7 @@ const onDelete = () => {
               </select>
 
               <label className="Modify_article_label" htmlFor="theme">Thème :</label>
-              <select {...register("theme_id", { required: true })} name= "theme" id= "Create_article_theme">
+              <select {...register("theme_id", { required: true })} name= "theme" id= "Modify_article_theme">
                 <option value="1">Soins et pathologies</option>
                 <option value="2">Terrarium</option>
                 <option value="3">Alimentation</option>
@@ -185,7 +185,7 @@ const onDelete = () => {
               </select>
 
               <label className="Modify_article_label Create_article_title" htmlFor="Article_title">Titre de l'article : </label>
-              <input {...register("title", { required: true })} type="text" id="Modify_article_title" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
+              <input {...register("title", { required: true })} type="text" className="Modify_article_form_input" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
 
               <label className="Mofidy_article_label" htmlFor="Modify_article_body">Corps de l'article :</label>
               <textarea {...register('content')}  id="Article_body"
@@ -196,14 +196,14 @@ const onDelete = () => {
               <input {...register('Modify_article_upload_image', { required: false })} type="file"
                 id="img"
                 accept="image/png, image/jpeg"></input>
-              <label htmlFor="img"><PhotoCameraIcon /></label>
+              <label id= "Modify_article_image_icon" htmlFor="img"><PhotoCameraIcon /></label>
 
               <input {...register("breeding_sheet", { required: true })} type="hidden" value= "false" />
 
-              <input type="submit" value="Enregistrer les modifications" />
+              <input className="Modify_article_submit" type="submit" value="Enregistrer" />
               
             </form>
-            <input type="submit" value="Supprimer l'article" onClick= {onDelete}/>
+            <input  className="Modify_article_submit Modify_article_submit_2" type="submit" value="Supprimer l'article" onClick= {onDelete}/>
           </div>
         </Fade>
       </Modal>

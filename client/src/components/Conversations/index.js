@@ -33,14 +33,10 @@ const Conversations = () => {
 
   return (
     <>
-    <h1 className="Conversations_message">Conversations en cours</h1>
+    <h1 className="Conversations_message">Conversations</h1>
     <div className="Chat_container">
-<<<<<<< HEAD
       
       <div className="Conversations_card">
-=======
-      <div className="Chat_card Conversations_card">
->>>>>>> 194d49358b2b7b7263a4831249e50b5233806662
         <ul className="Conversation_list">
           {discussions.map((discussion) => (
             <li key={discussion.id} className="Conversation_container">

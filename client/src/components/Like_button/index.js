@@ -45,7 +45,7 @@ const IconLabelButtons = (props) => {
         }
       )
       .then(function (response) {
-        console.log(response);
+        window.location.reload()
       })
       .catch(function (response) {
         //handle error

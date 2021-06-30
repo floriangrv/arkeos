@@ -10,9 +10,9 @@
   display: flex;
   flex-direction: column;
 flex-wrap: wrap;
-justify-content: flex-start;
-align-items: flex-start;
-  width: 50vw;
+justify-content: center;
+align-items: center;
+  width: 45vw;
   min-height: 100vh;
 border-radius: 10px;
 background-color: #6B6661;
@@ -35,21 +35,24 @@ border-radius: 5px 5px 5px 5px;
 }
 
 .Sell_item_description_container{
-  margin: 2rem;
-  width: 90%;
+  margin: 1rem;
+  width: 95%;
+  background: rgb(249, 247, 237, 0.1);
+  padding: 1rem;
+  border-radius: 0.3rem;
 }
 
 .Sell_item_description {
   margin: 2rem 0 0 1rem;;
   font-family: 'Roboto';
   color: #F9F7ED;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .favorite {
   position: absolute;
   text-align: center;
-  right: 27rem;
+  right: 30rem;
   top: 20rem;
 }
 
@@ -63,9 +66,14 @@ justify-content: flex-end;
 .Sell_item_price {
   right: 20rem;
   top: 55rem;
-  width: 15rem;
-  height: 9rem;
-  font-size: 4rem;
+  width: 13rem;
+  height: 7rem;
+  font-size: 3rem;
   position: static;
   margin-top: 2rem;
+}
+
+.Sell_item_title {
+  font-weight: bold;
+  font-size: 1.2rem;
 }

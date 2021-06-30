@@ -58,14 +58,14 @@ const Sell_item_page = () => {
 
   return (
     <>
-      <div className="Item_page">
+      <div className="Sell_item_page">
         {user_id == articledata.author_id ? (
           <Sell_item_modifier data={articledata} />
         ) : null}
-        <div className="Item_infos">
-          <div className="Item_picture_container">
+        <div className="Sell_item_infos">
+          <div className="Sell_item_picture_container">
             <img
-              className="Item_picture"
+              className="Sell_item_picture"
               src={"http://localhost:3000/image/" + articledata.url_picture}
               alt="Image de l'article"
             ></img>
@@ -82,41 +82,42 @@ const Sell_item_page = () => {
               Favoris !
             </Button>
           </div>
-          <div className="Item_description">
+          <div className="Sell_item_description_container">
             <p className="Sell_item_description">
               {" "}
-              Nom scientifique : {articledata.scientific_name}
+              <span className="Sell_item_title">Nom scientifique :</span> {articledata.scientific_name}
+            </p>
+           
+            <p className="Sell_item_description">
+              {" "}
+              <span className="Sell_item_title">Localité : </span>{articledata.locality}{" "}
             </p>
             <p className="Sell_item_description">
               {" "}
-              Nom scientifique : {articledata.scientific_name}
+              <span className="Sell_item_title">Phase :</span> {articledata.phase}
             </p>
             <p className="Sell_item_description">
               {" "}
-              Localité : {articledata.locality}{" "}
+              <span className="Sell_item_title">NC :</span> {articledata.born_captivity}
             </p>
             <p className="Sell_item_description">
               {" "}
-              Phase : {articledata.phase}
+              <span className="Sell_item_title">Pays de naissance :</span> {articledata.native_country}
             </p>
             <p className="Sell_item_description">
               {" "}
-              NC : {articledata.born_captivity}
+              <span className="Sell_item_title">Date de naissance :</span> {articledata.birth_date}
             </p>
             <p className="Sell_item_description">
               {" "}
-              Pays de naissance : {articledata.native_country}
+              <span className="Sell_item_title">Informations complémentaires :</span> 
             </p>
             <p className="Sell_item_description">
               {" "}
-              Date de naissance : {articledata.birth_date}
-            </p>
-            <p className="Sell_item_description">
-              {" "}
-              Informations complémentaires : {articledata.content}
+           {articledata.content}
             </p>
             <div className="Price_container">
-              <p className="Price Item_price">{articledata.price} €</p>
+              <p className="Price Sell_item_price">{articledata.price} €</p>
             </div>
           </div>
         </div>

@@ -63,12 +63,6 @@ const LeftMenu = () => {
 
 
 
-
-        <NavLink to="/calendar" style={{ outline: 'none' }}>
-          <LeftMenuItems name="Agenda" Icon={InsertInvitationIcon} />
-        </NavLink>
-
-
         <NavLink to="/legislation" style={{ outline: 'none' }}>
           <LeftMenuItems name="Législation" Icon={GavelIcon} />
         </NavLink>

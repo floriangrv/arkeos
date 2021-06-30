@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
     color: '#F9F7ED',
     fontWeight: "bold",
+    
 
   },
   paper: {
@@ -39,18 +40,18 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: "14em",
-    height: "2.5em",
+    height: "3em",
     margin: "0 0 0 3em",
     backgroundColor: "#A5C6BA",
     boxShadow: "0px 1px 3px 1px rgba(107,102,97,0.7)",
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontWeight: "bold",
     color: "#F9F7ED",
     border: "none",
     borderRadius: "0.3rem",
 
     "&:hover": {
-      background: "#F9F7ED",
+      background: "rgb(249, 247, 237,0.5)",
       color: "#6B6661",
     },
   }
@@ -174,7 +175,7 @@ export default function Create_sell_item() {
               <label htmlFor="img" id="Create_sell_item_image_icon"><PhotoCameraIcon / ></label>
               <label className="Create_sell_item_label" htmlFor="price">Prix : </label>
               <input {...register('price', { required: true })} type="number" className="Create_sell_item_input" />
-              <input type="submit" value="Envoyer le formulaire" id= "Create_sell_item_button" />
+              <input type="submit" value="Envoyer" id= "Create_sell_item_button" />
             </form>
 
           </div>

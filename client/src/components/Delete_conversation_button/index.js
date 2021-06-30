@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.7rem",
     padding: "1rem",
     "&:hover": {
-      background: "rgba(107,102,97,.8)",
-      color: "#F9F7ED",
+      background: "rgb(249, 247, 237, 0.8)",
+      color: "#6B6661",
       
     },
   },

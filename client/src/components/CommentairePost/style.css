@@ -1,19 +1,22 @@
 .Submit_comment {
- border-radius: 0.2rem; 
- width: 8rem;
- font-family: 'Roboto';
- font-weight: bold;
- color: #F9F7ED;
- background: #A5C6BA;
- box-shadow: 0px 1px 1px 0.5px rgba(107,102,97,0.7);
- border: none;
+  border-radius: .2rem;
+  color: #6b6661;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 30%;
+  height: 2rem;
+  cursor: pointer;
+font-family: 'Roboto';
+box-shadow: 0px 1px 5px 0px #6B6661;
+border: none;
+margin-top: 1rem;
 
 }
 
 .Submit_comment:hover {
-  cursor: pointer;
-  background: rgb(249, 247, 237,0.5);
-  transition: 0.5s;
-  color: #6B6661;
+    background: rgba(98, 63, 138, 0.5);
+    color: #F9F7ED;
+    transition: 0.5s;
+  }
 
-}
+
