@@ -56,6 +56,20 @@ class MessageModel extends CoreModel {
         }
         return result.rows[0];
     };
+
+    static async updateDiscussion(id) {
+        try {
+            const result = await client.query(`UPDATE "discussion" SET "delete_by"='null' WHERE id=$1 RETURNING *`, 
+            [id]);
+            if (result.rows[0]) {
+                return result;
+            } else {
+                return "Erreur sur la discussion!"
+            }
+        } catch (error) {
+            console.trace(error);
+        }
+    }
     
 }
 

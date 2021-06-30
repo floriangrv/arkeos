@@ -11,7 +11,10 @@ const Article_card = (props) => {
         <div className="Card_image">
           <img
             className="Article_picture"
-            src={frog}
+            src={
+              "http://localhost:3000/image/" +
+              props.article.dataValues.url_picture
+            }
             alt="Image de l'article"
           ></img>
         </div>

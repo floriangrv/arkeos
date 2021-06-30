@@ -7,9 +7,9 @@ import CommentairePost from "../CommentairePost";
 import "./style.css";
 import axios from "axios";
 import Article_modifier from "../Article_modifier";
+import { checkPropTypes } from "prop-types";
 
 const Article = () => {
- 
   const [content, setContent] = useState([]);
   const [author, setAuthor] = useState([]);
   const [title, setTitle] = useState([]);
@@ -18,7 +18,7 @@ const Article = () => {
 
   let token = localStorage.getItem("token");
   let user_id = localStorage.getItem("user");
-console.log(user_id);
+  console.log(user_id);
 
   const address = window.location.href;
   let url = address.split("/");
@@ -34,14 +34,13 @@ console.log(user_id);
         },
       })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         setContent(response.data[0].content);
         setTitle(response.data[0].title);
         setAuthor(response.data[0].author);
         setArticledata(response.data[0]);
-        setAuthor_id (response.data[0].author_id)
-        console.log(response.data[0].author_id, user_id)
-      
+        setAuthor_id(response.data[0].author_id);
+        console.log(response.data[0].author_id, user_id);
       });
   };
   useEffect(() => {
@@ -60,7 +59,7 @@ console.log(user_id);
           <div className="Image_container">
             <img
               className="One_article_picture"
-              src={frog}
+              src={"http://localhost:3000/image/" + articledata.url_picture}
               alt="Image de l'article"
             ></img>
           </div>
@@ -74,7 +73,9 @@ console.log(user_id);
             <div className="Profil_picture_container">
               <img
                 className="Profil_picture"
-                src={profil} // a remplacer
+                src={
+                  "http://localhost:3000/image/" + articledata.author_picture
+                } // a remplacer
                 alt="Image de profil"
               ></img>
               <p className="Author_pseudo">{author}</p>

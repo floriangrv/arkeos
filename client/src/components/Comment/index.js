@@ -6,7 +6,7 @@ const Comment = (props) => {
       <div className="Profil_picture_container_answer">
         <img
           className="Profil_picture_answer"
-          src={profil}
+          src={"http://localhost:3000/image/" + props.data.avatar}
           alt="Image de profil"
         ></img>
       </div>

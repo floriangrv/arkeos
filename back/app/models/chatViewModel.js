@@ -31,14 +31,14 @@ class ChatViewModel extends CoreModel {
     return result.rows;
   };
   
-  static async showDiscussions(id) {
+  static async showDiscussions(obj) {
     const result = await client.query(`SELECT DISTINCT "chat_view"."receiver_id", "chat_view"."sender_id", 
     "chat_view"."discussion_id", "discussion"."delete_by"
     FROM ${this.tableName}
     FULL JOIN "discussion" ON "discussion"."id" = "chat_view"."discussion_id"
-    WHERE "discussion"."delete_by" != $1 AND receiver_id = $1
+    WHERE "discussion"."delete_by" != $2 AND receiver_id = $1
     OR sender_id = $1`, 
-    [id]);
+    [obj.id, obj.idStr]);
     
     if (!result.rows[0]) {
         return null;

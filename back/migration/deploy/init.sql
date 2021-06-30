@@ -114,7 +114,7 @@ CREATE TABLE "discussion" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "created_by" INT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "delete_by" integer
+    "delete_by" text
 );
 
 CREATE TABLE "message" (
