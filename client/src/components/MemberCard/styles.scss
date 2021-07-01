@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.card:hover {
+  filter: contrast(110%);
+  transition: 0.3s;
+}
+
 
 .card-body {
   text-align: center;

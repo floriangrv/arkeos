@@ -229,7 +229,7 @@ export default function Create_article(props) {
               <input {...register("title", { required: true })} type="text" className="Modify_article_form_input" value= {modifytitle} onChange= {(e) => setModifytitle(e.target.value)}/>
 
               <label className="Mofidy_article_label" htmlFor="Modify_article_body">Corps de l'article :</label>
-              <textarea {...register('content')}  id="Article_body"
+              <textarea {...register('content')}  
                 rows="20" cols="33"value= {modifycontent} onChange= {(e) => setModifycontent(e.target.value)} > 
               </textarea>
               <label className="Modify_article_label" htmlFor="Modify_article_image">Ajouter une image :</label>

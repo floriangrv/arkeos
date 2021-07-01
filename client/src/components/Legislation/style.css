@@ -45,6 +45,10 @@ height: 45vh;
 margin-top: 2rem;
   }
 
+  .Law_card:hover {
+    filter: invert(75%);
+    transition: 0.5s;
+  }
   .Law_card_picture {
     width: 100%;
   }

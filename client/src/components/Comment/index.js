@@ -1,5 +1,7 @@
 import React from "react";
 import profil from "../../assets/images/profil.png";
+import './style.css'
+
 const Comment = (props) => {
   return (
     <div className="Answer_container">

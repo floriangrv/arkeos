@@ -47,3 +47,9 @@ textarea:focus {
   font-size: 1rem;
  
 }
+
+.Send_answer_button:hover {
+  background: rgba(98, 63, 138, 0.5);
+  color: #F9F7ED;
+  transition: 0.5s;
+}

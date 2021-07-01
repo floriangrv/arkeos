@@ -242,12 +242,11 @@ export default function Profile_modifier(props) {
               <label className="Profil_modifier_label" htmlFor="Profile_img">
                 Ajouter une image :
               </label>
-              <input {...register('Profil_modifier_upload_image', { required: false })} type="file"
+              <input {...register('profile_picture', { required: false })} type="file"
                 id="img"
                 accept="image/png, image/jpeg"></input>
               <label id= "Profil_modifier_image_icon" htmlFor="img"><PhotoCameraIcon /></label>
 
-              <input {...register("breeding_sheet", { required: true })} type="hidden" value= "false" />
             
               <input className= "Profil_modifier_form_submit" type="submit" value="Envoyer" />
             </form>

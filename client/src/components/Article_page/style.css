@@ -14,6 +14,7 @@ flex-wrap: wrap;
 justify-content: flex-start;
 align-items: flex-start;
   width: 50vw;
+  max-width: 50vw;
 border-radius: 10px;
 background-color: #6B6661;
 box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
@@ -43,19 +44,23 @@ height: 20em;
 }
 
 .Body_container {
-  display: block
+ display: block;
+  width: 100%;
+ 
 
 }
 
 .One_article_body {
-  width: 100%;
+  display: block;
+ width: 100%;
   padding: 1rem 2em 0 2rem;
-  text-align: justify;
+  
   color: #F9F7ED;
   font-size: 1.2rem;
  
  
 }
+
 
 .Profil_picture_container{
   
@@ -68,7 +73,8 @@ padding: 1em;
 .Profil_picture {
 width: 100px;
 height: 100px;
-
+border-radius: 50%;
+object-fit: cover;
 
 }
 

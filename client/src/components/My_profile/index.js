@@ -48,7 +48,7 @@ const ProfilPage = (props) => {
        
         <div className="img-container">
           <img src={"http://localhost:3000/image/" + profildata.profile_picture} />
-          {console.log(profildata.profile_picture)},
+          {console.log(profildata.profile_picture)}
         </div>
          <div className="profil-important-infos">
               <p className="profil-pseudo">{profildata.username}</p>
