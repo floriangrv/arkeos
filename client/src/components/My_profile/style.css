@@ -38,6 +38,10 @@ color: #F9F7ED;
   margin: 2rem;
 }
 
+.img-container img{
+  object-fit: cover;
+
+}
 .content-container {
   display: flex;
   flex-direction: column;

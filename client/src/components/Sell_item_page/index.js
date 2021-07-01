@@ -70,10 +70,8 @@ const Sell_item_page = () => {
               alt="Image de l'article"
             ></img>
           </div>
-         
-          </div>
           <div className="Sell_item_description_container">
-            <p className="Sell_item_description">
+             <p className="Sell_item_description">
               {" "}
               <span className="Sell_item_title">Nom scientifique :</span> {articledata.scientific_name}
             </p>
@@ -109,6 +107,9 @@ const Sell_item_page = () => {
             <div className="Price_container">
               <p className="Price Sell_item_price">{articledata.price} €</p>
             </div>
+          </div>
+         
+           
           </div>
         </div>
       
