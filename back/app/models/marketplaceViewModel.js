@@ -37,15 +37,15 @@ class MarketplaceViewModel extends CoreModel {
                 // si il n'y a ni filtre de catégories, ni de themes
                 result = await client.query(`SELECT *
                 FROM ${this.tableName} 
-                ORDER BY $1 ASC LIMIT $2`, 
-                [options.orderByFields, options.nbArticles]);
+                ORDER BY "created_at" DESC LIMIT $1`, 
+                [options.nbArticles]);
             } else if (options.category !== undefined){
                 // si il ya le filtre de categories
                 result = await client.query(`SELECT *
                 FROM ${this.tableName} 
                 WHERE category_name=$1 
-                ORDER BY $2 ASC LIMIT $3`, 
-                [options.category ,options.orderByFields, options.nbArticles]);
+                ORDER BY "created_at" DESC LIMIT $2`, 
+                [options.category , options.nbArticles]);
             }
 
         } else {

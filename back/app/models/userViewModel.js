@@ -23,12 +23,13 @@ class UserViewModel extends CoreModel {
   }
 
   static async showAllMembers(options) {
+
     const result = await client.query(
       `
         SELECT *
         FROM ${this.tableName}
-        ORDER BY $1 ASC LIMIT $2`,
-      [options.orderByFields, options.nbMembers]
+        ORDER BY "created_at" DESC LIMIT $1`,
+      [options.nbMembers]
     );
     const instanceList = [];
     for (const row of result.rows) {
@@ -45,11 +46,10 @@ class UserViewModel extends CoreModel {
             SELECT *
             FROM ${this.tableName}
             WHERE "username" LIKE '%' || $1 || '%' OR "city" LIKE '%' || $2 || '%'
-            ORDER BY $3 ASC LIMIT $4`,
+            ORDER BY "created_at" ASC LIMIT $3`,
         [
           options.username,
           options.city,
-          options.orderByFields,
           options.nbMembers,
         ]
       );
@@ -59,8 +59,8 @@ class UserViewModel extends CoreModel {
             SELECT *
             FROM ${this.tableName}
             WHERE "username" LIKE '%' || $1 || '%'
-            ORDER BY $2 ASC LIMIT $3`,
-        [options.username, options.orderByFields, options.nbMembers]
+            ORDER BY "created_at" ASC LIMIT $2`,
+        [options.username, options.nbMembers]
       );
     } else if (options.city) {
       result = await client.query(
@@ -68,8 +68,8 @@ class UserViewModel extends CoreModel {
             SELECT *
             FROM ${this.tableName}
             WHERE "city" LIKE '%' || $1 || '%'
-            ORDER BY $2 ASC LIMIT $3`,
-        [options.city, options.orderByFields, options.nbMembers]
+            ORDER BY "created_at" ASC LIMIT $2`,
+        [options.city, options.nbMembers]
       );
     } else {
       return { erreur: "Vous n'utiliser pas le bon input O_o" };

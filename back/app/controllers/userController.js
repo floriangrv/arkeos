@@ -56,6 +56,8 @@ exports.showAllMembers = async (request, response, next) => {
     if (!members) {
       return next();
     }
+    console.log(members);
+
     response.json(members);
   } catch (error) {
     console.trace(error);
