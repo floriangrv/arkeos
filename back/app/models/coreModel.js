@@ -33,16 +33,16 @@ class CoreModel {
 
             if (options.category === undefined && options.theme === undefined){
                 // si il n'y a ni filtre de catégories, ni de themes
-                result = await client.query(`SELECT * FROM ${this.tableName} ORDER BY $1 ASC LIMIT $2`, [options.orderByFields, options.nbArticles]);
+                result = await client.query(`SELECT * FROM ${this.tableName} ORDER BY "created_at" DESC LIMIT $1`, [options.nbArticles]);
             } else if (options.category === undefined && options.theme !== undefined){
                 // si il y a le filtre de theme
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY $2 ASC LIMIT $3`, [options.theme ,options.orderByFields, options.nbArticles]);
+                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY "created_at" DESC LIMIT $2`, [options.theme, options.nbArticles]);
             } else if (options.category !== undefined && options.theme === undefined){
                 // si il ya le filtre de categories
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY $2 ASC LIMIT $3`, [options.category ,options.orderByFields, options.nbArticles]);
+                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY "created_at" DESC LIMIT $2`, [options.category, options.nbArticles]);
             } else if (options.category !== undefined && options.theme !== undefined){
                 // si il y a les deux filtres
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 ORDER BY $3 ASC LIMIT $4`, [options.category , options.theme, options.orderByFields, options.nbArticles]);
+                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 ORDER BY "created_at" DESC LIMIT $3`, [options.category , options.theme, options.nbArticles]);
             }
 
         } else {
